@@ -6,13 +6,33 @@ const { title = 'Devina Azaria', description = 'Personal academic, engineering, 
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="description" content={description}/>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 <title>{title}</title>
 </head>
 <body>
-<header class="shell nav"><a class="brand" href="/">Devina Azaria</a><nav class="navlinks"><a href="/#projects">Projects</a><a href="/#academic">Academic</a><a href="/#achievements">Achievements</a><a href="/journal/">Journal</a><a href="/#beyond">Beyond STEM</a></nav></header>
+<header class="shell nav">
+  <a class="brand" href="/">Devina Azaria</a>
+  <nav class="navlinks" aria-label="Primary navigation">
+    <a href="/#projects">Projects</a>
+    <a href="/#academic">Academic</a>
+    <a href="/#achievements">Achievements</a>
+    <a href="/journal/">Journal</a>
+    <a href="/#beyond">Beyond STEM</a>
+  </nav>
+  <details class="mobile-nav">
+    <summary aria-label="Open navigation menu"><span></span><span></span><span></span></summary>
+    <nav class="mobile-menu" aria-label="Mobile navigation">
+      <a href="/">Home</a>
+      <a href="/#projects">Projects</a>
+      <a href="/#academic">Academic</a>
+      <a href="/#achievements">Achievements</a>
+      <a href="/journal/">Journal</a>
+      <a href="/#beyond">Beyond STEM</a>
+    </nav>
+  </details>
+</header>
 <main><slot /></main>
 <footer class="shell footer">devina.id · Personal academic, engineering & creative portfolio</footer>
 </body>
