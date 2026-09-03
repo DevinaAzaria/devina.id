@@ -1,0 +1,37 @@
+name: devina.id Website Build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**'
+      - '.github/workflows/website-build.yml'
+  pull_request:
+    paths:
+      - '**'
+      - '.github/workflows/website-build.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package.json
+      - name: Install dependencies
+        run: npm install
+      - name: Build static site
+        run: npm run build
+      - name: Upload devina.id build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: devina.id-build
+          path: dist/
+          if-no-files-found: error
+          retention-days: 14
