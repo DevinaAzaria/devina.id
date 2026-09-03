@@ -1,0 +1,19 @@
+---
+import '../styles/global.css';
+const { title = 'Devina Azaria', description = 'Personal academic, engineering, and creative portfolio of Devina Azaria.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width"/>
+<meta name="description" content={description}/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<title>{title}</title>
+</head>
+<body>
+<header class="shell nav"><a class="brand" href="/">Devina Azaria</a><nav class="navlinks"><a href="#projects">Projects</a><a href="#academic">Academic</a><a href="#achievements">Achievements</a><a href="#beyond">Beyond STEM</a></nav></header>
+<main><slot /></main>
+<footer class="shell footer">devina.id · Personal academic, engineering & creative portfolio</footer>
+</body>
+</html>
