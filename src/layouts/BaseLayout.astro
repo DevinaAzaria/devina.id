@@ -1,57 +1,30 @@
 ---
 import '../styles/global.css';
-const { title = 'Devina Azaria', description = 'Personal academic, engineering, and creative portfolio of Devina Azaria.' } = Astro.props;
+const { title = 'Devina Azaria', description = 'Official personal hub of Devina Azaria: science, engineering, music, culture, and leadership.' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, 'https://devina.id');
 ---
 <!doctype html>
-<html lang="en">
+<html lang="id">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta name="description" content={description}/>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-<title>{title}</title>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#07111f"/><meta name="robots" content="index, follow"/>
+  <link rel="canonical" href={canonical}/><link rel="icon" type="image/svg+xml" href="/favicon.svg"/><title>{title}</title>
 </head>
 <body>
-<header class="shell nav">
-  <a class="brand" href="/">Devina Azaria</a>
-  <nav class="navlinks" aria-label="Primary navigation">
-    <a href="/#projects">Projects</a>
-    <a href="/#academic">Academic</a>
-    <a href="/#achievements">Achievements</a>
-    <a href="/journal/">Journal</a>
-    <a href="/#beyond">Beyond STEM</a>
-  </nav>
-  <details class="mobile-nav">
-    <summary aria-label="Open navigation menu"><span></span><span></span><span></span></summary>
-    <nav class="mobile-menu" aria-label="Mobile navigation">
-      <a href="/">Home</a>
-      <a href="/#projects">Projects</a>
-      <a href="/#academic">Academic</a>
-      <a href="/#achievements">Achievements</a>
-      <a href="/journal/">Journal</a>
-      <a href="/#beyond">Beyond STEM</a>
-    </nav>
-  </details>
-</header>
-<main><slot /></main>
-<footer class="shell footer">devina.id · Personal academic, engineering & creative portfolio</footer>
-<script is:inline>
-  const mobileNav = document.querySelector('.mobile-nav');
-  if (mobileNav) {
-    mobileNav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        mobileNav.removeAttribute('open');
-      });
-    });
-    document.addEventListener('click', (event) => {
-      if (mobileNav.hasAttribute('open') && !mobileNav.contains(event.target)) {
-        mobileNav.removeAttribute('open');
-      }
-    });
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') mobileNav.removeAttribute('open');
-    });
-  }
-</script>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header"><div class="shell nav">
+    <a class="brand" href="/" aria-label="Devina Azaria home"><span class="brand-mark">DA</span><span>Devina Azaria<small>Personal Hub</small></span></a>
+    <nav class="navlinks" aria-label="Primary navigation"><a href="/#projects">Work</a><a href="/#journey">Journey</a><a href="/#achievements">Milestones</a><a href="/journal/">Journal</a><a href="/#ecosystem">Ecosystem</a></nav>
+    <details class="mobile-nav"><summary aria-label="Open navigation menu"><span></span><span></span><span></span></summary><nav class="mobile-menu" aria-label="Mobile navigation"><a href="/">Home</a><a href="/#projects">Work</a><a href="/#journey">Journey</a><a href="/#achievements">Milestones</a><a href="/journal/">Journal</a><a href="/#ecosystem">Ecosystem</a></nav></details>
+  </div></header>
+  <main id="main-content"><slot /></main>
+  <footer class="shell footer"><div><strong>Devina Azaria</strong><span>Science · Engineering · Music · Culture</span></div><div class="footer-links"><a href="https://hq.devina.id">DevinaHQ</a><a href="https://github.com/DevinaAzaria">GitHub</a><a href="/journal/">Journal</a></div><small>Yogyakarta, Indonesia · A portfolio in progress.</small></footer>
+  <script is:inline>
+    const mobileNav = document.querySelector('.mobile-nav');
+    if (mobileNav) {
+      mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => mobileNav.removeAttribute('open')));
+      document.addEventListener('click', (event) => { if (mobileNav.hasAttribute('open') && !mobileNav.contains(event.target)) mobileNav.removeAttribute('open'); });
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape') mobileNav.removeAttribute('open'); });
+    }
+  </script>
 </body>
 </html>
