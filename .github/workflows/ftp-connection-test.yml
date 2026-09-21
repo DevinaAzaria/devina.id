@@ -44,3 +44,54 @@ jobs:
             "ftp://$server:$FTP_PORT/" \
             --output /dev/null
           echo 'Encrypted FTP login succeeded. No server files were changed.'
+
+      - name: Verify devina.id document root (read-only)
+        env:
+          FTP_SERVER: ${{ secrets.DEVINA_FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.DEVINA_FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.DEVINA_FTP_PASSWORD }}
+          FTP_PORT: ${{ vars.DEVINA_FTP_PORT || '21' }}
+        run: |
+          server="${FTP_SERVER#ftp://}"
+          server="${server#ftps://}"
+          server="${server%/}"
+          probe() {
+            curl --silent --show-error --fail \
+              --ssl-reqd --ftp-method nocwd \
+              --connect-timeout 20 --max-time 60 \
+              --user "$FTP_USERNAME:$FTP_PASSWORD" \
+              "ftp://$server:$FTP_PORT/$1/" \
+              --output /dev/null
+          }
+          probe 'devina.id/public_html'
+          echo 'MAIN_ROOT=devina.id/public_html'
+
+      - name: Locate archive.devina.id document root (read-only)
+        env:
+          FTP_SERVER: ${{ secrets.DEVINA_FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.DEVINA_FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.DEVINA_FTP_PASSWORD }}
+          FTP_PORT: ${{ vars.DEVINA_FTP_PORT || '21' }}
+        run: |
+          server="${FTP_SERVER#ftp://}"
+          server="${server#ftps://}"
+          server="${server%/}"
+          probe() {
+            curl --silent --show-error --fail \
+              --ssl-reqd --ftp-method nocwd \
+              --connect-timeout 20 --max-time 60 \
+              --user "$FTP_USERNAME:$FTP_PASSWORD" \
+              "ftp://$server:$FTP_PORT/$1/" \
+              --output /dev/null
+          }
+          for candidate in \
+            'archive.devina.id/public_html' \
+            'devina.id/public_html/archive'
+          do
+            if probe "$candidate" 2>/dev/null; then
+              echo "ARCHIVE_ROOT=$candidate"
+              exit 0
+            fi
+          done
+          echo 'Archive document root was not found in the expected locations.'
+          exit 1
