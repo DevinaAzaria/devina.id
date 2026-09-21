@@ -1,0 +1,31 @@
+DirectoryIndex index.html
+
+RewriteEngine On
+
+# Preserve platform verification and the new Astro journal routes.
+RewriteRule ^\.well-known(?:/|$) - [L]
+RewriteRule ^journal(?:/|$) - [L]
+
+# Keep real files and directories served by the new static build.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# During the migration window, preserve every legacy path on the archive.
+RewriteRule ^(.+)$ https://archive.devina.id/$1 [R=301,L,NE]
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+</IfModule>
