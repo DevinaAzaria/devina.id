@@ -2,6 +2,11 @@ name: Deploy devina.id Production
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/deploy-production
 
 permissions:
   contents: read
