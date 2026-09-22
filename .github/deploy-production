@@ -1,3 +1,3 @@
-Deploy requested: 2026-09-21
-Purpose: publish Astro redesign after WordPress archive migration.
-Attempt: 2 (lockfile workflow fix)
+Deploy requested: 2026-09-22
+Purpose: publish Astro redesign after verified archive migration.
+Attempt: 3 (use existing DirectAdmin and archive backups)
