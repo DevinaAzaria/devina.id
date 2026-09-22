@@ -18,7 +18,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     environment: production
     steps:
       - name: Checkout
@@ -43,53 +43,15 @@ jobs:
           test -f dist/.htaccess
           test -f dist/favicon.svg
           test -d dist/journal
+          grep -q 'Curious by nature' dist/index.html
 
       - name: Install encrypted FTP client
         run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
 
-      - name: Backup current production files
-        env:
-          FTP_SERVER: ${{ secrets.DEVINA_FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.DEVINA_FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.DEVINA_FTP_PASSWORD }}
-          FTP_PORT: ${{ vars.DEVINA_FTP_PORT || '21' }}
+      - name: Verify archive safety copy
         run: |
-          server="${FTP_SERVER#ftp://}"
-          server="${server#ftps://}"
-          server="${server%/}"
-          mkdir -p server-backup
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$server" <<'LFTP'
-          set ftp:ssl-force true
-          set ftp:ssl-protect-data true
-          set ssl:verify-certificate true
-          set ftp:passive-mode true
-          set net:max-retries 2
-          set net:timeout 20
-          mirror --parallel=4 /devina.id/public_html/ ./server-backup/
-          bye
-          LFTP
-          test -f server-backup/wp-config.php
-          test -d server-backup/wp-content
-          tar -czf devina-id-predeploy-backup.tar.gz server-backup
-
-      - name: Preserve verification files
-        run: |
-          if [ -d server-backup/.well-known ]; then
-            cp -a server-backup/.well-known dist/
-          fi
-          find server-backup -maxdepth 1 -type f \( \
-            -name 'google*.html' -o \
-            -name 'BingSiteAuth.xml' -o \
-            -name 'ads.txt' \
-          \) -exec cp -a {} dist/ \;
-
-      - name: Upload recoverable server backup
-        uses: actions/upload-artifact@v4
-        with:
-          name: devina-id-predeploy-backup-${{ github.run_id }}
-          path: devina-id-predeploy-backup.tar.gz
-          if-no-files-found: error
-          retention-days: 30
+          curl --fail --silent --show-error --location --max-time 30 https://archive.devina.id/ > /tmp/devina-archive.html
+          test -s /tmp/devina-archive.html
 
       - name: Deploy static build over FTPS
         env:
@@ -107,8 +69,13 @@ jobs:
           set ssl:verify-certificate true
           set ftp:passive-mode true
           set net:max-retries 2
-          set net:timeout 20
-          mirror --reverse --delete --parallel=4 ./dist/ /devina.id/public_html/
+          set net:timeout 30
+          mirror --reverse --delete --parallel=4 \
+            --exclude-glob .well-known/** \
+            --exclude-glob google*.html \
+            --exclude-glob BingSiteAuth.xml \
+            --exclude-glob ads.txt \
+            ./dist/ /devina.id/public_html/
           bye
           LFTP
 
