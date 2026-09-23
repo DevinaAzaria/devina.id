@@ -40,10 +40,17 @@ jobs:
       - name: Verify build output
         run: |
           test -f dist/index.html
+          test -f dist/about/index.html
+          test -f dist/achievements/index.html
+          test -f dist/robots.txt
+          test -f dist/sitemap.xml
           test -f dist/.htaccess
           test -f dist/favicon.svg
           test -d dist/journal
           grep -q 'Curious by nature' dist/index.html
+          grep -q 'application/ld+json' dist/index.html
+          grep -q 'ProfilePage' dist/about/index.html
+          grep -q 'School record' dist/achievements/index.html
 
       - name: Install encrypted FTP client
         run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
@@ -83,4 +90,10 @@ jobs:
         run: |
           curl --fail --silent --show-error --location --max-time 30 https://devina.id/ > /tmp/devina-home.html
           grep -q 'Curious by nature' /tmp/devina-home.html
+          curl --fail --silent --show-error --location --max-time 30 https://devina.id/about/ > /tmp/devina-about.html
+          grep -q 'ProfilePage' /tmp/devina-about.html
+          curl --fail --silent --show-error --location --max-time 30 https://devina.id/achievements/ > /tmp/devina-achievements.html
+          grep -q 'School record' /tmp/devina-achievements.html
+          curl --fail --silent --show-error --location --max-time 30 https://devina.id/robots.txt > /dev/null
+          curl --fail --silent --show-error --location --max-time 30 https://devina.id/sitemap.xml > /dev/null
           curl --fail --silent --show-error --location --max-time 30 https://archive.devina.id/ > /dev/null
