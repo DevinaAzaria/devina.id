@@ -29,6 +29,12 @@ The August 2026 CV records national-level science and English competition result
 
 The CV records competition participation and awards from 2021–2025 across geguritan, macapat, Javanese script, and Mandarin storytelling, ranging from finalist placements to first-place awards at city, provincial, interregional, and national competition contexts.
 
+Externally verified public records matched so far:
+
+- 2024 — Juara 1 Lomba Macapat, Semarak Bulan Bahasa MAN 1 Sleman; represented SMP Negeri 5 Yogyakarta. Public source: Kementerian Agama Kabupaten Sleman. Status: `VERIFIED` and published.
+- 2024 — Juara 2 Maca Geguritan, Lomba Seni dan Budaya SMA Negeri 9 Yogyakarta; represented SMP Negeri 5 Yogyakarta. Public source: SMA Negeri 9 Yogyakarta. Status: `VERIFIED` and published.
+- 2024 — Juara Favorit Macapat, Lomba Seni dan Budaya SMA Negeri 9 Yogyakarta; represented SMP Negeri 5 Yogyakarta. Public source: SMA Negeri 9 Yogyakarta. Status: `VERIFIED` and published.
+
 ### Music & Performing Arts
 
 The CV records band competition results in 2024–2025, including Best Drummer at Prambanan Sound Scape in 2025 and several band placements.
@@ -90,4 +96,4 @@ Evidence states:
 
 ## Status
 
-Sanitized CV source accepted as the portfolio baseline. Evidence matching against the legacy WordPress `/profilku/` installation remains pending.
+Sanitized CV source accepted as the portfolio baseline. Three 2024 SMP culture/literature records have now been matched to external institutional sources and published on `/achievements/`. Evidence matching against the remaining legacy WordPress `/profilku/` inventory remains pending.
