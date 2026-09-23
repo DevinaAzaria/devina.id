@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const person = {
+  '@type': 'Person',
+  '@id': 'https://devina.id/#person',
+  name: 'Devina Azaria',
+  url: 'https://devina.id/',
+  sameAs: ['https://github.com/DevinaAzaria'],
+  affiliation: {
+    '@type': 'EducationalOrganization',
+    name: 'SMA Negeri 3 Yogyakarta',
+    url: 'https://sma3jogja.sch.id/',
+  },
+  knowsAbout: ['astronomy', 'engineering', 'music', 'Javanese culture', 'scientific computing'],
+};
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': 'https://devina.id/about/#profile',
+  url: 'https://devina.id/about/',
+  name: 'About Devina Azaria',
+  mainEntity: person,
+};
+---
+
+<BaseLayout title="About Devina Azaria — Student Portfolio" description="About Devina Azaria, a student in Yogyakarta building a documented portfolio across science, engineering, music, culture, communication, and leadership." ogType="profile" schema={schema}>
+  <section class="shell page-intro section">
+    <div class="eyebrow">About · Devina Azaria</div>
+    <h1>A student portfolio built around learning, making, and reflection.</h1>
+    <p class="lead">Devina Azaria adalah pelajar di Yogyakarta yang saat ini bersekolah di SMA Negeri 3 Yogyakarta. Portofolio ini mendokumentasikan perkembangan lintas science, engineering, music, culture, communication, dan leadership—dengan fokus pada proses dan bukti, bukan hanya daftar aktivitas.</p>
+  </section>
+  <section class="shell section">
+    <div class="section-heading"><div><div class="eyebrow">Current Direction</div><h2>From curiosity to engineering practice.</h2></div><p>Minat pada astronomi menjadi salah satu pintu masuk untuk memperkuat matematika, fisika, scientific reasoning, coding, dan dokumentasi teknis menuju mechanics dan aerospace engineering.</p></div>
+    <div class="grid">
+      <article class="card feature-card"><span class="tag">Science & Engineering</span><h3>Astronomy, physics, mechanics, computing</h3><p class="muted">Astronomy Lab dan Flight Dynamics Lab dipakai sebagai ruang belajar bertahap: memahami konsep, merumuskan pertanyaan, mencoba model atau simulasi, lalu mencatat hasil dan keterbatasannya.</p></article>
+      <article class="card"><span class="tag">Creative Practice</span><h3>Music</h3><p class="muted">Drums, violin, guitar, vocals, latihan ensemble, dan performance membangun kepekaan terhadap pola, timing, disiplin latihan, serta kolaborasi.</p></article>
+      <article class="card"><span class="tag">Culture & Language</span><h3>Javanese arts and communication</h3><p class="muted">Macapat, geguritan, storytelling, bahasa, serta kegiatan budaya memperkuat kemampuan menyampaikan gagasan dan memahami konteks budaya.</p></article>
+      <article class="card feature-card"><span class="tag">Portfolio Method</span><h3>Work should leave evidence.</h3><p class="muted">Setiap project diarahkan untuk memiliki objective, peran Devina, process, output, evidence, measurable impact bila tersedia, reflection, dan next step. Technical assistance dan mentoring dibedakan dari karya pribadi Devina.</p></article>
+    </div>
+  </section>
+  <section class="journey-section"><div class="shell journey-layout">
+    <div class="journey-intro"><div class="eyebrow">Why this site exists</div><h2>A living record, not a finished identity.</h2><p>devina.id adalah pintu depan publik. GitHub menjadi sumber utama untuk project teknis; DevinaHQ menghubungkan project, papers, dan ekosistem yang lebih luas.</p></div>
+    <ol class="journey-steps">
+      <li><span>01</span><div><strong>Learn</strong><p>Bangun fondasi akademik dan keterampilan yang benar-benar dipakai.</p></div></li>
+      <li><span>02</span><div><strong>Build</strong><p>Ubah sebagian pembelajaran menjadi project, eksperimen, karya, atau performance.</p></div></li>
+      <li><span>03</span><div><strong>Document</strong><p>Simpan proses, output, evidence, keputusan, dan keterbatasan secara jujur.</p></div></li>
+      <li><span>04</span><div><strong>Reflect</strong><p>Gunakan hasilnya untuk menentukan versi berikutnya, bukan sekadar menambah aktivitas baru.</p></div></li>
+    </ol>
+  </div></section>
+  <section class="shell section">
+    <div class="section-heading"><div><div class="eyebrow">Public Links</div><h2>Follow the evidence.</h2></div><p>Profil ini sengaja menghubungkan identitas publik dengan sumber kerja dan dokumentasi yang dapat diperiksa.</p></div>
+    <div class="ecosystem-links">
+      <a href="https://github.com/DevinaAzaria"><span>GitHub · DevinaAzaria</span><small>Technical projects, labs & source</small><b>↗</b></a>
+      <a href="https://hq.devina.id"><span>DevinaHQ</span><small>Projects, papers & ecosystem</small><b>↗</b></a>
+      <a href="/achievements/"><span>Achievements</span><small>Selected milestones with evidence status</small><b>→</b></a>
+      <a href="/journal/"><span>Journal</span><small>Selected historical learning notes</small><b>→</b></a>
+    </div>
+  </section>
+</BaseLayout>
