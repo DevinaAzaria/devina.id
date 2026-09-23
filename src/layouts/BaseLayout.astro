@@ -1,23 +1,47 @@
 ---
 import '../styles/global.css';
-const { title = 'Devina Azaria', description = 'Official personal hub of Devina Azaria: science, engineering, music, culture, and leadership.' } = Astro.props;
+
+const {
+  title = 'Devina Azaria',
+  description = 'Personal portfolio of Devina Azaria: science, engineering, music, culture, and leadership.',
+  ogType = 'website',
+  schema = null,
+} = Astro.props;
+
 const canonical = new URL(Astro.url.pathname, 'https://devina.id');
+const schemaJson = schema ? JSON.stringify(schema) : null;
 ---
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#07111f"/><meta name="robots" content="index, follow"/>
-  <link rel="canonical" href={canonical}/><link rel="icon" type="image/svg+xml" href="/favicon.svg"/><title>{title}</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content={description}/>
+  <meta name="theme-color" content="#07111f"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
+  <link rel="canonical" href={canonical}/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <meta property="og:site_name" content="Devina Azaria"/>
+  <meta property="og:type" content={ogType}/>
+  <meta property="og:title" content={title}/>
+  <meta property="og:description" content={description}/>
+  <meta property="og:url" content={canonical}/>
+  <meta property="og:locale" content="id_ID"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content={title}/>
+  <meta name="twitter:description" content={description}/>
+  <title>{title}</title>
+  {schemaJson && <script type="application/ld+json" set:html={schemaJson}></script>}
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header"><div class="shell nav">
     <a class="brand" href="/" aria-label="Devina Azaria home"><span class="brand-mark">DA</span><span>Devina Azaria<small>Personal Hub</small></span></a>
-    <nav class="navlinks" aria-label="Primary navigation"><a href="/#projects">Work</a><a href="/#journey">Journey</a><a href="/#achievements">Milestones</a><a href="/journal/">Journal</a><a href="/#ecosystem">Ecosystem</a></nav>
-    <details class="mobile-nav"><summary aria-label="Open navigation menu"><span></span><span></span><span></span></summary><nav class="mobile-menu" aria-label="Mobile navigation"><a href="/">Home</a><a href="/#projects">Work</a><a href="/#journey">Journey</a><a href="/#achievements">Milestones</a><a href="/journal/">Journal</a><a href="/#ecosystem">Ecosystem</a></nav></details>
+    <nav class="navlinks" aria-label="Primary navigation"><a href="/about/">About</a><a href="/#projects">Work</a><a href="/achievements/">Achievements</a><a href="/journal/">Journal</a><a href="/#ecosystem">Ecosystem</a></nav>
+    <details class="mobile-nav"><summary aria-label="Open navigation menu"><span></span><span></span><span></span></summary><nav class="mobile-menu" aria-label="Mobile navigation"><a href="/">Home</a><a href="/about/">About</a><a href="/#projects">Work</a><a href="/achievements/">Achievements</a><a href="/journal/">Journal</a><a href="/#ecosystem">Ecosystem</a></nav></details>
   </div></header>
   <main id="main-content"><slot /></main>
-  <footer class="shell footer"><div><strong>Devina Azaria</strong><span>Science · Engineering · Music · Culture</span></div><div class="footer-links"><a href="https://hq.devina.id">DevinaHQ</a><a href="https://github.com/DevinaAzaria">GitHub</a><a href="/journal/">Journal</a></div><small>Yogyakarta, Indonesia · A portfolio in progress.</small></footer>
+  <footer class="shell footer"><div><strong>Devina Azaria</strong><span>Science · Engineering · Music · Culture</span></div><div class="footer-links"><a href="/about/">About</a><a href="/achievements/">Achievements</a><a href="https://hq.devina.id">DevinaHQ</a><a href="https://github.com/DevinaAzaria">GitHub</a><a href="/journal/">Journal</a></div><small>Yogyakarta, Indonesia · A portfolio in progress.</small></footer>
   <script is:inline>
     const mobileNav = document.querySelector('.mobile-nav');
     if (mobileNav) {
