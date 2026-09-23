@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': 'https://devina.id/achievements/#page',
+  url: 'https://devina.id/achievements/',
+  name: 'Devina Azaria — Achievements & Milestones',
+  about: { '@id': 'https://devina.id/#person' },
+};
+
+const records = [
+  {
+    year: '2026',
+    title: 'Juara 3 Festival Band Pelajar',
+    detail: 'Festival Band Pelajar Dies Natalis XLII ISI Yogyakarta, 29–30 Agustus 2026. SMA Negeri 3 Yogyakarta mencatat Devina Azaria (X-4) sebagai achiever.',
+    status: 'External public source',
+    href: 'https://sma3jogja.sch.id/prestasi/',
+    link: 'School record',
+  },
+  {
+    year: '2026',
+    title: 'Wakil 3 Duta Budaya DI Yogyakarta',
+    detail: 'Milestone budaya dan komunikasi yang saat ini tercatat di portfolio. Tautan sumber eksternal publik akan ditambahkan setelah arsip penyelenggara atau dokumentasi resmi dicocokkan.',
+    status: 'Portfolio record · evidence matching in progress',
+  },
+];
+---
+
+<BaseLayout title="Devina Azaria — Achievements & Milestones" description="Selected achievements and milestones of Devina Azaria, with evidence status and public sources where available." schema={schema}>
+  <section class="shell page-intro section">
+    <div class="eyebrow">Achievements · Evidence</div>
+    <h1>Milestones are useful when the evidence stays attached.</h1>
+    <p class="lead">Halaman ini bukan daftar seluruh kegiatan. Yang ditampilkan dipilih karena relevan terhadap perkembangan Devina dan, sedapat mungkin, dihubungkan dengan sumber publik atau evidence yang dapat diperiksa.</p>
+  </section>
+  <section class="shell section">
+    <div class="section-heading"><div><div class="eyebrow">Selected Records</div><h2>Achievement with provenance.</h2></div><p>Status evidence dibuat eksplisit supaya portfolio tidak mengubah catatan internal menjadi klaim eksternal tanpa sumber.</p></div>
+    <div class="achievement-list">
+      {records.map((item) => (
+        <article class="achievement-item">
+          <span class="achievement-year">{item.year}</span>
+          <div><h3>{item.title}</h3><span class="status">{item.status}</span></div>
+          <div><p>{item.detail}</p>{item.href && <a class="text-link" href={item.href}>View {item.link} <span aria-hidden="true">↗</span></a>}</div>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="journey-section"><div class="shell journey-layout">
+    <div class="journey-intro"><div class="eyebrow">Evidence Standard</div><h2>What counts as portfolio evidence?</h2><p>Idealnya satu record menghubungkan klaim dengan tanggal, organizer, result atau role, dan sumber pendukung yang sesuai.</p></div>
+    <ol class="journey-steps">
+      <li><span>01</span><div><strong>Public source</strong><p>Halaman sekolah, penyelenggara, media, atau organisasi yang menyebut record secara langsung.</p></div></li>
+      <li><span>02</span><div><strong>Primary evidence</strong><p>Sertifikat, foto asli, dokumen hasil, program acara, atau artefak project yang relevan.</p></div></li>
+      <li><span>03</span><div><strong>Role clarity</strong><p>Jelaskan apa yang benar-benar dilakukan Devina, termasuk konteks tim bila hasilnya kolektif.</p></div></li>
+      <li><span>04</span><div><strong>Reflection</strong><p>Catat pembelajaran dan next step; pencapaian bukan endpoint portfolio.</p></div></li>
+    </ol>
+  </div></section>
+  <section class="shell section">
+    <div class="section-heading"><div><div class="eyebrow">Next</div><h2>Evidence before expansion.</h2></div><p>Record lama dari musik, macapat, geguritan, bahasa, science competition, dan aktivitas sekolah akan ditambahkan bertahap setelah inventory dan evidence matching selesai.</p></div>
+    <div class="actions"><a class="button secondary" href="/about/">Read the profile <span aria-hidden="true">→</span></a><a class="button secondary" href="https://github.com/DevinaAzaria">Explore GitHub <span aria-hidden="true">↗</span></a></div>
+  </section>
+</BaseLayout>
