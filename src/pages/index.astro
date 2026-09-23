@@ -1,6 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://devina.id/#person',
+      name: 'Devina Azaria',
+      url: 'https://devina.id/',
+      sameAs: ['https://github.com/DevinaAzaria'],
+      affiliation: {
+        '@type': 'EducationalOrganization',
+        name: 'SMA Negeri 3 Yogyakarta',
+        url: 'https://sma3jogja.sch.id/',
+      },
+      knowsAbout: ['astronomy', 'engineering', 'music', 'Javanese culture', 'scientific computing'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://devina.id/#website',
+      url: 'https://devina.id/',
+      name: 'Devina Azaria',
+      about: { '@id': 'https://devina.id/#person' },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': 'https://devina.id/#webpage',
+      url: 'https://devina.id/',
+      name: 'Devina Azaria — Science, Engineering, Music & Culture',
+      isPartOf: { '@id': 'https://devina.id/#website' },
+      mainEntity: { '@id': 'https://devina.id/#person' },
+    },
+  ],
+};
+
 const projects = [
   { number: '01', label: 'Astronomy · Learning Lab', title: 'Astronomy Lab', description: 'Ruang eksperimen untuk mengubah konsep astronomi menjadi latihan, observasi, simulasi, dan catatan belajar yang dapat diuji.', href: 'https://github.com/DevinaAzaria/astronomy-lab', link: 'Explore repository', featured: true },
   { number: '02', label: 'Engineering · Simulation', title: 'Flight Dynamics Lab', description: 'Eksplorasi awal tentang gaya, gerak, kestabilan, dan dinamika penerbangan sebagai jembatan menuju aerospace engineering.', href: 'https://github.com/DevinaAzaria/flight-dynamics-lab', link: 'View project' },
@@ -15,13 +49,13 @@ const achievements = [
 ];
 ---
 
-<BaseLayout title="Devina Azaria — Science, Engineering, Music & Culture" description="Official personal hub of Devina Azaria: student projects in astronomy, engineering, music, culture, and leadership.">
+<BaseLayout title="Devina Azaria — Science, Engineering, Music & Culture" description="Personal portfolio of Devina Azaria, a student in Yogyakarta documenting work across astronomy, engineering, music, culture, and leadership." schema={schema}>
   <section class="shell hero" aria-labelledby="hero-title">
     <div class="hero-copy">
       <div class="eyebrow">Student · Yogyakarta, Indonesia</div>
       <h1 id="hero-title">Curious by nature.<br/><span>Building with purpose.</span></h1>
       <p class="lead">Saya Devina Azaria—pelajar yang bertumbuh di persimpangan science, engineering, music, dan culture. Di sini, proses belajar tidak berhenti sebagai rencana; ia dibangun menjadi proyek, karya, dan rekam jejak.</p>
-      <div class="actions"><a class="button" href="#projects">Explore selected work <span aria-hidden="true">↘</span></a><a class="button secondary" href="https://hq.devina.id">Visit DevinaHQ <span aria-hidden="true">↗</span></a></div>
+      <div class="actions"><a class="button" href="#projects">Explore selected work <span aria-hidden="true">↘</span></a><a class="button secondary" href="/about/">About Devina <span aria-hidden="true">→</span></a></div>
     </div>
     <aside class="hero-orbit" aria-label="Current direction">
       <div class="orbit orbit-outer"></div><div class="orbit orbit-inner"></div>
@@ -56,7 +90,7 @@ const achievements = [
 
   <section id="achievements" class="shell section">
     <div class="section-heading"><div><div class="eyebrow">Milestones · 2026</div><h2>Different stages, one practice.</h2></div><p>Setiap pencapaian melatih hal yang sama: persiapan, keberanian tampil, kerja bersama, dan kemauan memperbaiki diri.</p></div>
-    <div class="achievement-list">{achievements.map((item) => (<article class="achievement-item"><span class="achievement-year">{item.year}</span><h3>{item.title}</h3><p>{item.detail}</p></article>))}</div>
+    <div class="achievement-list">{achievements.map((item) => (<article class="achievement-item"><span class="achievement-year">{item.year}</span><h3>{item.title}</h3><p>{item.detail}</p></article>))}</div><div class="actions"><a class="button secondary" href="/achievements/">View evidence & achievements <span aria-hidden="true">→</span></a></div>
   </section>
 
   <section id="beyond" class="shell section beyond-grid">
