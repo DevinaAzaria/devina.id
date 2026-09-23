@@ -29,8 +29,10 @@ The August 2026 CV records national-level science and English competition result
 
 The CV records competition participation and awards from 2021–2025 across geguritan, macapat, Javanese script, and Mandarin storytelling, ranging from finalist placements to first-place awards at city, provincial, interregional, and national competition contexts.
 
-Externally verified public records matched so far:
+Verified or matched public records so far:
 
+- 2025 — Juara II Macapat Remaja, Kompetisi Bahasa dan Sastra Kota Yogyakarta. Primary public evidence: Devina's Instagram post showing the award placard; official event context: Pemerintah Kota Yogyakarta / Dinas Kebudayaan Kota Yogyakarta. Status: `VERIFIED` and published.
+- 2025 — Juara III Maca Geguritan Remaja, Kompetisi Bahasa dan Sastra Kota Yogyakarta. Primary public evidence: Devina's Instagram post showing the award placard; official event context: Pemerintah Kota Yogyakarta / Dinas Kebudayaan Kota Yogyakarta. Status: `VERIFIED` and published.
 - 2024 — Juara 1 Lomba Macapat, Semarak Bulan Bahasa MAN 1 Sleman; represented SMP Negeri 5 Yogyakarta. Public source: Kementerian Agama Kabupaten Sleman. Status: `VERIFIED` and published.
 - 2024 — Juara 2 Maca Geguritan, Lomba Seni dan Budaya SMA Negeri 9 Yogyakarta; represented SMP Negeri 5 Yogyakarta. Public source: SMA Negeri 9 Yogyakarta. Status: `VERIFIED` and published.
 - 2024 — Juara Favorit Macapat, Lomba Seni dan Budaya SMA Negeri 9 Yogyakarta; represented SMP Negeri 5 Yogyakarta. Public source: SMA Negeri 9 Yogyakarta. Status: `VERIFIED` and published.
@@ -96,4 +98,4 @@ Evidence states:
 
 ## Status
 
-Sanitized CV source accepted as the portfolio baseline. Three 2024 SMP culture/literature records have now been matched to external institutional sources and published on `/achievements/`. Evidence matching against the remaining legacy WordPress `/profilku/` inventory remains pending.
+Sanitized CV source accepted as the portfolio baseline. Five culture/literature records from 2024–2025 are now published on `/achievements/`: three matched to external institutional sources and two 2025 results verified from primary public evidence with official event context. Evidence matching against the remaining legacy WordPress `/profilku/` inventory remains pending.
