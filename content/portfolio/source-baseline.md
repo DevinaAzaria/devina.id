@@ -31,12 +31,13 @@ The CV records competition participation and awards from 2021–2025 across gegu
 
 Verified or matched public records so far:
 
-- 2023 — Juara III Tembang Macapat Anak, Kompetisi Bahasa Sastra DIY; represented Kota Yogyakarta. Published result source: Djaka Lodang, which states each category is listed in order from first through fifth place. Independent city-competition context: Republika. Status: `VERIFIED` and published.
+- 2025 — Juara I Maca Geguritan, Lomba Seni Budaya SMA Negeri 9 Yogyakarta; represented SMP Negeri 5 Yogyakarta. Published by Purnomo Basuki, guru dan pewarta SMAN 9 Yogyakarta, with event and winner details. Status: `VERIFIED` and published.
 - 2025 — Juara II Macapat Remaja, Kompetisi Bahasa dan Sastra Kota Yogyakarta. Primary public evidence: Devina's Instagram post showing the award placard; official event context: Pemerintah Kota Yogyakarta / Dinas Kebudayaan Kota Yogyakarta. Status: `VERIFIED` and published.
 - 2025 — Juara III Maca Geguritan Remaja, Kompetisi Bahasa dan Sastra Kota Yogyakarta. Primary public evidence: Devina's Instagram post showing the award placard; official event context: Pemerintah Kota Yogyakarta / Dinas Kebudayaan Kota Yogyakarta. Status: `VERIFIED` and published.
 - 2024 — Juara 1 Lomba Macapat, Semarak Bulan Bahasa MAN 1 Sleman; represented SMP Negeri 5 Yogyakarta. Public source: Kementerian Agama Kabupaten Sleman. Status: `VERIFIED` and published.
 - 2024 — Juara 2 Maca Geguritan, Lomba Seni dan Budaya SMA Negeri 9 Yogyakarta; represented SMP Negeri 5 Yogyakarta. Public source: SMA Negeri 9 Yogyakarta. Status: `VERIFIED` and published.
 - 2024 — Juara Favorit Macapat, Lomba Seni dan Budaya SMA Negeri 9 Yogyakarta; represented SMP Negeri 5 Yogyakarta. Public source: SMA Negeri 9 Yogyakarta. Status: `VERIFIED` and published.
+- 2023 — Juara III Tembang Macapat Anak, Kompetisi Bahasa Sastra DIY; represented Kota Yogyakarta. Published result source: Djaka Lodang, which states each category is listed in order from first through fifth place. Independent city-competition coverage includes Republika and TIMES Indonesia, both naming Devina as a participant in Macapat and Maca Geguritan at the Kota Yogyakarta stage. Status: `VERIFIED` and published.
 
 ### Music & Performing Arts
 
@@ -99,4 +100,8 @@ Evidence states:
 
 ## Status
 
-Sanitized CV source accepted as the portfolio baseline. Six culture/literature records from 2023–2025 are now published on `/achievements/`, including the 2023 Juara III Tembang Macapat Anak at DIY level, three externally matched 2024 records, and two 2025 results verified from primary public evidence with official event context. Evidence matching against the remaining legacy WordPress `/profilku/` inventory remains pending.
+Sanitized CV source accepted as the portfolio baseline. Seven culture/literature records from 2023–2025 are now published on `/achievements/`: the 2023 DIY-level Macapat result, three externally matched 2024 records, and three 2025 results across the SMAN 9 competition and Kompetisi Bahasa dan Sastra Kota Yogyakarta. Evidence matching against the remaining legacy WordPress `/profilku/` inventory remains pending.
+
+## Pending evidence leads
+
+- Festival Pramuka Jogja 2022 — official Kwarda DIY page provided by family: https://pramukadiy.or.id/juara-lomba-lomba-dalam-festival-pramuka-jogja/ . The page is indexed as an official winners article, but current automated retrieval is blocked by the site. Do not publish a Devina-specific result until the exact category and placement are independently readable or primary evidence is supplied.
