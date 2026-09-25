@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const notes = [
+  {
+    date: '06 Aug 2024',
+    title: 'Memahami Digital Services Act',
+    description: 'A legacy explainer about platform responsibility, user rights, transparency, and online safety under the EU Digital Services Act.',
+    href: 'https://archive.devina.id/memahami-digital-services-act-menata-ulang-dunia-digital-untuk-keamanan-dan-keadilan/',
+  },
+  {
+    date: '16 Jan 2025',
+    title: 'Memahami Peran Kecerdasan Buatan (AI) di Masa Depan',
+    description: 'A historical technology note about adapting to AI tools and using them for learning and productivity.',
+    href: 'https://archive.devina.id/memahami-peran-kecerdasan-buatan-ai-di-masa-depan/',
+  },
+  {
+    date: '19 Jan 2025',
+    title: 'AI: Definisi, Jenis, Penerapan, dan Tantangan Etis',
+    description: 'A broad introductory explainer covering AI concepts, applications, and ethical concerns.',
+    href: 'https://archive.devina.id/kecerdasan-buatan-artificial-intelligence-ai-definisi-jenis-penerapan-dan-tantangan-etis/',
+  },
+  {
+    date: '08 May 2026',
+    title: '7 Kebiasaan Digital yang Dianggap Sepele',
+    description: 'A digital-literacy article about privacy, responsible online behavior, and legal awareness in everyday technology use.',
+    href: 'https://archive.devina.id/7-kebiasaan-digital-yang-dianggap-sepele-tapi-bisa-bermasalah-secara-hukum/',
+  },
+];
+---
+
+<BaseLayout title="AI & Digital Literacy — Devina Azaria" description="A curated historical index of Devina Azaria's legacy technology and digital-literacy writing.">
+  <section class="shell section page-intro">
+    <div class="eyebrow">Journal · Technology</div>
+    <h1>AI & Digital Literacy</h1>
+    <p class="lead">Selected technology writing from the legacy devina.id archive is preserved here as historical learning context. The goal is continuity, not to turn old editorial material into present-day technical credentials.</p>
+  </section>
+
+  <section class="shell section">
+    <div class="journey-list">
+      {notes.map((note) => (
+        <article class="journey-item">
+          <div class="journey-year">{note.date}</div>
+          <div>
+            <h2>{note.title}</h2>
+            <p class="muted">{note.description}</p>
+            <a class="text-link" href={note.href}>Open legacy article ↗</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="panel">
+      <div class="tag">Provenance Note</div>
+      <div class="big">Historical attribution is not the same as verified sole authorship.</div>
+      <p class="muted">The legacy WordPress pages publicly label these articles as “Posted by Devina.” They are therefore retained as part of the public archive, but this portfolio does not present them as independent research, technical mastery, or proof that every sentence was written without assistance. Current technical ability should be evidenced through Devina's own project notes, code, experiments, and reflection.</p>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="actions">
+      <a class="button secondary" href="/journal/">Back to Journal <span aria-hidden="true">←</span></a>
+      <a class="button secondary" href="https://github.com/DevinaAzaria">Current technical work <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+</BaseLayout>
