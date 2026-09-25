@@ -31,6 +31,7 @@ The CV records competition participation and awards from 2021–2025 across gegu
 
 Verified or matched public records so far:
 
+- 2022 — Juara I Lomba Geguritan, Festival Pramuka Jogja. Official winner source: Kwartir Daerah Gerakan Pramuka Daerah Istimewa Yogyakarta; the official result page lists “Lomba Geguritan — Juara 1: Devina Azaria.” Status: `VERIFIED` and published.
 - 2025 — Juara I Maca Geguritan, Lomba Seni Budaya SMA Negeri 9 Yogyakarta; represented SMP Negeri 5 Yogyakarta. Published by Purnomo Basuki, guru dan pewarta SMAN 9 Yogyakarta, with event and winner details. Status: `VERIFIED` and published.
 - 2025 — Juara II Macapat Remaja, Kompetisi Bahasa dan Sastra Kota Yogyakarta. Primary public evidence: Devina's Instagram post showing the award placard; official event context: Pemerintah Kota Yogyakarta / Dinas Kebudayaan Kota Yogyakarta. Status: `VERIFIED` and published.
 - 2025 — Juara III Maca Geguritan Remaja, Kompetisi Bahasa dan Sastra Kota Yogyakarta. Primary public evidence: Devina's Instagram post showing the award placard; official event context: Pemerintah Kota Yogyakarta / Dinas Kebudayaan Kota Yogyakarta. Status: `VERIFIED` and published.
@@ -100,8 +101,4 @@ Evidence states:
 
 ## Status
 
-Sanitized CV source accepted as the portfolio baseline. Seven culture/literature records from 2023–2025 are now published on `/achievements/`: the 2023 DIY-level Macapat result, three externally matched 2024 records, and three 2025 results across the SMAN 9 competition and Kompetisi Bahasa dan Sastra Kota Yogyakarta. Evidence matching against the remaining legacy WordPress `/profilku/` inventory remains pending.
-
-## Pending evidence leads
-
-- Festival Pramuka Jogja 2022 — official Kwarda DIY page provided by family: https://pramukadiy.or.id/juara-lomba-lomba-dalam-festival-pramuka-jogja/ . The page is indexed as an official winners article, but current automated retrieval is blocked by the site. Do not publish a Devina-specific result until the exact category and placement are independently readable or primary evidence is supplied.
+Sanitized CV source accepted as the portfolio baseline. Eight culture/literature records from 2022–2025 are now published on `/achievements/`: the 2022 Festival Pramuka Jogja Geguritan win, the 2023 DIY-level Macapat result, three externally matched 2024 records, and three 2025 results across the SMAN 9 competition and Kompetisi Bahasa dan Sastra Kota Yogyakarta. Evidence matching against the remaining legacy WordPress `/profilku/` inventory remains pending.
