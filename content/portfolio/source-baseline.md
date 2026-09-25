@@ -8,6 +8,12 @@ This file is an editorial inventory for devina.id. Evidence from the legacy `/pr
 
 Devina Azaria — student at SMA Negeri 3 Yogyakarta, Class X (2026).
 
+## Official public identity sources
+
+- Devina Azaria's public SIMT / Sistem Informasi Manajemen Talenta Murid resume: https://simt.kemendikdasmen.go.id/resume?id=kQaqNXgQFBi2aMpBI3m6Vw&name=devina-azaria
+- SIMT is maintained by Kemendikdasmen as a national talent database and digital achievement portfolio. Treat it as an official external identity/evidence source, while individual achievement claims should still be matched to the records actually displayed in SIMT or their underlying curation/event evidence.
+- GitHub technical identity: https://github.com/DevinaAzaria
+
 ## Portfolio direction
 
 The portfolio preserves a multidisciplinary learning history across academics, science competitions, music, language, Javanese literature and culture, communication, and school activities, while documenting the developing direction toward science, engineering, and aerospace.
