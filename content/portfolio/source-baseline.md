@@ -29,7 +29,12 @@ The portfolio preserves a multidisciplinary learning history across academics, s
 
 ### Academic & International Competitions
 
-The August 2026 CV records national-level science and English competition results during 2024–2025, including silver and bronze awards and a Jenius Science Olympiad science silver result in 2025.
+The August 2026 CV records national-level science and English competition results during 2024–2025. Two of those records have now been matched directly to Devina's official SIMT Kemendikdasmen resume under "Prestasi Terkurasi":
+
+- 2025 — Perak, Jenius Science Olympiad, cabang Sains, tingkat Nasional. School shown in SIMT: SMP Negeri 5 Yogyakarta. Status: `VERIFIED` and published.
+- 2024 — Perunggu, Jenius Science Olympiad, cabang Bahasa Inggris, tingkat Nasional. School shown in SIMT: SMP Negeri 5 Yogyakarta. Status: `VERIFIED` and published.
+
+These records should be treated as official curated talent records rather than CV-only claims.
 
 ### Language, Literature & Culture
 
@@ -107,4 +112,4 @@ Evidence states:
 
 ## Status
 
-Sanitized CV source accepted as the portfolio baseline. Eight culture/literature records from 2022–2025 are now published on `/achievements/`: the 2022 Festival Pramuka Jogja Geguritan win, the 2023 DIY-level Macapat result, three externally matched 2024 records, and three 2025 results across the SMAN 9 competition and Kompetisi Bahasa dan Sastra Kota Yogyakarta. Evidence matching against the remaining legacy WordPress `/profilku/` inventory remains pending.
+Sanitized CV source accepted as the portfolio baseline. Two academic competition records are now matched to official SIMT Prestasi Terkurasi: 2025 Jenius Science Olympiad Sains silver and 2024 Jenius Science Olympiad Bahasa Inggris bronze. Eight culture/literature records from 2022–2025 are also published on `/achievements/`. Evidence matching against the remaining legacy WordPress `/profilku/` inventory remains pending.
