@@ -22,11 +22,11 @@
 | `/silabus-belajar-coding-untuk-usia-15-16-tahun/` | `/projects/coding-learning-roadmap/` | **Portfolio candidate / verify** | Part of coding roadmap series. |
 | `/silabus-belajar-coding-untuk-usia-16-17-tahun/` | `/projects/coding-learning-roadmap/` | **Portfolio candidate / verify** | Part of coding roadmap series. |
 | `/silabus-belajar-coding-usia-17-18-tahun/` | `/projects/coding-learning-roadmap/` | **Portfolio candidate / verify** | Part of coding roadmap series. |
-| `/memahami-peran-kecerdasan-buatan-ai-di-masa-depan/` | `/journal/technology/` or retained article slug | **Keep / verify** | Early technology reflection. |
-| `/kecerdasan-buatan-artificial-intelligence-ai-definisi-jenis-penerapan-dan-tantangan-etis/` | `/journal/technology/` | **Keep / consolidate** | Explanatory AI content; avoid presenting as original research. |
-| `/memahami-digital-services-act-menata-ulang-dunia-digital-untuk-keamanan-dan-keadilan/` | `/journal/digital-literacy/` | **Keep / verify** | Digital literacy history. |
-| `/7-kebiasaan-digital-yang-dianggap-sepele-tapi-bisa-bermasalah-secara-hukum/` | `/journal/digital-literacy/` or retained article slug | **Keep / verify** | Recent writing with digital-literacy relevance. |
-| `/evolusi-desain-kebaya-dari-tradisional-ke-sentuhan-modern/` | `/culture/` or `/journal/culture/` | **Keep / verify** | Potentially relevant to culture portfolio. |
+| `/memahami-peran-kecerdasan-buatan-ai-di-masa-depan/` | `/journal/technology-literacy/` | **Curated target ready** | Preserved as historical technology learning context; not presented as research or technical mastery. |
+| `/kecerdasan-buatan-artificial-intelligence-ai-definisi-jenis-penerapan-dan-tantangan-etis/` | `/journal/technology-literacy/` | **Curated target ready** | Explanatory AI content retained as legacy editorial context with provenance note. |
+| `/memahami-digital-services-act-menata-ulang-dunia-digital-untuk-keamanan-dan-keadilan/` | `/journal/technology-literacy/` | **Curated target ready** | Digital-literacy history retained as legacy editorial context. |
+| `/7-kebiasaan-digital-yang-dianggap-sepele-tapi-bisa-bermasalah-secara-hukum/` | `/journal/technology-literacy/` | **Curated target ready** | Recent digital-literacy writing retained as historical context. |
+| `/evolusi-desain-kebaya-dari-tradisional-ke-sentuhan-modern/` | `/journal/culture-communication/` | **Curated target ready** | Retained as historical culture-related editorial writing, separate from verified achievement evidence. |
 | `/lirik-lagu-kita-sama-rasa/` | `/music/` only if original authorship is verified | **Hold** | Do not redirect/publish as personal work until provenance is clear. |
 
 ## Archive-oriented redirects
