@@ -31,6 +31,7 @@ The CV records competition participation and awards from 2021–2025 across gegu
 
 Verified or matched public records so far:
 
+- 2023 — Juara III Tembang Macapat Anak, Kompetisi Bahasa Sastra DIY; represented Kota Yogyakarta. Published result source: Djaka Lodang, which states each category is listed in order from first through fifth place. Independent city-competition context: Republika. Status: `VERIFIED` and published.
 - 2025 — Juara II Macapat Remaja, Kompetisi Bahasa dan Sastra Kota Yogyakarta. Primary public evidence: Devina's Instagram post showing the award placard; official event context: Pemerintah Kota Yogyakarta / Dinas Kebudayaan Kota Yogyakarta. Status: `VERIFIED` and published.
 - 2025 — Juara III Maca Geguritan Remaja, Kompetisi Bahasa dan Sastra Kota Yogyakarta. Primary public evidence: Devina's Instagram post showing the award placard; official event context: Pemerintah Kota Yogyakarta / Dinas Kebudayaan Kota Yogyakarta. Status: `VERIFIED` and published.
 - 2024 — Juara 1 Lomba Macapat, Semarak Bulan Bahasa MAN 1 Sleman; represented SMP Negeri 5 Yogyakarta. Public source: Kementerian Agama Kabupaten Sleman. Status: `VERIFIED` and published.
@@ -98,4 +99,4 @@ Evidence states:
 
 ## Status
 
-Sanitized CV source accepted as the portfolio baseline. Five culture/literature records from 2024–2025 are now published on `/achievements/`: three matched to external institutional sources and two 2025 results verified from primary public evidence with official event context. Evidence matching against the remaining legacy WordPress `/profilku/` inventory remains pending.
+Sanitized CV source accepted as the portfolio baseline. Six culture/literature records from 2023–2025 are now published on `/achievements/`, including the 2023 Juara III Tembang Macapat Anak at DIY level, three externally matched 2024 records, and two 2025 results verified from primary public evidence with official event context. Evidence matching against the remaining legacy WordPress `/profilku/` inventory remains pending.
