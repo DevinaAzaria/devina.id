@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'AI Tidak Boleh Berlari Lebih Cepat daripada Kemampuan Manusia Mengendalikannya',
+  description: 'Esai tentang AI capability, governance capacity, dan governance debt: kemampuan AI tidak seharusnya melampaui kemampuan manusia untuk memahami, mengendalikan, mengaudit, dan mengamankannya.',
+  author: { '@type': 'Person', name: 'Devina Azaria' },
+  datePublished: '2026-09-26',
+  mainEntityOfPage: 'https://devina.id/journal/ai-governance-debt/',
+};
+---
+
+<BaseLayout
+  title="AI Tidak Boleh Berlari Lebih Cepat daripada Kemampuan Manusia Mengendalikannya — Devina Azaria"
+  description="Esai tentang AI capability, governance capacity, dan governance debt: kemampuan AI tidak seharusnya melampaui kemampuan manusia untuk memahami, mengendalikan, mengaudit, dan mengamankannya."
+  ogType="article"
+  schema={schema}
+>
+  <article class="shell essay">
+    <header class="essay-header">
+      <div class="eyebrow">Journal · Technology & Society · 26 Sep 2026</div>
+      <h1>AI Tidak Boleh Berlari Lebih Cepat daripada Kemampuan Manusia Mengendalikannya</h1>
+      <p class="lead">Tentang kecepatan, kendali, dan utang tata kelola di zaman kecerdasan buatan.</p>
+    </header>
+
+    <div class="essay-body">
+      <p>Kemajuan teknologi hampir selalu diukur dari apa yang <strong>sudah dapat dilakukan</strong>.</p>
+      <p>Komputer semakin cepat. Robot semakin presisi. Pesawat semakin canggih. Artificial Intelligence semakin pintar.</p>
+      <p>Tetapi mungkin ada pertanyaan lain yang sama pentingnya:</p>
+      <blockquote><p>Apakah kemampuan manusia untuk memahami dan mengendalikan teknologi tersebut tumbuh secepat kemampuan teknologinya?</p></blockquote>
+
+      <p>Pertanyaan ini menjadi semakin penting ketika kita berbicara tentang Artificial Intelligence.</p>
+      <p>Pada September 2026, CEO Anthropic Dario Amodei menerbitkan esai <em>We Must Pace the Frontier</em>. Ia berpendapat bahwa perkembangan kemampuan AI frontier bergerak sangat cepat, sementara alignment, security, safeguards, dan policy harus mampu mengejar kenaikan capability tersebut.</p>
+      <p>Gagasan itu membawa saya pada sebuah prinsip sederhana:</p>
+
+      <div class="principle">
+        <strong>Kemampuan AI seharusnya tidak berkembang lebih cepat daripada kemampuan manusia untuk memahami, mengendalikan, mengaudit, dan mengamankannya.</strong>
+      </div>
+
+      <h2>1. Masalahnya Bukan Sekadar AI Menjadi Lebih Pintar</h2>
+      <p>Manusia sudah berulang kali menciptakan mesin yang jauh lebih kuat daripada dirinya. Excavator lebih kuat daripada tangan manusia. Pesawat terbang lebih cepat daripada manusia berlari. Komputer dapat menghitung jauh lebih cepat daripada otak manusia.</p>
+      <p>Kita tidak merasa harus menjadi lebih kuat daripada excavator untuk mengendalikannya. Kita juga tidak perlu bisa terbang untuk menjadi pilot. Yang kita perlukan adalah <strong>pemahaman dan sistem kendali</strong>.</p>
+      <p>Pesawat modern memiliki cockpit, sensor, prosedur keselamatan, checklist, redundancy, air traffic control, maintenance schedule, investigasi kecelakaan, hingga regulator penerbangan. Artinya, meningkatnya kemampuan teknologi biasanya diikuti dengan berkembangnya <strong>lapisan pengendalian di sekelilingnya</strong>.</p>
+      <p>AI menghadirkan persoalan yang sedikit berbeda. Mesin sebelumnya biasanya meningkatkan kemampuan fisik manusia. AI mulai meningkatkan sesuatu yang selama ini menjadi alat utama manusia untuk mengendalikan mesin-mesin tersebut: <strong>kemampuan berpikir</strong>.</p>
+      <p>AI dapat membaca, menulis, membuat program, menganalisis data, mengoperasikan tools, menyusun strategi, dan semakin banyak sistem AI mulai dapat menjalankan rangkaian pekerjaan secara relatif mandiri melalui AI agents.</p>
+      <p>Karena itu, persoalannya bukan lagi hanya: <strong>“Seberapa pintar AI dapat kita buat?”</strong> tetapi juga: <strong>“Apakah kita masih memahami apa yang sedang kita bangun?”</strong></p>
+
+      <h2>2. Empat Kemampuan yang Harus Mengejar AI</h2>
+
+      <h3>Understand — Memahami</h3>
+      <p>Kita harus memiliki kemampuan yang cukup untuk memahami bagaimana sistem AI bekerja dan mengapa ia menghasilkan keputusan tertentu. Model AI modern terdiri dari jaringan komputasi yang sangat besar. Kita dapat mengetahui bagaimana model dilatih, tetapi memahami secara persis mengapa suatu pola internal muncul atau mengapa sebuah jawaban tertentu dihasilkan dapat jauh lebih sulit.</p>
+      <p>Semakin penting keputusan yang diserahkan kepada AI, semakin penting pula kemampuan manusia memahami perilakunya. Inilah salah satu alasan riset seperti <em>mechanistic interpretability</em> menjadi penting. Kita tidak hanya ingin mengetahui apa yang dilakukan sebuah AI. Kita ingin memahami <strong>mengapa</strong>.</p>
+
+      <h3>Control — Mengendalikan</h3>
+      <p>Sistem yang kuat membutuhkan mekanisme kontrol. Sebuah AI harus mempunyai batas mengenai data apa yang boleh diakses, sistem apa yang boleh diubah, tindakan apa yang boleh dilakukan, siapa yang memberikan otorisasi, dan kapan manusia harus mengambil alih keputusan.</p>
+      <p>Prinsip ini sebenarnya bukan hal baru. Dalam engineering, kita mengenal <em>control system</em>. Dalam cybersecurity, kita mengenal <em>access control</em>. Dalam organisasi, kita mengenal <em>authorization</em>. Dalam penerbangan, kita mengenal <em>flight control</em>.</p>
+      <p>Semakin besar energi atau kemampuan yang dimiliki sebuah sistem, semakin serius pula mekanisme kontrol yang dibutuhkan. AI seharusnya tidak berbeda.</p>
+
+      <h3>Audit — Memeriksa</h3>
+      <p>Kepercayaan saja tidak cukup. Sistem yang kompleks membutuhkan kemampuan untuk diperiksa.</p>
+      <p>Kita harus dapat mengetahui apa yang dilakukan AI, data apa yang diaksesnya, keputusan apa yang dibuatnya, perintah siapa yang dijalankannya, dan apakah ia melakukan sesuatu yang tidak diperintahkan.</p>
+      <p>Karena itulah logging, monitoring, evaluation, red-teaming, dan independent audit menjadi penting. Anthropic, misalnya, menggunakan Responsible Scaling Policy untuk menghubungkan peningkatan kemampuan model dengan evaluasi risiko dan mitigasi yang harus diterapkan.</p>
+      <p>Tanpa auditability, sistem yang sangat pintar dapat berubah menjadi sebuah <strong>black box yang sangat berkuasa</strong>.</p>
+
+      <h3>Secure — Mengamankan</h3>
+      <p>Kemampuan AI tidak hanya harus dikendalikan dari dalam. Ia juga harus dilindungi dari luar.</p>
+      <p>Model AI, infrastructure, training data, credentials, API, dan sistem yang terhubung dengannya merupakan bagian dari permukaan serangan. Semakin besar kemampuan AI, semakin besar pula akibatnya apabila sistem tersebut dicuri, dimanipulasi, atau digunakan oleh pihak yang salah.</p>
+      <p>Karena itu cybersecurity bukan bagian tambahan dari AI. Ia menjadi bagian dari fondasinya.</p>
+
+      <h2>3. Ketika Capability Lebih Cepat daripada Governance</h2>
+      <p>Dari sini kita dapat membuat sebuah model sederhana.</p>
+      <div class="equation"><strong>C = Capability</strong><br/><strong>G = Governance Capacity</strong></div>
+      <p>Idealnya:</p>
+      <div class="equation"><strong>C ≤ G</strong></div>
+      <p>Artinya, kemampuan yang diberikan kepada sebuah sistem tidak melampaui kemampuan kita untuk mengendalikan konsekuensinya.</p>
+      <p>Tetapi ketika:</p>
+      <div class="equation"><strong>C &gt; G</strong></div>
+      <p>muncul sesuatu yang saya sebut sebagai:</p>
+      <div class="principle"><strong>Governance Debt</strong></div>
+      <p>Konsepnya mirip dengan <em>technical debt</em> dalam software engineering. Technical debt muncul ketika kita membangun sistem terlalu cepat sehingga sejumlah masalah teknis ditunda untuk diselesaikan kemudian.</p>
+      <p>Pada awalnya sistem masih berjalan. Tetapi hutangnya menumpuk. Arsitektur menjadi semakin sulit diperbaiki. Bug meningkat. Perubahan menjadi mahal. Pada akhirnya sistem menjadi rapuh.</p>
+      <p>Governance debt bekerja dengan cara yang hampir sama. Kita meningkatkan kemampuan suatu sistem tanpa secara bersamaan meningkatkan security, oversight, documentation, auditability, alignment, incident response, dan human control.</p>
+      <p>Pada awalnya semuanya mungkin terlihat baik-baik saja. Kemampuan baru bahkan terasa mengagumkan. Tetapi kesenjangan antara <strong>apa yang dapat dilakukan sistem</strong> dan <strong>apa yang mampu kita kendalikan</strong> terus melebar. Dan hutang itu suatu hari harus dibayar.</p>
+
+      <h2>4. Kecepatan Bukan Selalu Kemajuan</h2>
+      <p>Ada kecenderungan dalam teknologi untuk menganggap bahwa lebih cepat selalu berarti lebih baik. Model lebih cepat. Release lebih cepat. Training lebih besar. Context lebih panjang. Agent lebih mandiri. Benchmark lebih tinggi.</p>
+      <p>Tetapi engineering mengajarkan sesuatu yang berbeda. <strong>Kecepatan hanyalah salah satu parameter.</strong></p>
+      <p>Pesawat tercepat bukan otomatis pesawat terbaik. Mobil tercepat bukan otomatis kendaraan terbaik. Komputer dengan performa tertinggi bukan otomatis sistem paling baik.</p>
+      <p>Ada reliability, safety, efficiency, maintainability, security, dan manusia yang harus menggunakan semuanya.</p>
+      <p>Karena itu AI yang semakin kuat tidak otomatis berarti AI yang semakin baik. Kemajuan yang sesungguhnya terjadi ketika <strong>capability naik, dan kemampuan manusia untuk mengelolanya ikut naik.</strong></p>
+
+      <h2>5. Recursive Improvement Mengubah Persoalan</h2>
+      <p>Ada satu hal yang membuat AI berbeda dari banyak teknologi sebelumnya. AI sekarang mulai membantu manusia membangun AI berikutnya.</p>
+      <p>AI membantu membuat kode, menganalisis eksperimen, membantu riset, mengoptimalkan sistem, dan membantu engineering. Amodei menunjuk kemampuan AI untuk mempercepat R&amp;D AI sebagai salah satu alasan mengapa frontier development perlu diperhatikan secara khusus.</p>
+      <p>Jika manusia membuat AI, kemudian AI membantu manusia membuat AI berikutnya, lalu AI yang lebih pintar membantu membuat generasi setelahnya, maka perkembangan teknologi tidak lagi sepenuhnya mengikuti kecepatan kerja manusia.</p>
+      <p>Dalam kondisi seperti ini, masalah utama kita mungkin bukan apakah manusia mampu membuat AI semakin pintar. Kemungkinan besar kita mampu.</p>
+      <p>Pertanyaan yang lebih sulit adalah: <strong>apakah kemampuan memahami dan mengendalikan AI dapat meningkat dengan kecepatan yang sama?</strong></p>
+
+      <h2>6. Pacing Bukan Berarti Berhenti</h2>
+      <p>Karena itu, <em>pacing</em> tidak seharusnya dipahami sebagai ketakutan terhadap teknologi. Sebaliknya, pacing adalah prinsip engineering.</p>
+      <p>Kita tetap maju. Tetapi kita tidak menambah capability tanpa memastikan fondasinya mampu menanggung capability tersebut.</p>
+      <p>Seperti membangun gedung. Kita dapat terus menambah lantai. Tetapi kemampuan fondasi harus diperhitungkan. Semakin tinggi bangunannya, semakin serius struktur yang menopangnya.</p>
+      <p>Artificial Intelligence juga membutuhkan fondasi: <strong>Understanding. Control. Auditability. Security. Dan di atas semuanya: Governance.</strong></p>
+
+      <h2>7. Masalah Ini Tidak Hanya Milik Perusahaan AI</h2>
+      <p>Mudah menganggap masalah tersebut hanya urusan perusahaan-perusahaan yang membangun frontier models. Menurut saya tidak.</p>
+      <p>Prinsip yang sama berlaku dalam skala yang jauh lebih kecil. Bayangkan suatu hari saya membangun sebuah sistem yang dapat membaca seluruh dokumen organisasi, mengakses database, mengirim email, menulis kode, menjalankan server, mengelola media sosial, atau melakukan transaksi otomatis.</p>
+      <p>Pertanyaan pertama seharusnya bukan: <strong>“Bisakah AI melakukan semuanya?”</strong></p>
+      <p>Pertanyaan yang lebih penting adalah: <strong>“Seberapa besar akses yang layak saya berikan?”</strong></p>
+      <p>Apakah setiap tindakan tercatat? Apakah ada izin yang berbeda untuk membaca dan mengubah? Apakah ada tindakan yang membutuhkan persetujuan manusia? Apakah sistem dapat dihentikan? Apakah ada backup? Apakah ada audit trail? Apakah credential terlindungi?</p>
+      <p>Semakin banyak pekerjaan yang kita serahkan kepada mesin, semakin penting pertanyaan-pertanyaan tersebut.</p>
+
+      <h2>8. Dari Human in the Loop Menuju Human in Command</h2>
+      <p>Kita sering mendengar istilah <em>human in the loop</em>: manusia masih terlibat dalam proses yang dilakukan AI.</p>
+      <p>Tetapi untuk sistem yang semakin kuat, mungkin prinsip yang lebih penting adalah:</p>
+      <div class="principle"><strong>Human in Command</strong></div>
+      <p>Manusia tidak harus melakukan setiap pekerjaan. Manusia juga tidak harus menyetujui setiap tindakan kecil. Tetapi manusia harus tetap menentukan tujuan, batas, otoritas, aturan, dan kondisi penghentian sistem.</p>
+      <p>AI dapat semakin otonom dalam <strong>execution</strong>. Namun manusia harus tetap memiliki otoritas pada <strong>governance</strong>. Karena delegasi bukan berarti kehilangan kendali.</p>
+
+      <h2>9. Teknologi yang Bertahan Lama Membutuhkan Governance</h2>
+      <p>Sejarah engineering menunjukkan bahwa teknologi yang matang biasanya tidak hanya berkembang dalam kemampuan. Di sekelilingnya tumbuh suatu ekosistem: standar, profesi, audit, regulasi, prosedur, etika, investigasi, sertifikasi, dokumentasi, dan institusi.</p>
+      <p>Penerbangan modern tidak menjadi aman hanya karena pesawatnya semakin bagus. Ia menjadi aman karena manusia membangun seluruh <strong>sistem governance di sekeliling pesawat</strong>.</p>
+      <p>Kemungkinan besar AI akan membutuhkan perjalanan yang sama. Tetapi ada satu perbedaannya: kita mungkin mempunyai waktu yang jauh lebih sedikit.</p>
+
+      <h2>10. Pertanyaan untuk Generasi Saya</h2>
+      <p>Saya tumbuh pada masa ketika Artificial Intelligence berkembang dari sebuah teknologi yang membantu manusia menulis teks menjadi sistem yang mulai mampu melakukan pekerjaan kompleks.</p>
+      <p>Mungkin ketika generasi saya dewasa, AI akan menjadi bagian biasa dari hampir semua pekerjaan. Kami mungkin tidak lagi bertanya: <strong>“Apakah kita perlu menggunakan AI?”</strong></p>
+      <p>Pertanyaannya mungkin berubah menjadi: <strong>“Seberapa besar keputusan yang masih harus dibuat manusia?”</strong></p>
+      <p>Karena itu kemampuan menggunakan AI saja tidak cukup. Generasi saya juga perlu memahami bagaimana AI bekerja, bagaimana membatasi aksesnya, bagaimana membaca hasilnya secara kritis, bagaimana mengetahui ketika ia salah, bagaimana mengaudit tindakannya, dan bagaimana mengamankannya.</p>
+      <p>Mungkin literasi AI masa depan bukan sekadar kemampuan membuat prompt.</p>
+      <p>Literasi AI adalah kemampuan hidup bersama sistem yang jauh lebih cerdas tanpa menyerahkan seluruh kendali kepadanya.</p>
+
+      <h2>Penutup</h2>
+      <p>AI dapat menjadi salah satu teknologi paling bermanfaat yang pernah diciptakan manusia. Ia dapat membantu sains, pendidikan, kedokteran, engineering, ekonomi, dan mungkin membantu kita menyelesaikan masalah yang saat ini belum dapat kita pecahkan.</p>
+      <p>Karena itulah kita harus membangunnya dengan serius. Bukan dengan ketakutan. Tetapi juga bukan dengan kecerobohan.</p>
+      <p>Kemajuan teknologi tidak seharusnya hanya diukur dari seberapa cepat kita dapat membuat mesin menjadi lebih pintar. Kemajuan juga harus diukur dari seberapa baik kita mampu memahami dan mengendalikan apa yang telah kita ciptakan.</p>
+      <blockquote><p><strong>Capability should never outrun our capacity for understanding, control, audit, and security.</strong></p></blockquote>
+      <p>Atau dalam bahasa yang lebih sederhana:</p>
+      <blockquote><p><strong>Kemampuan AI jangan berkembang lebih cepat daripada kemampuan manusia untuk memahami, mengendalikan, mengaudit, dan mengamankannya.</strong></p></blockquote>
+      <p>Karena teknologi yang paling maju bukan teknologi yang berlari paling cepat.</p>
+      <p><strong>Tetapi teknologi yang dapat terus maju tanpa membuat manusia kehilangan kendali atas arah perjalanannya.</strong></p>
+
+      <section class="concept-note">
+        <div class="eyebrow">Concept Note</div>
+        <h2>Governance Debt</h2>
+        <p><strong>Capability ≤ Governance Capacity</strong></p>
+        <p>Jika <strong>Capability &gt; Governance Capacity</strong>, maka terbentuk <strong>Governance Debt</strong>.</p>
+        <p>Semakin lama kesenjangan tersebut dibiarkan, semakin besar risiko yang diwariskan kepada sistem dan generasi berikutnya.</p>
+      </section>
+
+      <section class="references">
+        <h2>Referensi</h2>
+        <ul>
+          <li><a href="https://darioamodei.com/post/we-must-pace-the-frontier">Dario Amodei — <em>We Must Pace the Frontier</em> (September 2026) ↗</a></li>
+          <li><a href="https://www.anthropic.com/responsible-scaling-policy">Anthropic — <em>Responsible Scaling Policy</em> ↗</a></li>
+          <li><a href="https://www.anthropic.com/news/responsible-scaling-policy-v3">Anthropic — <em>Responsible Scaling Policy Version 3.0</em> ↗</a></li>
+          <li><a href="https://www.anthropic.com/responsible-scaling-policy/roadmap">Anthropic — <em>Frontier Safety Roadmap</em> ↗</a></li>
+        </ul>
+      </section>
+
+      <div class="actions">
+        <a class="button secondary" href="/journal/">Back to Journal <span aria-hidden="true">←</span></a>
+        <a class="button secondary" href="/journal/technology-literacy/">Technology Archive <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </article>
+
+  <style>
+    .essay{max-width:900px;padding-top:5rem;padding-bottom:6rem}
+    .essay-header{max-width:860px;margin-bottom:3rem}
+    .essay-header h1{max-width:860px}
+    .essay-body{max-width:760px;font-size:1.08rem;line-height:1.82}
+    .essay-body p{margin:0 0 1.25rem}
+    .essay-body h2{margin:3.5rem 0 1.2rem;font-size:clamp(1.6rem,3vw,2.2rem)}
+    .essay-body h3{margin:2.2rem 0 .8rem;font-size:1.25rem}
+    .essay-body blockquote{margin:2rem 0;padding:1.25rem 1.5rem;border-left:3px solid currentColor;background:rgba(255,255,255,.035)}
+    .essay-body blockquote p{margin:0}
+    .principle,.equation,.concept-note{margin:2rem 0;padding:1.4rem 1.5rem;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(255,255,255,.035)}
+    .principle{font-size:1.18rem}
+    .equation{text-align:center;font-size:1.2rem;line-height:1.7}
+    .concept-note{margin-top:4rem}
+    .concept-note h2{margin:.4rem 0 1rem}
+    .references{margin-top:3.5rem}
+    .references ul{padding-left:1.25rem}
+    .references li{margin:.7rem 0}
+    .references a{text-decoration:underline;text-underline-offset:3px}
+    .actions{margin-top:3.5rem;display:flex;gap:.8rem;flex-wrap:wrap}
+  </style>
+</BaseLayout>
