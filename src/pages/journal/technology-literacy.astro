@@ -1,14 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import series from '../../../content/schedules/ai-thought-series.json';
 
-const notes = [
-  {
-    date: '26 Sep 2026',
-    title: 'AI Tidak Boleh Berlari Lebih Cepat daripada Kemampuan Manusia Mengendalikannya',
-    description: 'A current essay on AI capability, governance capacity, human control, auditability, security, and the emerging concept of Governance Debt.',
-    href: '/journal/ai-governance-debt/',
-    current: true,
-  },
+const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jakarta' }).format(new Date());
+const currentEssays = series.filter((essay) => essay.date <= today).reverse();
+
+const legacyNotes = [
   {
     date: '06 Aug 2024',
     title: 'Memahami Digital Services Act',
@@ -44,14 +41,31 @@ const notes = [
   </section>
 
   <section class="shell section">
+    <div class="eyebrow">Current · AI Thought & Governance Series</div>
     <div class="journey-list">
-      {notes.map((note) => (
+      {currentEssays.map((essay) => (
+        <article class="journey-item">
+          <div class="journey-year">{essay.displayDate}</div>
+          <div>
+            <h2>{essay.title}</h2>
+            <p class="muted">{essay.description}</p>
+            <a class="text-link" href={`/journal/${essay.slug}/`}>Read current essay →</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="eyebrow">Legacy Archive</div>
+    <div class="journey-list">
+      {legacyNotes.map((note) => (
         <article class="journey-item">
           <div class="journey-year">{note.date}</div>
           <div>
             <h2>{note.title}</h2>
             <p class="muted">{note.description}</p>
-            <a class="text-link" href={note.href}>{note.current ? 'Read current essay →' : 'Open legacy article ↗'}</a>
+            <a class="text-link" href={note.href}>Open legacy article ↗</a>
           </div>
         </article>
       ))}
