@@ -1,0 +1,55 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const {
+  title,
+  description,
+  published,
+  drafted = '26 Sep 2026',
+  eyebrow = 'Journal · Technology & Society',
+  slug,
+} = Astro.props;
+
+const canonicalUrl = `https://devina.id/journal/${slug}/`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  author: { '@type': 'Person', name: 'Devina Azaria' },
+  datePublished: published,
+  dateCreated: '2026-09-26',
+  mainEntityOfPage: canonicalUrl,
+};
+---
+<BaseLayout title={`${title} — Devina Azaria`} description={description} ogType="article" schema={schema}>
+  <article class="shell essay">
+    <header class="essay-header">
+      <div class="eyebrow">{eyebrow} · Published {published}</div>
+      <h1>{title}</h1>
+      <p class="lead">{description}</p>
+      <p class="draft-note">Concept drafted {drafted}. Publication is part of the AI Thought & Governance Series.</p>
+    </header>
+    <div class="essay-body"><slot /></div>
+  </article>
+  <style>
+    .essay{max-width:900px;padding-top:5rem;padding-bottom:6rem}
+    .essay-header{max-width:860px;margin-bottom:3rem}
+    .essay-header h1{max-width:860px}
+    .draft-note{margin-top:1rem;opacity:.65;font-size:.92rem}
+    .essay-body{max-width:760px;font-size:1.08rem;line-height:1.82}
+    .essay-body :global(p){margin:0 0 1.25rem}
+    .essay-body :global(h2){margin:3.5rem 0 1.2rem;font-size:clamp(1.6rem,3vw,2.2rem)}
+    .essay-body :global(h3){margin:2.2rem 0 .8rem;font-size:1.25rem}
+    .essay-body :global(blockquote){margin:2rem 0;padding:1.25rem 1.5rem;border-left:3px solid currentColor;background:rgba(255,255,255,.035)}
+    .essay-body :global(blockquote p){margin:0}
+    .essay-body :global(.principle),.essay-body :global(.equation),.essay-body :global(.concept-note){margin:2rem 0;padding:1.4rem 1.5rem;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(255,255,255,.035)}
+    .essay-body :global(.principle){font-size:1.18rem}
+    .essay-body :global(.equation){text-align:center;font-size:1.2rem;line-height:1.7}
+    .essay-body :global(.references){margin-top:3.5rem}
+    .essay-body :global(.references ul){padding-left:1.25rem}
+    .essay-body :global(.references li){margin:.7rem 0}
+    .essay-body :global(.references a){text-decoration:underline;text-underline-offset:3px}
+    .essay-body :global(.actions){margin-top:3.5rem;display:flex;gap:.8rem;flex-wrap:wrap}
+  </style>
+</BaseLayout>
