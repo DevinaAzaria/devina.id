@@ -1,0 +1,114 @@
+---
+import EssayLayout from '../../layouts/EssayLayout.astro';
+---
+<EssayLayout
+  title="Governance Debt: A Framework for Building Systems That Humans Can Still Control"
+  description="Sebuah kerangka untuk mengenali saat capability tumbuh lebih cepat daripada understanding, control, auditability, security, dan human authority."
+  published="2026-11-26"
+  slug="governance-debt-framework"
+>
+  <p>Technical debt adalah gagasan yang familiar dalam software engineering. Kita dapat membangun lebih cepat dengan mengambil jalan pintas, tetapi jalan pintas itu menciptakan biaya yang harus dibayar kemudian.</p>
+  <p>Saya berpikir ada jenis utang lain yang menjadi semakin penting ketika sistem memperoleh lebih banyak kemampuan:</p>
+  <div class="principle"><strong>Governance Debt</strong></div>
+  <p>Governance Debt muncul ketika kemampuan suatu sistem berkembang lebih cepat daripada kemampuan manusia dan organisasi untuk memahami, membatasi, mengaudit, mengamankan, dan menghentikannya.</p>
+
+  <h2>1. Model paling sederhana</h2>
+  <p>Kita dapat memulai dengan dua variabel konseptual:</p>
+  <div class="equation"><strong>C = Capability</strong><br/><strong>G = Governance Capacity</strong></div>
+  <p>Kondisi yang sehat adalah:</p>
+  <div class="equation"><strong>C ≤ G</strong></div>
+  <p>Artinya, setiap kemampuan yang diberikan kepada sistem masih berada di dalam batas kemampuan governance yang tersedia.</p>
+  <p>Ketika:</p>
+  <div class="equation"><strong>C &gt; G</strong></div>
+  <p>muncul kesenjangan. Kesenjangan itulah yang saya sebut Governance Debt.</p>
+  <p>Ini bukan persamaan ilmiah yang menghasilkan satu angka universal. Ia adalah model mental untuk bertanya: <strong>apakah kita memberikan sistem lebih banyak kekuatan daripada kemampuan kita mengelolanya?</strong></p>
+
+  <h2>2. Governance Capacity bukan hanya regulasi</h2>
+  <p>Kata governance sering dibayangkan sebagai kebijakan atau regulasi. Dalam sistem teknologi, governance jauh lebih luas.</p>
+  <p>Saya membaginya menjadi beberapa kapasitas.</p>
+
+  <h3>Understanding</h3>
+  <p>Apakah kita memahami fungsi sistem, dependensi, data, model, batas, failure mode, dan asumsi-asumsinya?</p>
+
+  <h3>Control</h3>
+  <p>Apakah akses dan tindakan dibatasi? Apakah terdapat separation of duties, permissions, approval gates, rate limits, dan mekanisme penghentian?</p>
+
+  <h3>Observability & Auditability</h3>
+  <p>Apakah tindakan penting tercatat? Dapatkah kita mengetahui siapa atau sistem apa yang melakukan perubahan, kapan, terhadap apa, dan dengan hasil apa?</p>
+
+  <h3>Security</h3>
+  <p>Apakah kemampuan sistem terlindungi dari pencurian credential, manipulasi, penyalahgunaan akses, supply-chain compromise, dan serangan terhadap model atau data?</p>
+
+  <h3>Human Authority</h3>
+  <p>Apakah manusia masih memiliki otoritas yang nyata untuk menentukan tujuan, mengubah aturan, membatalkan tindakan, dan menghentikan sistem?</p>
+
+  <h3>Incident Response</h3>
+  <p>Ketika sesuatu salah, apakah organisasi tahu bagaimana mendeteksi, membatasi dampak, memulihkan layanan, dan belajar dari insiden?</p>
+
+  <h3>Documentation & Institutional Memory</h3>
+  <p>Apakah pengetahuan tentang sistem tersimpan hanya di kepala beberapa orang, atau menjadi memori organisasi yang dapat diwariskan?</p>
+
+  <h2>3. Governance Debt dapat menumpuk diam-diam</h2>
+  <p>Masalah governance debt adalah sistem dapat terlihat bekerja dengan baik sambil utangnya bertambah.</p>
+  <p>Sebuah agent mendapat akses tambahan. Sebuah API memperoleh credential baru. Automation diberi kemampuan mengubah data produksi. Integrasi baru ditambahkan. Tidak ada insiden, sehingga semuanya terasa aman.</p>
+  <p>Tetapi capability naik sementara logging, permissions, documentation, testing, dan incident response tetap sama.</p>
+  <p>Sampai suatu hari sebuah kesalahan kecil mempunyai radius dampak yang jauh lebih besar daripada sebelumnya.</p>
+  <p>Technical debt biasanya meningkatkan biaya perubahan. Governance debt meningkatkan <strong>biaya kehilangan kendali</strong>.</p>
+
+  <h2>4. Debt dapat berlipat ketika sistem saling terhubung</h2>
+  <p>Sistem modern jarang berdiri sendiri. AI terhubung ke database, email, cloud, GitHub, pembayaran, media sosial, dan perangkat lain.</p>
+  <p>Setiap koneksi baru bukan hanya menambah fungsi. Ia juga memperbesar kemungkinan jalur kegagalan.</p>
+  <p>Karena itu capability seharusnya tidak diukur hanya dari kecerdasan model. Capability juga mencakup <strong>reach</strong>: seberapa jauh sistem dapat bertindak di dunia nyata.</p>
+
+  <div class="principle"><strong>Capability = Intelligence × Access × Autonomy × Reach</strong></div>
+
+  <p>Model yang biasa saja dengan akses luas dan otonomi tinggi dapat lebih berisiko daripada model yang jauh lebih pintar tetapi tidak memiliki akses apa pun.</p>
+
+  <h2>5. Governance gate sebelum capability gate</h2>
+  <p>Salah satu cara mengurangi governance debt adalah membuat aturan sederhana: capability baru tidak langsung diberikan hanya karena secara teknis memungkinkan.</p>
+  <p>Sebelum capability meningkat, kita menanyakan apakah governance capacity yang diperlukan sudah tersedia.</p>
+  <p>Contohnya, sebelum agent dapat mengirim email secara otomatis, sistem perlu mempunyai batas recipient, log, approval untuk kategori tertentu, credential management, dan mekanisme revoke.</p>
+  <p>Sebelum agent dapat mengubah production database, standar governance harus jauh lebih tinggi.</p>
+  <p>Dengan demikian perkembangan sistem tidak berhenti. Tetapi capability tumbuh melalui <strong>governed scaling</strong>.</p>
+
+  <h2>6. Indikator Governance Debt</h2>
+  <p>Framework ini dapat digunakan sebagai checklist awal. Governance debt mulai terlihat ketika:</p>
+  <ul>
+    <li>tidak ada seorang pun yang dapat menjelaskan seluruh permission yang dimiliki agent;</li>
+    <li>log tidak cukup untuk merekonstruksi tindakan;</li>
+    <li>credential dibagikan atau tidak mempunyai lifecycle yang jelas;</li>
+    <li>sistem dapat melakukan tindakan irreversible tanpa approval;</li>
+    <li>kemampuan baru ditambahkan lebih cepat daripada dokumentasi;</li>
+    <li>tidak ada prosedur penghentian darurat;</li>
+    <li>ketergantungan kritis tidak tercatat;</li>
+    <li>tidak jelas siapa yang bertanggung jawab atas keputusan tertentu.</li>
+  </ul>
+
+  <h2>7. Governance Debt dan generasi berikutnya</h2>
+  <p>Utang mempunyai satu sifat penting: orang yang membuatnya belum tentu orang yang membayarnya.</p>
+  <p>Sebuah organisasi dapat membangun sistem yang bekerja hari ini tetapi meninggalkan struktur yang sulit dipahami bagi orang yang mengelolanya lima atau sepuluh tahun kemudian.</p>
+  <p>Karena itu institutional memory adalah bagian governance. Dokumentasi bukan pekerjaan administratif setelah sistem selesai. Dokumentasi adalah bagian dari kemampuan manusia mempertahankan kendali sepanjang umur sistem.</p>
+
+  <h2>8. Human in Command</h2>
+  <p>Framework ini akhirnya kembali kepada satu prinsip: manusia tidak perlu menjalankan semua pekerjaan, tetapi harus tetap memegang lapisan otoritas.</p>
+  <p>AI dapat menerima delegasi. AI dapat memilih langkah eksekusi. AI dapat bekerja dengan kecepatan yang tidak mungkin diikuti manusia secara langsung.</p>
+  <p>Tetapi tujuan, batas, permissions, audit, dan hak menghentikan sistem harus tetap berada pada struktur governance yang dapat dipertanggungjawabkan.</p>
+
+  <blockquote><p><strong>Autonomy can be delegated. Authority must be governed.</strong></p></blockquote>
+
+  <h2>Penutup</h2>
+  <p>Governance Debt bukan argumen untuk memperlambat semua teknologi. Ia adalah argumen untuk tidak menganggap capability sebagai satu-satunya ukuran kemajuan.</p>
+  <p>Sistem yang matang bukan sistem yang dapat melakukan paling banyak hal. Sistem yang matang adalah sistem yang kemampuannya dapat dipahami, dibatasi, diaudit, diamankan, dipulihkan, dan diwariskan.</p>
+  <div class="principle"><strong>Capability should grow only as fast as Governance Capacity can grow with it.</strong></div>
+  <p>Jika prinsip ini benar, maka salah satu tugas terpenting engineering di era AI bukan hanya membangun sistem yang semakin capable.</p>
+  <p>Tugas kita adalah membangun sistem yang tetap dapat dikendalikan bahkan setelah kemampuan mereka jauh melampaui kemampuan generasi pertama yang membuatnya.</p>
+
+  <section class="references">
+    <h2>Related reading</h2>
+    <ul>
+      <li><a href="/journal/ai-governance-debt/">AI Tidak Boleh Berlari Lebih Cepat daripada Kemampuan Manusia Mengendalikannya</a></li>
+      <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST — AI Risk Management Framework ↗</a></li>
+      <li><a href="https://www.anthropic.com/responsible-scaling-policy">Anthropic — Responsible Scaling Policy ↗</a></li>
+    </ul>
+  </section>
+</EssayLayout>
