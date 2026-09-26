@@ -1,0 +1,61 @@
+[
+  {
+    "date": "2026-09-26",
+    "displayDate": "26 Sep 2026",
+    "title": "AI Tidak Boleh Berlari Lebih Cepat daripada Kemampuan Manusia Mengendalikannya",
+    "slug": "ai-governance-debt",
+    "description": "Tentang AI capability, governance capacity, human control, auditability, security, dan gagasan Governance Debt.",
+    "status": "published",
+    "destination": "src/pages/journal/ai-governance-debt.astro"
+  },
+  {
+    "date": "2026-10-26",
+    "displayDate": "26 Oct 2026",
+    "title": "AI and the Acceleration of Human Thought",
+    "slug": "ai-acceleration-human-thought",
+    "description": "Bagaimana AI memperpendek jarak antara informasi, hubungan, pola, model mental, dan pertanyaan baru—serta mengapa judgment menjadi semakin penting.",
+    "status": "scheduled",
+    "source": "scheduled/essays/2026-10-26-ai-acceleration-human-thought.astro",
+    "destination": "src/pages/journal/ai-acceleration-human-thought.astro"
+  },
+  {
+    "date": "2026-11-26",
+    "displayDate": "26 Nov 2026",
+    "title": "Governance Debt: A Framework for Building Systems That Humans Can Still Control",
+    "slug": "governance-debt-framework",
+    "description": "Sebuah kerangka untuk mengenali saat capability tumbuh lebih cepat daripada understanding, control, auditability, security, dan human authority.",
+    "status": "scheduled",
+    "source": "scheduled/essays/2026-11-26-governance-debt-framework.astro",
+    "destination": "src/pages/journal/governance-debt-framework.astro"
+  },
+  {
+    "date": "2026-12-26",
+    "displayDate": "26 Dec 2026",
+    "title": "Human in Command",
+    "slug": "human-in-command",
+    "description": "Tentang perbedaan antara manusia yang sekadar berada di dalam loop dan manusia yang tetap memegang tujuan, batas, otoritas, dan hak menghentikan sistem.",
+    "status": "scheduled",
+    "source": "scheduled/essays/2026-12-26-human-in-command.astro",
+    "destination": "src/pages/journal/human-in-command.astro"
+  },
+  {
+    "date": "2027-01-26",
+    "displayDate": "26 Jan 2027",
+    "title": "When History Becomes Searchable",
+    "slug": "when-history-becomes-searchable",
+    "description": "Ketika AI membantu menghubungkan arsip, bahasa, ide, dan zaman, sejarah menjadi lebih mudah ditelusuri—tetapi tidak otomatis menjadi lebih benar.",
+    "status": "scheduled",
+    "source": "scheduled/essays/2027-01-26-when-history-becomes-searchable.astro",
+    "destination": "src/pages/journal/when-history-becomes-searchable.astro"
+  },
+  {
+    "date": "2027-02-26",
+    "displayDate": "26 Feb 2027",
+    "title": "The New Literacy: Understanding Systems That Think",
+    "slug": "the-new-literacy-systems-that-think",
+    "description": "Literasi AI melampaui prompt: memahami ketidakpastian, provenance, permissions, audit, security, dan batas delegasi kepada sistem yang dapat bernalar.",
+    "status": "scheduled",
+    "source": "scheduled/essays/2027-02-26-the-new-literacy-systems-that-think.astro",
+    "destination": "src/pages/journal/the-new-literacy-systems-that-think.astro"
+  }
+]
