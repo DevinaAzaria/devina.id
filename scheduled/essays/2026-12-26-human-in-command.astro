@@ -1,0 +1,81 @@
+---
+import EssayLayout from '../../layouts/EssayLayout.astro';
+---
+<EssayLayout
+  title="Human in Command"
+  description="Tentang perbedaan antara manusia yang sekadar berada di dalam loop dan manusia yang tetap memegang tujuan, batas, otoritas, dan hak menghentikan sistem."
+  published="2026-12-26"
+  slug="human-in-command"
+>
+  <p>Dalam pembicaraan tentang AI kita sering mendengar istilah <em>human in the loop</em>. Artinya, manusia masih terlibat dalam suatu proses yang dijalankan mesin.</p>
+  <p>Istilah itu penting, tetapi saya merasa belum cukup.</p>
+  <p>Manusia dapat berada di dalam loop tanpa benar-benar memegang kendali. Ia mungkin hanya menekan tombol approve, membaca ringkasan yang dibuat sistem, atau muncul di akhir proses ketika hampir semua keputusan penting sudah dibuat sebelumnya.</p>
+
+  <blockquote><p><strong>Presence is not the same as authority.</strong></p></blockquote>
+
+  <p>Karena itu saya lebih tertarik pada prinsip <strong>Human in Command</strong>.</p>
+
+  <h2>1. Apa arti berada dalam command?</h2>
+  <p>Human in Command tidak berarti manusia harus melakukan setiap pekerjaan secara manual. Itu akan menghilangkan manfaat automation.</p>
+  <p>Command berarti manusia atau institusi manusia masih mempunyai otoritas atas lima hal utama:</p>
+  <ul>
+    <li><strong>Intent</strong> — tujuan apa yang boleh dikejar sistem;</li>
+    <li><strong>Boundary</strong> — apa yang tidak boleh dilakukan;</li>
+    <li><strong>Permission</strong> — akses apa yang diberikan;</li>
+    <li><strong>Verification</strong> — bagaimana hasil diperiksa;</li>
+    <li><strong>Revocation</strong> — bagaimana kemampuan dihentikan atau ditarik kembali.</li>
+  </ul>
+  <p>Selama lima lapisan itu masih berada dalam struktur manusia yang dapat dipertanggungjawabkan, execution dapat semakin otomatis tanpa otomatis kehilangan command.</p>
+
+  <h2>2. Delegasi bukan penyerahan kedaulatan</h2>
+  <p>Organisasi manusia sejak lama bekerja melalui delegasi. Direktur tidak melakukan semua pekerjaan. Pilot menggunakan autopilot. Administrator cloud menggunakan automation. Dokter menggunakan alat diagnostik.</p>
+  <p>Delegasi bekerja karena terdapat struktur otoritas. Kita tahu siapa yang dapat memberi perintah, siapa yang dapat mengubah aturan, dan siapa yang bertanggung jawab ketika sesuatu salah.</p>
+  <p>AI membuat delegasi menjadi jauh lebih dalam karena sistem dapat memilih banyak langkah sendiri.</p>
+  <p>Karena itu kita perlu membedakan:</p>
+  <div class="equation"><strong>Delegated Execution ≠ Delegated Authority</strong></div>
+
+  <h2>3. Tangga otonomi</h2>
+  <p>Tidak semua penggunaan AI membutuhkan governance yang sama. Kita dapat membayangkan sebuah tangga.</p>
+  <p><strong>Level 1 — Suggest.</strong> AI memberi saran, manusia melakukan tindakan.</p>
+  <p><strong>Level 2 — Draft.</strong> AI menyiapkan tindakan, manusia menyetujui.</p>
+  <p><strong>Level 3 — Execute within limits.</strong> AI dapat bertindak dalam ruang yang telah dibatasi.</p>
+  <p><strong>Level 4 — Coordinate.</strong> AI mengelola beberapa tool dan subtask secara mandiri.</p>
+  <p><strong>Level 5 — High-impact autonomy.</strong> AI dapat melakukan tindakan penting dengan intervensi manusia yang jarang.</p>
+  <p>Semakin tinggi tangga tersebut, semakin tinggi kebutuhan terhadap permissions, observability, audit, security, rollback, dan incident response.</p>
+
+  <h2>4. Approval bukan selalu kontrol</h2>
+  <p>Kita sering menganggap tombol approve sebagai bukti bahwa manusia masih mengendalikan sistem.</p>
+  <p>Tetapi jika manusia menerima ratusan approval, tidak mempunyai waktu memeriksa konteks, atau tidak memahami apa yang disetujui, approval berubah menjadi ritual.</p>
+  <p>Governance yang baik tidak sekadar menambahkan manusia pada setiap langkah. Ia mendesain sistem sehingga intervensi manusia terjadi pada titik yang benar-benar membutuhkan judgment.</p>
+  <p>Hal-hal rutin dapat otomatis. Hal-hal berisiko tinggi membutuhkan threshold yang berbeda.</p>
+
+  <h2>5. Command membutuhkan observability</h2>
+  <p>Kita tidak dapat mengendalikan sesuatu yang tidak dapat kita lihat.</p>
+  <p>Jika agent dapat bertindak tetapi kita tidak dapat mengetahui apa yang telah dilakukan, manusia hanya memiliki ilusi command.</p>
+  <p>Karena itu logging, trace, provenance, dan audit trail bukan fitur tambahan. Semuanya adalah indera dari governance.</p>
+  <p>Command membutuhkan kemampuan melihat keadaan sistem, memahami perubahan, dan mengetahui kapan kondisi telah keluar dari batas yang direncanakan.</p>
+
+  <h2>6. Hak untuk menghentikan</h2>
+  <p>Salah satu tes paling sederhana adalah pertanyaan ini:</p>
+  <blockquote><p><strong>Siapa yang dapat menghentikan sistem ini, dan seberapa cepat?</strong></p></blockquote>
+  <p>Jika jawabannya tidak jelas, otonomi mungkin sudah tumbuh lebih cepat daripada governance.</p>
+  <p>Revocation dapat berbentuk mencabut token, menonaktifkan workflow, memutus integrasi, mengubah permission, memindahkan sistem ke read-only mode, atau menjalankan emergency shutdown.</p>
+  <p>Yang penting bukan bentuk teknisnya, tetapi bahwa hak tersebut nyata dan telah diuji.</p>
+
+  <h2>7. Human in Command bukan berarti manusia selalu benar</h2>
+  <p>Manusia dapat bias, lelah, korup, atau salah. Menempatkan manusia pada posisi command bukan klaim bahwa manusia sempurna.</p>
+  <p>Justru karena manusia tidak sempurna, governance perlu membagi otoritas, menyimpan audit trail, menggunakan review, menerapkan checks and balances, dan membangun mekanisme koreksi.</p>
+  <p>Tujuannya bukan mengganti AI yang dapat salah dengan manusia yang juga dapat salah. Tujuannya adalah membangun struktur di mana kesalahan dapat dideteksi dan dikoreksi tanpa kehilangan akuntabilitas.</p>
+
+  <h2>8. Dari tool menuju institution</h2>
+  <p>Ketika AI menjadi bagian penting organisasi, kita perlu berhenti memandangnya hanya sebagai tool individual.</p>
+  <p>AI mulai menjadi bagian dari institusi: ia membaca data organisasi, menjalankan prosedur, memengaruhi keputusan, dan membawa memori operasional.</p>
+  <p>Pada titik itu, pertanyaan governance menjadi sama pentingnya dengan pertanyaan model.</p>
+
+  <h2>Penutup</h2>
+  <p>Masa depan mungkin berisi sistem AI yang bekerja jauh lebih cepat daripada manusia. Kita tidak mungkin mengawasi setiap token, setiap API call, atau setiap keputusan mikro.</p>
+  <p>Karena itu mempertahankan kontrol tidak berarti mempertahankan manusia pada setiap langkah.</p>
+  <p>Kontrol berarti mempertahankan manusia pada lapisan yang menentukan arah.</p>
+  <div class="principle"><strong>AI may control execution. Humans must govern authority.</strong></div>
+  <p>Human in Command adalah upaya menjaga perbedaan itu tetap jelas.</p>
+</EssayLayout>
