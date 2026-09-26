@@ -1,0 +1,118 @@
+name: Scheduled Essay Publisher
+
+on:
+  schedule:
+    - cron: '15 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: devina-id-scheduled-essay
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve Jakarta dates
+        id: dates
+        shell: bash
+        run: |
+          echo "today=$(TZ=Asia/Jakarta date +%F)" >> "$GITHUB_OUTPUT"
+          echo "tomorrow=$(TZ=Asia/Jakarta date -d tomorrow +%F)" >> "$GITHUB_OUTPUT"
+
+      - name: Create editorial reminder one day before
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TOMORROW: ${{ steps.dates.outputs.tomorrow }}
+        shell: bash
+        run: |
+          node <<'NODE' > /tmp/tomorrow.json
+          const fs = require('fs');
+          const schedule = JSON.parse(fs.readFileSync('content/schedules/ai-thought-series.json','utf8'));
+          const item = schedule.find(x => x.date === process.env.TOMORROW && x.status === 'scheduled');
+          if (item) process.stdout.write(JSON.stringify(item));
+          NODE
+          if [ ! -s /tmp/tomorrow.json ]; then
+            echo "No essay scheduled for tomorrow."
+            exit 0
+          fi
+          TITLE=$(node -e "const x=require('/tmp/tomorrow.json'); process.stdout.write(x.title)")
+          SLUG=$(node -e "const x=require('/tmp/tomorrow.json'); process.stdout.write(x.slug)")
+          ISSUE_TITLE="Editorial reminder: $TITLE"
+          EXISTS=$(gh issue list --repo "$GITHUB_REPOSITORY" --state all --limit 100 --json title --jq ".[] | select(.title == \"$ISSUE_TITLE\") | .title" | head -n1)
+          if [ -z "$EXISTS" ]; then
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$ISSUE_TITLE" --body "Scheduled publication is tomorrow (Asia/Jakarta). Draft is already prepared in the repository. The scheduled publisher will activate /journal/$SLUG/ on the publication date."
+          fi
+
+      - name: Publish due essay
+        id: publish
+        env:
+          TODAY: ${{ steps.dates.outputs.today }}
+        shell: bash
+        run: |
+          node <<'NODE' > /tmp/due.json
+          const fs = require('fs');
+          const schedule = JSON.parse(fs.readFileSync('content/schedules/ai-thought-series.json','utf8'));
+          const item = schedule.find(x => x.date === process.env.TODAY && x.status === 'scheduled');
+          if (item) process.stdout.write(JSON.stringify(item));
+          NODE
+          if [ ! -s /tmp/due.json ]; then
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            echo "No essay due today."
+            exit 0
+          fi
+
+          SOURCE=$(node -e "const x=require('/tmp/due.json'); process.stdout.write(x.source)")
+          DEST=$(node -e "const x=require('/tmp/due.json'); process.stdout.write(x.destination)")
+          TITLE=$(node -e "const x=require('/tmp/due.json'); process.stdout.write(x.title)")
+          SLUG=$(node -e "const x=require('/tmp/due.json'); process.stdout.write(x.slug)")
+
+          test -f "$SOURCE"
+          if [ -f "$DEST" ]; then
+            echo "Destination already exists; treating publication as idempotently complete."
+          else
+            mkdir -p "$(dirname "$DEST")"
+            cp "$SOURCE" "$DEST"
+          fi
+
+          cat > .github/deploy-production <<EOF
+          Deploy requested: $TODAY
+          Purpose: scheduled publication — $TITLE
+          Route: /journal/$SLUG/
+          EOF
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DEST" .github/deploy-production
+          if git diff --cached --quiet; then
+            echo "No repository changes required."
+          else
+            git commit -m "publish(essay): $TITLE"
+            git push
+          fi
+
+          echo "published=true" >> "$GITHUB_OUTPUT"
+          echo "title=$TITLE" >> "$GITHUB_OUTPUT"
+          echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
+
+      - name: Close reminder and record publication
+        if: steps.publish.outputs.published == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: ${{ steps.publish.outputs.title }}
+          SLUG: ${{ steps.publish.outputs.slug }}
+        shell: bash
+        run: |
+          ISSUE_TITLE="Editorial reminder: $TITLE"
+          NUMBER=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --limit 100 --json number,title --jq ".[] | select(.title == \"$ISSUE_TITLE\") | .number" | head -n1)
+          if [ -n "$NUMBER" ]; then
+            gh issue comment "$NUMBER" --repo "$GITHUB_REPOSITORY" --body "Published by scheduled workflow: https://devina.id/journal/$SLUG/"
+            gh issue close "$NUMBER" --repo "$GITHUB_REPOSITORY"
+          fi
