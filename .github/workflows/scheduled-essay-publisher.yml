@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '15 2 * * *'
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/scheduled-essay-publisher.yml'
 
 permissions:
   contents: write
