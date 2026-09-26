@@ -3,6 +3,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const notes = [
   {
+    date: '26 Sep 2026',
+    title: 'AI Tidak Boleh Berlari Lebih Cepat daripada Kemampuan Manusia Mengendalikannya',
+    description: 'A current essay on AI capability, governance capacity, human control, auditability, security, and the emerging concept of Governance Debt.',
+    href: '/journal/ai-governance-debt/',
+    current: true,
+  },
+  {
     date: '06 Aug 2024',
     title: 'Memahami Digital Services Act',
     description: 'A legacy explainer about platform responsibility, user rights, transparency, and online safety under the EU Digital Services Act.',
@@ -29,11 +36,11 @@ const notes = [
 ];
 ---
 
-<BaseLayout title="AI & Digital Literacy — Devina Azaria" description="A curated historical index of Devina Azaria's legacy technology and digital-literacy writing.">
+<BaseLayout title="AI & Digital Literacy — Devina Azaria" description="Current essays and a curated historical index of Devina Azaria's technology and digital-literacy writing.">
   <section class="shell section page-intro">
     <div class="eyebrow">Journal · Technology</div>
     <h1>AI & Digital Literacy</h1>
-    <p class="lead">Selected technology writing from the legacy devina.id archive is preserved here as historical learning context. The goal is continuity, not to turn old editorial material into present-day technical credentials.</p>
+    <p class="lead">Current essays are presented as current work. Selected technology writing from the legacy devina.id archive is preserved separately as historical learning context, with explicit provenance boundaries.</p>
   </section>
 
   <section class="shell section">
@@ -44,7 +51,7 @@ const notes = [
           <div>
             <h2>{note.title}</h2>
             <p class="muted">{note.description}</p>
-            <a class="text-link" href={note.href}>Open legacy article ↗</a>
+            <a class="text-link" href={note.href}>{note.current ? 'Read current essay →' : 'Open legacy article ↗'}</a>
           </div>
         </article>
       ))}
@@ -55,7 +62,7 @@ const notes = [
     <div class="panel">
       <div class="tag">Provenance Note</div>
       <div class="big">Historical attribution is not the same as verified sole authorship.</div>
-      <p class="muted">The legacy WordPress pages publicly label these articles as “Posted by Devina.” They are therefore retained as part of the public archive, but this portfolio does not present them as independent research, technical mastery, or proof that every sentence was written without assistance. Current technical ability should be evidenced through Devina's own project notes, code, experiments, and reflection.</p>
+      <p class="muted">Legacy WordPress pages are retained as part of the public archive, but this portfolio does not present them as independent research, technical mastery, or proof that every sentence was written without assistance. Current work is distinguished clearly from archived material and should increasingly be supported by Devina's own project notes, code, experiments, and reflection.</p>
     </div>
   </section>
 
