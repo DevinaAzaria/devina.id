@@ -22,6 +22,12 @@ const publishedEssays = series.filter((essay) => essay.date <= today).reverse();
         <a class="text-link" href={`/journal/${essay.slug}/`}>Read Essay →</a>
       </article>
     ))}
+    <article class="card feature-card">
+      <div class="tag">Culture & Heritage · 27 Sep 2026</div>
+      <h2>Belajar Jamu dari Titi Ratu</h2>
+      <p class="muted">Catatan lapangan pertama Devina sebagai Duta Budaya: belajar tentang bahan jamu, prinsip racikan sesuai peruntukan, dan bagaimana pengetahuan tradisional tetap hidup karena terus dipelajari.</p>
+      <a class="text-link" href="/journal/belajar-jamu-dari-titi-ratu/">Read Field Note →</a>
+    </article>
     <article class="card">
       <div class="tag">Learning Journey</div>
       <h3>Coding Journey</h3>
@@ -35,7 +41,7 @@ const publishedEssays = series.filter((essay) => essay.date <= today).reverse();
       <a class="text-link" href="/journal/technology-literacy/">Open Technology Archive →</a>
     </article>
     <article class="card">
-      <div class="tag">Culture & Creative</div>
+      <div class="tag">Culture & Heritage</div>
       <h3>Culture, Music & Communication</h3>
       <p class="muted">A curated bridge between historical culture-related writing and the stronger evidence found in Devina's performances, recordings, and verified achievement records.</p>
       <a class="text-link" href="/journal/culture-communication/">Open Culture Archive →</a>
