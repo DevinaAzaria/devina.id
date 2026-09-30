@@ -42,6 +42,7 @@ The CV records competition participation and awards from 2021–2025 across gegu
 
 Verified or matched public records so far:
 
+- 2026 — Wakil 3 Remaja Duta Budaya Cilik Daerah Istimewa Yogyakarta. SMA Negeri 3 Yogyakarta names Devina Azaria (X4), records the event period as 23 August–19 September 2026, organizer Yayasan Amarta Adab Muda Yogyakarta, and level Provinsi. Status: `VERIFIED` and published.
 - 2022 — Juara I Lomba Geguritan, Festival Pramuka Jogja. Official winner source: Kwartir Daerah Gerakan Pramuka Daerah Istimewa Yogyakarta; the official result page lists “Lomba Geguritan — Juara 1: Devina Azaria.” Status: `VERIFIED` and published.
 - 2025 — Juara I Maca Geguritan, Lomba Seni Budaya SMA Negeri 9 Yogyakarta; represented SMP Negeri 5 Yogyakarta. Published by Purnomo Basuki, guru dan pewarta SMAN 9 Yogyakarta, with event and winner details. Status: `VERIFIED` and published.
 - 2025 — Juara II Macapat Remaja, Kompetisi Bahasa dan Sastra Kota Yogyakarta. Primary public evidence: Devina's Instagram post showing the award placard; official event context: Pemerintah Kota Yogyakarta / Dinas Kebudayaan Kota Yogyakarta. Status: `VERIFIED` and published.
@@ -112,4 +113,4 @@ Evidence states:
 
 ## Status
 
-Sanitized CV source accepted as the portfolio baseline. Two academic competition records are now matched to official SIMT Prestasi Terkurasi: 2025 Jenius Science Olympiad Sains silver and 2024 Jenius Science Olympiad Bahasa Inggris bronze. Eight culture/literature records from 2022–2025 are also published on `/achievements/`. Evidence matching against the remaining legacy WordPress `/profilku/` inventory remains pending.
+Sanitized CV source accepted as the portfolio baseline. Two academic competition records are now matched to official SIMT Prestasi Terkurasi: 2025 Jenius Science Olympiad Sains silver and 2024 Jenius Science Olympiad Bahasa Inggris bronze. Nine culture/literature records from 2022–2026 are also published on `/achievements/`. Evidence matching against the remaining legacy WordPress `/profilku/` inventory remains pending.
