@@ -6,7 +6,6 @@ const schema = {
   '@type': 'Article',
   headline: 'AI Tidak Boleh Berlari Lebih Cepat daripada Kemampuan Manusia Mengendalikannya',
   description: 'Esai tentang AI capability, governance capacity, dan governance debt: kemampuan AI tidak seharusnya melampaui kemampuan manusia untuk memahami, mengendalikan, mengaudit, dan mengamankannya.',
-  author: { '@type': 'Person', name: 'Devina Azaria' },
   datePublished: '2026-09-26',
   mainEntityOfPage: 'https://devina.id/journal/ai-governance-debt/',
 };
@@ -23,6 +22,7 @@ const schema = {
       <div class="eyebrow">Journal · Technology & Society · 26 Sep 2026</div>
       <h1>AI Tidak Boleh Berlari Lebih Cepat daripada Kemampuan Manusia Mengendalikannya</h1>
       <p class="lead">Tentang kecepatan, kendali, dan utang tata kelola di zaman kecerdasan buatan.</p>
+      <p class="authorship-note"><strong>Authorship & assistance:</strong> Esai ini dikembangkan dari tema pembelajaran Devina dengan editorial/technical assistance. Bantuan tersebut tidak diklaim sebagai karya mandiri Devina.</p>
     </header>
 
     <div class="essay-body">
@@ -171,6 +171,7 @@ const schema = {
     .essay{max-width:900px;padding-top:5rem;padding-bottom:6rem}
     .essay-header{max-width:860px;margin-bottom:3rem}
     .essay-header h1{max-width:860px}
+    .authorship-note{margin-top:1rem;max-width:760px;color:var(--muted);font-size:.9rem;line-height:1.55}
     .essay-body{max-width:760px;font-size:1.08rem;line-height:1.82}
     .essay-body p{margin:0 0 1.25rem}
     .essay-body h2{margin:3.5rem 0 1.2rem;font-size:clamp(1.6rem,3vw,2.2rem)}
