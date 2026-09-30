@@ -85,3 +85,14 @@ Review the GitHub portfolio at least once per academic term:
 - improve README and reflection quality,
 - link selected work back to `devina.id`,
 - verify public claims remain accurate.
+
+
+## Journal Authorship & Assistance
+
+Journal pages must distinguish Devina's own authorship from editorial, technical, parent, mentor, DevinaHQ, or AI assistance.
+
+- **Devina-authored work** may identify Devina as author only when she wrote or materially composed the work and can explain the ideas, wording, evidence, and revisions.
+- **Assisted drafts** must disclose editorial or technical assistance. Assistance must not be presented as Devina's independent work.
+- **Structured data** should not name Devina as sole author when authorship has not been verified.
+- **Field notes** may document Devina's direct experience while separately disclosing assistance used to shape or publish the text.
+- A later Devina-led rewrite may replace an assisted draft, but the revision should preserve the historical provenance rather than erase it.
