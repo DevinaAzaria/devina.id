@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import series from '../../../content/schedules/ai-thought-series.json';
 
 const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jakarta' }).format(new Date());
-const publishedEssays = series.filter((essay) => essay.date <= today).reverse();
+const publishedEssays = series.filter((essay) => essay.status === 'published' && essay.date <= today).reverse();
 ---
 <BaseLayout title="Journal — Devina Azaria" description="Curated learning notes, current essays, and selected historical writing from Devina Azaria's portfolio archive.">
 <section class="shell section page-intro">

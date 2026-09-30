@@ -85,9 +85,19 @@ jobs:
             cp "$SOURCE" "$DEST"
           fi
 
+          node <<'NODE'
+          const fs = require('fs');
+          const path = 'content/schedules/ai-thought-series.json';
+          const schedule = JSON.parse(fs.readFileSync(path, 'utf8'));
+          const item = schedule.find(x => x.date === process.env.TODAY);
+          if (!item) throw new Error('Scheduled essay entry not found for publication date');
+          item.status = 'published';
+          fs.writeFileSync(path, JSON.stringify(schedule, null, 2) + '\n');
+          NODE
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$DEST"
+          git add "$DEST" content/schedules/ai-thought-series.json
           if git diff --cached --quiet; then
             echo "No repository changes required."
           else
@@ -99,6 +109,26 @@ jobs:
           echo "published=true" >> "$GITHUB_OUTPUT"
           echo "title=$TITLE" >> "$GITHUB_OUTPUT"
           echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for production route
+        if: steps.publish.outputs.published == 'true'
+        env:
+          SLUG: ${{ steps.publish.outputs.slug }}
+        shell: bash
+        run: |
+          URL="https://devina.id/journal/$SLUG/"
+          for attempt in $(seq 1 30); do
+            echo "Checking production route (attempt $attempt/30): $URL"
+            if curl --fail --silent --show-error --location --max-time 20 "$URL" > /tmp/published-page.html; then
+              if grep -q '<title>' /tmp/published-page.html; then
+                echo "Production route is live."
+                exit 0
+              fi
+            fi
+            sleep 10
+          done
+          echo "Production route did not become live within the verification window."
+          exit 1
 
       - name: Close reminder and record publication
         if: steps.publish.outputs.published == 'true'
