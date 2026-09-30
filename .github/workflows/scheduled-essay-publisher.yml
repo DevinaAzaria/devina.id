@@ -85,19 +85,14 @@ jobs:
             cp "$SOURCE" "$DEST"
           fi
 
-          cat > .github/deploy-production <<EOF
-          Deploy requested: $TODAY
-          Purpose: scheduled publication — $TITLE
-          Route: /journal/$SLUG/
-          EOF
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$DEST" .github/deploy-production
+          git add "$DEST"
           if git diff --cached --quiet; then
             echo "No repository changes required."
           else
             git commit -m "publish(essay): $TITLE"
+            # The new src/** commit automatically triggers production-deploy.yml.
             git push
           fi
 

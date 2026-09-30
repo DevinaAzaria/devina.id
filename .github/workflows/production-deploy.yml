@@ -1,12 +1,20 @@
 name: Deploy devina.id Production
 
+# Architecture:
+# - Pull requests are validated by website-build.yml.
+# - Every site-affecting push to main is built, verified, and deployed here.
+# - workflow_dispatch remains available for a manual redeploy without a code change.
 on:
   workflow_dispatch:
   push:
     branches:
       - main
     paths:
-      - .github/deploy-production
+      - 'src/**'
+      - 'public/**'
+      - 'package.json'
+      - 'astro.config.mjs'
+      - '.github/workflows/production-deploy.yml'
 
 permissions:
   contents: read
@@ -46,6 +54,7 @@ jobs:
           test -f dist/sitemap.xml
           test -f dist/.htaccess
           test -f dist/favicon.svg
+          test -f dist/favicon.png
           test -d dist/journal
           grep -q 'Curious by nature' dist/index.html
           grep -q 'application/ld+json' dist/index.html
@@ -94,6 +103,7 @@ jobs:
           grep -q 'ProfilePage' /tmp/devina-about.html
           curl --fail --silent --show-error --location --max-time 30 https://devina.id/achievements/ > /tmp/devina-achievements.html
           grep -q 'School record' /tmp/devina-achievements.html
+          curl --fail --silent --show-error --location --max-time 30 https://devina.id/favicon.png > /dev/null
           curl --fail --silent --show-error --location --max-time 30 https://devina.id/robots.txt > /dev/null
           curl --fail --silent --show-error --location --max-time 30 https://devina.id/sitemap.xml > /dev/null
           curl --fail --silent --show-error --location --max-time 30 https://archive.devina.id/ > /dev/null

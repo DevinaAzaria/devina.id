@@ -1,16 +1,15 @@
 name: devina.id Website Build
 
+# CI only. Production deployment is handled by production-deploy.yml
+# after site-affecting changes land on main.
 on:
-  push:
-    branches: [main]
-    paths:
-      - '**'
-      - '.github/workflows/website-build.yml'
   pull_request:
-    paths:
-      - '**'
-      - '.github/workflows/website-build.yml'
+    branches:
+      - main
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -18,16 +17,31 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
           cache-dependency-path: package.json
+
       - name: Install dependencies
         run: npm install
+
       - name: Build static site
         run: npm run build
+
+      - name: Verify build output
+        run: |
+          test -f dist/index.html
+          test -f dist/about/index.html
+          test -f dist/achievements/index.html
+          test -f dist/robots.txt
+          test -f dist/sitemap.xml
+          test -f dist/favicon.svg
+          test -f dist/favicon.png
+          test -d dist/journal
+
       - name: Upload devina.id build artifact
         uses: actions/upload-artifact@v4
         with:
