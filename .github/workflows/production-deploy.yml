@@ -13,6 +13,9 @@ on:
       - 'src/**'
       - 'public/**'
       - 'package.json'
+      - 'package-lock.json'
+      - 'scripts/**'
+      - 'content/schedules/**'
       - 'astro.config.mjs'
       - '.github/workflows/production-deploy.yml'
 
@@ -37,10 +40,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: package.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build static site
         run: npm run build
@@ -56,6 +59,8 @@ jobs:
           test -f dist/favicon.svg
           test -f dist/favicon.png
           test -d dist/journal
+          grep -q 'https://devina.id/journal/ai-governance-debt/' dist/sitemap.xml
+          grep -q 'https://devina.id/journal/belajar-jamu-dari-titi-ratu/' dist/sitemap.xml
           grep -q 'Curious by nature' dist/index.html
           grep -q 'application/ld+json' dist/index.html
           grep -q 'ProfilePage' dist/about/index.html
