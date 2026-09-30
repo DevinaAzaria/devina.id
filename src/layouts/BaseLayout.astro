@@ -50,6 +50,19 @@ const schemaJson = schema ? JSON.stringify(schema) : null;
       document.addEventListener('click', (event) => { if (mobileNav.hasAttribute('open') && !mobileNav.contains(event.target)) mobileNav.removeAttribute('open'); });
       document.addEventListener('keydown', (event) => { if (event.key === 'Escape') mobileNav.removeAttribute('open'); });
     }
+
+    const isOwnDomain = (hostname) =>
+      hostname === 'devina.id' || hostname.endsWith('.devina.id');
+
+    document.querySelectorAll('a[href]').forEach((link) => {
+      try {
+        const url = new URL(link.getAttribute('href'), window.location.href);
+        if ((url.protocol === 'http:' || url.protocol === 'https:') && !isOwnDomain(url.hostname)) {
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+        }
+      } catch {}
+    });
   </script>
 </body>
 </html>
