@@ -27,3 +27,10 @@ sources/private/
 # Local audit output
 security-audit/
 *.secret-scan.json
+
+# Editorial-only paths live in private DevinaAzaria/devina-editorial
+PROFILE-README-DRAFT.md
+content/inventory/
+content/schedules/
+content/portfolio/source-baseline.md
+scheduled/
