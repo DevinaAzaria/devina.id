@@ -28,6 +28,10 @@ const records = [
     link: 'School record',
     secondaryHref: 'https://www.instagram.com/reels/DeHhJNzgFKP/',
     secondaryLink: 'Area Jogja media coverage',
+    additionalSources: [
+      { href: 'https://www.instagram.com/reels/DeHsdfZzOtD/', link: 'Additional public coverage' },
+      { href: 'https://www.instagram.com/reels/DeH7NcczvbO/', link: 'Additional public coverage' },
+    ],
   },
   {
     year: '2025',
@@ -135,6 +139,9 @@ const records = [
             <p>{item.detail}</p>
             {item.href && <a class="text-link" href={item.href}>View {item.link} <span aria-hidden="true">↗</span></a>}
             {item.secondaryHref && <a class="text-link source-link" href={item.secondaryHref}>View {item.secondaryLink} <span aria-hidden="true">↗</span></a>}
+            {item.additionalSources?.map((source) => (
+              <a class="text-link source-link" href={source.href}>View {source.link} <span aria-hidden="true">↗</span></a>
+            ))}
           </div>
         </article>
       ))}
