@@ -36,11 +36,13 @@ jobs:
           test -f dist/index.html
           test -f dist/about/index.html
           test -f dist/achievements/index.html
+          test -f dist/research-writing/index.html
           test -f dist/robots.txt
           test -f dist/sitemap.xml
           test -f dist/favicon.svg
           test -f dist/favicon.png
           test -d dist/journal
+          grep -q 'https://devina.id/research-writing/' dist/sitemap.xml
           grep -q 'https://devina.id/journal/ai-governance-debt/' dist/sitemap.xml
           grep -q 'https://devina.id/journal/belajar-jamu-dari-titi-ratu/' dist/sitemap.xml
 
