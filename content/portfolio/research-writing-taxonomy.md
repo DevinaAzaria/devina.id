@@ -68,3 +68,8 @@ Where appropriate, each substantial work should make these fields traceable:
 **Objective → Devina's Role → Process → Output → Evidence → Measurable Impact → Reflection → Next Step**
 
 Not every short article needs all fields on the public page, but the underlying portfolio record should preserve them when relevant.
+
+
+## SEO and publication standard
+
+All new public writing should follow [SEO Writing Standard](./seo-writing-standard.md). The SEO rules support discovery and clarity; they do not override the authenticity and evidence rules in this taxonomy.
