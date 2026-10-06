@@ -2,3 +2,28 @@ node_modules/
 dist/
 .astro/
 .DS_Store
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.mobileprovision
+.npmrc.local
+
+# Private/editorial working material must never be committed here
+.private/
+private/
+.editorial/
+editorial/
+drafts/
+sources/private/
+
+# Local audit output
+security-audit/
+*.secret-scan.json

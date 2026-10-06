@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/generate-sitemap.mjs && node scripts/validate-seo.mjs",
+    "build": "node scripts/validate-public-security.mjs && astro build && node scripts/generate-sitemap.mjs && node scripts/validate-seo.mjs",
     "preview": "astro preview",
-    "validate:seo": "node scripts/validate-seo.mjs"
+    "validate:seo": "node scripts/validate-seo.mjs",
+    "validate:public-security": "node scripts/validate-public-security.mjs"
   },
   "dependencies": {
     "astro": "^5.0.0"
