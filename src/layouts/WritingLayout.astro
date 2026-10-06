@@ -23,6 +23,9 @@ const {
 if (image && !imageAlt) {
   throw new Error(`WritingLayout requires imageAlt when image is provided: ${Astro.url.pathname}`);
 }
+if (image && (!imageWidth || !imageHeight)) {
+  throw new Error(`WritingLayout requires imageWidth and imageHeight when image is provided: ${Astro.url.pathname}`);
+}
 
 const canonicalUrl = new URL(Astro.url.pathname, 'https://devina.id').href;
 const imageUrls = structuredImages
