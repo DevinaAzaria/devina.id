@@ -45,6 +45,9 @@ jobs:
           grep -q 'https://devina.id/research-writing/' dist/sitemap.xml
           grep -q 'https://devina.id/journal/ai-governance-debt/' dist/sitemap.xml
           grep -q 'https://devina.id/journal/belajar-jamu-dari-titi-ratu/' dist/sitemap.xml
+          grep -q 'data-seo-writing="true"' dist/journal/ai-governance-debt/index.html
+          grep -q '"@type":"Article"' dist/journal/ai-governance-debt/index.html
+          grep -q '"@type":"BreadcrumbList"' dist/journal/ai-governance-debt/index.html
 
       - name: Upload devina.id build artifact
         uses: actions/upload-artifact@v4

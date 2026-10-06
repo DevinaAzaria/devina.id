@@ -1,31 +1,15 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'AI Tidak Boleh Berlari Lebih Cepat daripada Kemampuan Manusia Mengendalikannya',
-  description: 'Esai tentang AI capability, governance capacity, dan governance debt: kemampuan AI tidak seharusnya melampaui kemampuan manusia untuk memahami, mengendalikan, mengaudit, dan mengamankannya.',
-  datePublished: '2026-09-26',
-  mainEntityOfPage: 'https://devina.id/journal/ai-governance-debt/',
-};
+import WritingLayout from '../../layouts/WritingLayout.astro';
 ---
 
-<BaseLayout
-  title="AI Tidak Boleh Berlari Lebih Cepat daripada Kemampuan Manusia Mengendalikannya — Devina Azaria"
+<WritingLayout
+  title="AI Tidak Boleh Berlari Lebih Cepat daripada Kemampuan Manusia Mengendalikannya"
   description="Esai tentang AI capability, governance capacity, dan governance debt: kemampuan AI tidak seharusnya melampaui kemampuan manusia untuk memahami, mengendalikan, mengaudit, dan mengamankannya."
-  ogType="article"
-  schema={schema}
+  published="2026-09-26"
+  section="Essays"
+  eyebrow="Essay · Technology & Society"
+  authorshipNote="Authorship & assistance: Esai ini dikembangkan dari tema pembelajaran Devina dengan editorial/technical assistance. Bantuan tersebut tidak diklaim sebagai karya mandiri Devina."
 >
-  <article class="shell essay">
-    <header class="essay-header">
-      <div class="eyebrow">Journal · Technology & Society · 26 Sep 2026</div>
-      <h1>AI Tidak Boleh Berlari Lebih Cepat daripada Kemampuan Manusia Mengendalikannya</h1>
-      <p class="lead">Tentang kecepatan, kendali, dan utang tata kelola di zaman kecerdasan buatan.</p>
-      <p class="authorship-note"><strong>Authorship & assistance:</strong> Esai ini dikembangkan dari tema pembelajaran Devina dengan editorial/technical assistance. Bantuan tersebut tidak diklaim sebagai karya mandiri Devina.</p>
-    </header>
-
-    <div class="essay-body">
       <p>Kemajuan teknologi hampir selalu diukur dari apa yang <strong>sudah dapat dilakukan</strong>.</p>
       <p>Komputer semakin cepat. Robot semakin presisi. Pesawat semakin canggih. Artificial Intelligence semakin pintar.</p>
       <p>Tetapi mungkin ada pertanyaan lain yang sama pentingnya:</p>
@@ -161,32 +145,7 @@ const schema = {
       </section>
 
       <div class="actions">
-        <a class="button secondary" href="/journal/">Back to Journal <span aria-hidden="true">←</span></a>
+        <a class="button secondary" href="/research-writing/#essays">Research &amp; Writing · Essays <span aria-hidden="true">←</span></a>
         <a class="button secondary" href="/journal/technology-literacy/">Technology Archive <span aria-hidden="true">→</span></a>
       </div>
-    </div>
-  </article>
-
-  <style>
-    .essay{max-width:900px;padding-top:5rem;padding-bottom:6rem}
-    .essay-header{max-width:860px;margin-bottom:3rem}
-    .essay-header h1{max-width:860px}
-    .authorship-note{margin-top:1rem;max-width:760px;color:var(--muted);font-size:.9rem;line-height:1.55}
-    .essay-body{max-width:760px;font-size:1.08rem;line-height:1.82}
-    .essay-body p{margin:0 0 1.25rem}
-    .essay-body h2{margin:3.5rem 0 1.2rem;font-size:clamp(1.6rem,3vw,2.2rem)}
-    .essay-body h3{margin:2.2rem 0 .8rem;font-size:1.25rem}
-    .essay-body blockquote{margin:2rem 0;padding:1.25rem 1.5rem;border-left:3px solid currentColor;background:rgba(255,255,255,.035)}
-    .essay-body blockquote p{margin:0}
-    .principle,.equation,.concept-note{margin:2rem 0;padding:1.4rem 1.5rem;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(255,255,255,.035)}
-    .principle{font-size:1.18rem}
-    .equation{text-align:center;font-size:1.2rem;line-height:1.7}
-    .concept-note{margin-top:4rem}
-    .concept-note h2{margin:.4rem 0 1rem}
-    .references{margin-top:3.5rem}
-    .references ul{padding-left:1.25rem}
-    .references li{margin:.7rem 0}
-    .references a{text-decoration:underline;text-underline-offset:3px}
-    .actions{margin-top:3.5rem;display:flex;gap:.8rem;flex-wrap:wrap}
-  </style>
-</BaseLayout>
+</WritingLayout>
