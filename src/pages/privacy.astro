@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://devina.id/privacy/#page',
+  url: 'https://devina.id/privacy/',
+  name: 'Privacy & Responsible Use — Devina Azaria',
+  isPartOf: { '@id': 'https://devina.id/#website' },
+};
+---
+
+<BaseLayout
+  title="Privacy & Responsible Use — Devina Azaria"
+  description="Privacy and responsible-use notice for devina.id, presented in Bahasa Indonesia and English."
+  schema={schema}
+>
+  <section class="shell page-intro section">
+    <div class="eyebrow">Privacy & Responsible Use</div>
+    <h1>Show the work. Protect the person.</h1>
+    <p class="lead">devina.id adalah portfolio publik seorang pelajar. Situs ini dibuat untuk membagikan karya, pembelajaran, pencapaian, dan perkembangan Devina dengan tetap membatasi informasi pribadi yang tidak perlu dipublikasikan.</p>
+  </section>
+
+  <section class="shell privacy-grid">
+    <article class="privacy-card" lang="id">
+      <div class="eyebrow">Bahasa Indonesia</div>
+      <h2>Privasi & Penggunaan Bertanggung Jawab</h2>
+
+      <h3>Tentang situs ini</h3>
+      <p>devina.id adalah portfolio pribadi Devina Azaria. Informasi yang ditampilkan dipilih untuk kepentingan dokumentasi pembelajaran, project, karya, pencapaian, dan aktivitas publik yang relevan.</p>
+
+      <h3>Data pribadi</h3>
+      <p>Situs ini berusaha meminimalkan data pribadi. Informasi administratif atau sensitif seperti alamat rumah, nomor telepon pribadi, nomor identitas siswa, dokumen identitas, tanda tangan, barcode/QR administratif, dan lokasi real-time tidak dimaksudkan untuk dipublikasikan.</p>
+
+      <h3>Cookies & analytics</h3>
+      <p>devina.id saat ini tidak menggunakan advertising cookies atau behavioral tracking. Infrastruktur hosting dapat memproses log teknis standar yang diperlukan untuk keamanan dan operasional situs. Jika teknologi analytics atau tracking tambahan digunakan di masa depan, pemberitahuan ini akan diperbarui.</p>
+
+      <h3>Penggunaan yang bertanggung jawab</h3>
+      <p>Informasi, foto, pencapaian, dan materi lain di situs ini disediakan untuk tujuan portfolio dan informasi. Mohon tidak menggunakan informasi dari situs ini untuk peniruan identitas, pelecehan, doxxing, penipuan, profiling tanpa izin, eksploitasi komersial tanpa izin, atau aktivitas lain yang dapat merugikan Devina maupun pihak lain.</p>
+
+      <h3>Berbagi & publikasi ulang</h3>
+      <p>Menautkan ke halaman publik diperbolehkan. Foto, informasi pribadi, atau bagian substansial dari situs tidak boleh dipublikasikan ulang, dimodifikasi, atau digunakan secara komersial tanpa izin, kecuali dinyatakan lain pada materi tersebut.</p>
+
+      <h3>Sumber eksternal</h3>
+      <p>Beberapa halaman mengarah ke sekolah, penyelenggara, media, GitHub, Instagram, atau sumber publik lain. Kebijakan privasi dan ketentuan masing-masing layanan berlaku ketika Anda membuka situs tersebut.</p>
+
+      <h3>Perubahan atau koreksi</h3>
+      <p>Jika terdapat informasi yang tidak akurat, terlalu sensitif, atau sebaiknya tidak lagi ditampilkan, portfolio dapat diperbarui atau materi dapat dihapus sesuai kebutuhan.</p>
+    </article>
+
+    <article class="privacy-card" lang="en">
+      <div class="eyebrow">English</div>
+      <h2>Privacy & Responsible Use</h2>
+
+      <h3>About this site</h3>
+      <p>devina.id is Devina Azaria’s personal portfolio. Information is published to document learning, projects, creative work, achievements, and relevant public activities.</p>
+
+      <h3>Personal information</h3>
+      <p>This site aims to minimize personal data. Administrative or sensitive information such as a home address, private phone number, student identification numbers, identity documents, signatures, administrative barcodes/QR codes, and real-time location is not intended to be published.</p>
+
+      <h3>Cookies & analytics</h3>
+      <p>devina.id currently does not use advertising cookies or behavioral tracking. Hosting infrastructure may process standard technical logs required for security and site operation. If additional analytics or tracking technologies are introduced in the future, this notice will be updated.</p>
+
+      <h3>Responsible use</h3>
+      <p>Information, photographs, achievements, and other materials on this website are provided for portfolio and informational purposes. Please do not use information from this website for impersonation, harassment, doxxing, fraud, unauthorized profiling, unauthorized commercial exploitation, or other activities that may harm Devina or other individuals.</p>
+
+      <h3>Sharing & republication</h3>
+      <p>Linking to public pages is welcome. Photographs, personal information, or substantial portions of this site should not be republished, modified, or used commercially without permission unless otherwise stated on the material itself.</p>
+
+      <h3>External sources</h3>
+      <p>Some pages link to schools, organizers, media, GitHub, Instagram, and other public sources. Their own privacy policies and terms apply when you visit those services.</p>
+
+      <h3>Corrections & changes</h3>
+      <p>If information is inaccurate, unnecessarily sensitive, or should no longer be public, the portfolio may be corrected, updated, or removed as appropriate.</p>
+    </article>
+  </section>
+
+  <section class="shell section privacy-note">
+    <div class="panel">
+      <div class="tag">Current site setting</div>
+      <div class="big">No cookie-consent popup is used because devina.id does not currently use non-essential advertising or behavioral-tracking cookies.</div>
+      <p class="muted">If that changes, the privacy notice and consent approach should be reviewed before the new technology is enabled.</p>
+    </div>
+  </section>
+
+  <style>
+    .privacy-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-bottom:clamp(80px,10vw,132px)}
+    .privacy-card{padding:30px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(20,38,61,.92),rgba(14,27,44,.92))}
+    .privacy-card h2{margin:8px 0 28px;font-size:clamp(2rem,3.5vw,3rem);letter-spacing:-.04em}
+    .privacy-card h3{margin:28px 0 7px;font-size:1.05rem}
+    .privacy-card p{color:var(--muted)}
+    .privacy-note{padding-top:0}
+    .privacy-note .big{font-size:clamp(1.25rem,2vw,1.75rem);line-height:1.35;font-weight:800}
+    .privacy-note .muted{margin-top:12px}
+    @media(max-width:860px){.privacy-grid{grid-template-columns:1fr}}
+  </style>
+</BaseLayout>
