@@ -87,17 +87,37 @@ jobs:
 
           node <<'NODE'
           const fs = require('fs');
-          const path = 'content/schedules/ai-thought-series.json';
-          const schedule = JSON.parse(fs.readFileSync(path, 'utf8'));
+          const schedulePath = 'content/schedules/ai-thought-series.json';
+          const manifestPath = 'content/publications/writing.json';
+          const schedule = JSON.parse(fs.readFileSync(schedulePath, 'utf8'));
           const item = schedule.find(x => x.date === process.env.TODAY);
           if (!item) throw new Error('Scheduled essay entry not found for publication date');
+
+          const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+          const href = `/journal/${item.slug}/`;
+          const existing = manifest.find(x => x.href === href || x.slug === item.slug);
+          if (!existing) {
+            manifest.push({
+              date: item.date,
+              displayDate: item.displayDate,
+              type: 'essay',
+              category: 'Essays',
+              title: item.title,
+              slug: item.slug,
+              description: item.description,
+              href,
+            });
+            manifest.sort((a, b) => a.date.localeCompare(b.date));
+            fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
+          }
+
           item.status = 'published';
-          fs.writeFileSync(path, JSON.stringify(schedule, null, 2) + '\n');
+          fs.writeFileSync(schedulePath, JSON.stringify(schedule, null, 2) + '\n');
           NODE
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$DEST" content/schedules/ai-thought-series.json
+          git add "$DEST" content/schedules/ai-thought-series.json content/publications/writing.json
           if git diff --cached --quiet; then
             echo "No repository changes required."
           else

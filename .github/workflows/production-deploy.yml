@@ -16,6 +16,7 @@ on:
       - 'package-lock.json'
       - 'scripts/**'
       - 'content/schedules/**'
+      - 'content/publications/**'
       - 'astro.config.mjs'
       - '.github/workflows/production-deploy.yml'
 
