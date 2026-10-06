@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import series from '../../../content/schedules/ai-thought-series.json';
+
+const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jakarta' }).format(new Date());
+const publishedEssays = series
+  .filter((essay) => essay.status === 'published' && essay.date <= today)
+  .reverse()
+  .map((essay) => ({
+    title: essay.title,
+    description: essay.description,
+    meta: `Essay · ${essay.displayDate}`,
+    href: `/journal/${essay.slug}/`,
+    cta: 'Read essay',
+  }));
+
+const categories = [
+  {
+    id: 'research-papers',
+    number: '01',
+    title: 'Research Papers',
+    description: 'Untuk karya dengan research question yang jelas, metode, evidence atau data, analisis, kesimpulan, dan referensi. Label ini tidak dipakai hanya karena sebuah tulisan terdengar akademik.',
+    entries: [],
+    emptyNote: 'Belum ada research paper yang dipublikasikan. Kategori ini akan diisi setelah sebuah penelitian benar-benar mencapai standar paper.',
+  },
+  {
+    id: 'technical-reports',
+    number: '02',
+    title: 'Technical Reports',
+    description: 'Dokumentasi teknis dari eksperimen atau engineering project: objective, setup, method, measurements, result, limitations, evidence, dan next step.',
+    entries: [],
+    emptyNote: 'Belum ada technical report yang dipublikasikan. Astronomy Lab dan Flight Dynamics Lab tetap menjadi project sampai laporan teknisnya siap.',
+  },
+  {
+    id: 'essays',
+    number: '03',
+    title: 'Essays',
+    description: 'Tulisan argumentatif atau reflektif yang mengembangkan sebuah gagasan, posisi, atau pertanyaan. Essay tidak diposisikan sebagai research paper kecuali memang memenuhi standar penelitian.',
+    entries: publishedEssays,
+    emptyNote: 'Belum ada essay yang dipublikasikan.',
+  },
+  {
+    id: 'articles-explainers',
+    number: '04',
+    title: 'Articles & Explainers',
+    description: 'Tulisan yang menjelaskan konsep, teknologi, atau materi kepada pembaca umum dengan struktur yang jelas dan bahasa yang dapat dipahami.',
+    entries: [
+      {
+        title: 'Manfaat Belajar Coding Sejak Dini',
+        description: 'Tulisan arsip tentang manfaat belajar coding dan teknologi sejak usia sekolah.',
+        meta: 'Historical article · 2022',
+        href: '/journal/2022/manfaat-belajar-coding-sejak-dini/',
+        cta: 'Read article',
+      },
+      {
+        title: 'Belajar Coding, Belajarnya di Mana Ya?',
+        description: 'Tulisan arsip yang membahas jalur awal untuk belajar coding.',
+        meta: 'Historical article · 2022',
+        href: '/journal/2022/belajar-coding-belajarnya-di-mana-ya/',
+        cta: 'Read article',
+      },
+    ],
+    emptyNote: 'Belum ada article atau explainer yang dipublikasikan.',
+  },
+  {
+    id: 'project-lab-field-notes',
+    number: '05',
+    title: 'Project, Lab & Field Notes',
+    description: 'Catatan proses dari project, eksperimen, observasi, atau kegiatan lapangan. Kategori ini menampung work-in-progress dan evidence tanpa memaksanya menjadi paper.',
+    entries: [
+      {
+        title: 'Belajar Jamu dari Titi Ratu',
+        description: 'Catatan lapangan tentang bahan jamu, prinsip racikan, dan proses belajar pengetahuan tradisional.',
+        meta: 'Field note · 27 Sep 2026',
+        href: '/journal/belajar-jamu-dari-titi-ratu/',
+        cta: 'Read field note',
+      },
+    ],
+    emptyNote: 'Belum ada project, lab, atau field note yang dipublikasikan.',
+  },
+  {
+    id: 'reflections',
+    number: '06',
+    title: 'Reflections',
+    description: 'Tulisan yang fokus pada apa yang berubah dalam pemahaman, kemampuan, keputusan, atau cara bekerja setelah sebuah project, performance, competition, atau pengalaman belajar.',
+    entries: [],
+    emptyNote: 'Belum ada reflection yang dipublikasikan sebagai karya tersendiri.',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Research & Writing — Devina Azaria',
+  url: 'https://devina.id/research-writing/',
+  description: 'Research papers, technical reports, essays, articles, project notes, and reflections from Devina Azaria’s portfolio.',
+  about: { '@id': 'https://devina.id/#person' },
+};
+---
+<BaseLayout
+  title="Research & Writing — Devina Azaria"
+  description="Research papers, technical reports, essays, articles and explainers, project and lab notes, field notes, and reflections from Devina Azaria's portfolio."
+  schema={schema}
+>
+  <section class="shell section page-intro">
+    <div class="eyebrow">Research & Writing</div>
+    <h1>Different kinds of writing deserve different standards.</h1>
+    <p class="lead">
+      Halaman ini mengelompokkan tulisan berdasarkan bentuk kerja yang benar-benar dilakukan. Research paper,
+      technical report, essay, explainer, note, dan reflection tidak dipakai sebagai label prestige; masing-masing
+      memiliki fungsi dan standar evidence yang berbeda.
+    </p>
+    <nav class="taxonomy-nav" aria-label="Research and writing categories">
+      {categories.map((category) => <a href={`#${category.id}`}>{category.title}</a>)}
+    </nav>
+  </section>
+
+  <section class="shell writing-index" aria-label="Research and writing taxonomy">
+    {categories.map((category) => (
+      <article id={category.id} class="writing-category">
+        <div class="category-heading">
+          <span class="category-number">{category.number}</span>
+          <div>
+            <div class="eyebrow">{category.title}</div>
+            <h2>{category.title}</h2>
+            <p>{category.description}</p>
+          </div>
+        </div>
+
+        {category.entries.length > 0 ? (
+          <div class="entry-grid">
+            {category.entries.map((entry) => (
+              <div class="card writing-card">
+                <div class="tag">{entry.meta}</div>
+                <h3>{entry.title}</h3>
+                <p class="muted">{entry.description}</p>
+                <a class="text-link" href={entry.href}>{entry.cta} →</a>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div class="empty-state">
+            <strong>Publication status</strong>
+            <p>{category.emptyNote}</p>
+          </div>
+        )}
+      </article>
+    ))}
+  </section>
+
+  <section id="archive" class="shell section archive-note">
+    <div class="eyebrow">Archive & Continuity</div>
+    <h2>Old URLs stay useful; the taxonomy becomes clearer.</h2>
+    <p class="lead">
+      Tulisan lama tetap dipertahankan di <code>/journal/</code> untuk menjaga arsip dan URL yang sudah ada.
+      Research & Writing menjadi pintu utama untuk menemukan karya berdasarkan jenisnya.
+    </p>
+    <div class="actions">
+      <a class="button secondary" href="/journal/">Open writing archive <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <style>
+    .taxonomy-nav{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+    .taxonomy-nav a{padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.86rem;font-weight:760;transition:border-color .2s ease,color .2s ease}
+    .taxonomy-nav a:hover,.taxonomy-nav a:focus-visible{border-color:var(--cyan);color:var(--text)}
+    .writing-index{padding-bottom:clamp(70px,9vw,120px)}
+    .writing-category{display:grid;grid-template-columns:minmax(260px,.78fr) minmax(0,1.22fr);gap:clamp(34px,7vw,90px);padding:62px 0;border-top:1px solid var(--line);scroll-margin-top:96px}
+    .category-heading{display:grid;grid-template-columns:42px 1fr;gap:16px;align-items:start}
+    .category-number{padding-top:3px;color:var(--gold);font-size:.76rem;font-weight:850;letter-spacing:.14em}
+    .category-heading h2{margin:8px 0 14px;font-size:clamp(2rem,4vw,3.4rem);line-height:1;letter-spacing:-.045em}
+    .category-heading p{color:var(--muted)}
+    .entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .writing-card{min-height:245px}
+    .writing-card h3{font-size:1.35rem}
+    .empty-state{align-self:start;padding:24px;border:1px dashed #34516e;border-radius:18px;background:rgba(255,255,255,.025)}
+    .empty-state strong{display:block;margin-bottom:7px;color:#dcecff}
+    .empty-state p{color:var(--muted)}
+    code{padding:.1em .35em;border:1px solid var(--line);border-radius:6px;background:rgba(255,255,255,.04)}
+    @media(max-width:860px){.writing-category{grid-template-columns:1fr}.entry-grid{grid-template-columns:1fr}}
+    @media(max-width:620px){.writing-category{padding:48px 0}.category-heading{grid-template-columns:1fr}.category-number{padding:0}.taxonomy-nav{gap:7px}.taxonomy-nav a{font-size:.78rem}}
+  </style>
+</BaseLayout>
