@@ -49,6 +49,19 @@ const schema = {
       <li><span>04</span><div><strong>Reflect</strong><p>Gunakan hasilnya untuk menentukan versi berikutnya, bukan sekadar menambah aktivitas baru.</p></div></li>
     </ol>
   </div></section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div><div class="eyebrow">Education</div><h2>Education journey.</h2></div>
+      <p>Beberapa lingkungan belajar yang ikut membentuk perjalanan saya sampai sekarang.</p>
+    </div>
+    <div class="education-list" aria-label="Education history">
+      <div>SMA Negeri 3 Yogyakarta</div>
+      <div>SMP Negeri 5 Yogyakarta</div>
+      <div>SD Mutiara Persada Yogyakarta International School</div>
+      <div>TK Mutiara Persada Yogyakarta</div>
+    </div>
+  </section>
   <section class="shell section">
     <div class="section-heading"><div><div class="eyebrow">Public Links</div><h2>Follow the evidence.</h2></div><p>Profil ini sengaja menghubungkan identitas publik dengan sumber kerja dan dokumentasi yang dapat diperiksa.</p></div>
     <div class="ecosystem-links">
@@ -59,4 +72,8 @@ const schema = {
       <a href="/journal/"><span>Journal</span><small>Selected historical learning notes</small><b>→</b></a>
     </div>
   </section>
+  <style>
+    .education-list{border-top:1px solid var(--line)}
+    .education-list div{padding:18px 0;border-bottom:1px solid var(--line);font-weight:700;font-size:clamp(1rem,1.5vw,1.2rem)}
+  </style>
 </BaseLayout>
