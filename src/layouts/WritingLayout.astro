@@ -1,0 +1,171 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const {
+  title,
+  description,
+  published,
+  modified = published,
+  section = 'Research & Writing',
+  eyebrow = section,
+  authorName = null,
+  authorUrl = '/about/',
+  authorshipNote = null,
+  image = null,
+  imageAlt = null,
+  imageWidth = null,
+  imageHeight = null,
+  structuredImages = image ? [image] : [],
+  lang = 'id',
+  locale = 'id_ID',
+} = Astro.props;
+
+if (image && !imageAlt) {
+  throw new Error(`WritingLayout requires imageAlt when image is provided: ${Astro.url.pathname}`);
+}
+
+const canonicalUrl = new URL(Astro.url.pathname, 'https://devina.id').href;
+const imageUrls = structuredImages
+  .filter(Boolean)
+  .map((item) => new URL(item, 'https://devina.id').href);
+
+const article = {
+  '@type': 'Article',
+  '@id': `${canonicalUrl}#article`,
+  headline: title,
+  description,
+  datePublished: published,
+  dateModified: modified,
+  mainEntityOfPage: canonicalUrl,
+  articleSection: section,
+  inLanguage: lang === 'id' ? 'id-ID' : lang,
+};
+if (imageUrls.length) article.image = imageUrls;
+if (authorName) {
+  article.author = {
+    '@type': 'Person',
+    name: authorName,
+    url: new URL(authorUrl, 'https://devina.id').href,
+  };
+}
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    article,
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://devina.id/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Research & Writing',
+          item: 'https://devina.id/research-writing/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: title,
+          item: canonicalUrl,
+        },
+      ],
+    },
+  ],
+};
+---
+<BaseLayout
+  title={`${title} — Devina Azaria`}
+  description={description}
+  ogType="article"
+  schema={schema}
+  ogImage={image}
+  ogImageAlt={imageAlt}
+  publishedTime={published}
+  modifiedTime={modified}
+  articleSection={section}
+  lang={lang}
+  locale={locale}
+>
+  <article class="shell writing-article" data-seo-writing="true">
+    <nav class="article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span>
+      <a href="/research-writing/">Research &amp; Writing</a><span aria-hidden="true">/</span>
+      <span aria-current="page">{section}</span>
+    </nav>
+
+    <header class="writing-header">
+      <div class="eyebrow">{eyebrow} · Published <time datetime={published}>{published}</time></div>
+      <h1>{title}</h1>
+      <p class="lead">{description}</p>
+      {modified && modified !== published && <p class="update-note">Updated <time datetime={modified}>{modified}</time></p>}
+      {authorName && <p class="byline">By <a href={authorUrl}>{authorName}</a></p>}
+      {authorshipNote && <p class="authorship-note">{authorshipNote}</p>}
+      <slot name="header-extra" />
+    </header>
+
+    {image && (
+      <figure class="hero-figure">
+        <img
+          src={image}
+          alt={imageAlt}
+          width={imageWidth}
+          height={imageHeight}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <slot name="image-caption" />
+      </figure>
+    )}
+
+    <div class="writing-body">
+      <slot />
+    </div>
+
+    <nav class="article-after" aria-label="Research and writing navigation">
+      <a class="button secondary" href="/research-writing/">Back to Research &amp; Writing <span aria-hidden="true">←</span></a>
+    </nav>
+  </article>
+
+  <style>
+    .writing-article{max-width:940px;padding-top:4rem;padding-bottom:6rem}
+    .article-breadcrumb{display:flex;gap:.55rem;align-items:center;flex-wrap:wrap;margin-bottom:2rem;color:var(--muted);font-size:.82rem}
+    .article-breadcrumb a{text-decoration:underline;text-underline-offset:3px}
+    .article-breadcrumb a:hover{color:var(--cyan)}
+    .writing-header{max-width:880px;margin-bottom:2.6rem}
+    .writing-header h1{max-width:880px;margin:14px 0 22px;font-size:clamp(2.6rem,6vw,5.2rem);line-height:.98;letter-spacing:-.055em}
+    .update-note,.byline{margin-top:.8rem;color:var(--muted);font-size:.92rem}
+    .byline a{text-decoration:underline;text-underline-offset:3px}
+    .authorship-note{margin-top:1rem;max-width:780px;color:var(--muted);font-size:.9rem;line-height:1.55}
+    .hero-figure{margin:0 0 3.2rem}
+    .hero-figure img{display:block;width:100%;height:auto;border-radius:20px;border:1px solid var(--line)}
+    .hero-figure :global(figcaption){margin-top:.75rem;color:var(--muted);font-size:.88rem}
+    .writing-body{max-width:760px;font-size:1.08rem;line-height:1.82}
+    .writing-body :global(p){margin:0 0 1.25rem}
+    .writing-body :global(h2){margin:3.5rem 0 1.2rem;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15}
+    .writing-body :global(h3){margin:2.2rem 0 .8rem;font-size:1.25rem}
+    .writing-body :global(ul),.writing-body :global(ol){padding-left:1.4rem}
+    .writing-body :global(li){margin:.55rem 0}
+    .writing-body :global(blockquote){margin:2rem 0;padding:1.25rem 1.5rem;border-left:3px solid currentColor;background:rgba(255,255,255,.035)}
+    .writing-body :global(blockquote p){margin:0}
+    .writing-body :global(a){text-decoration:underline;text-underline-offset:3px}
+    .writing-body :global(a:hover){color:var(--cyan)}
+    .writing-body :global(.principle),.writing-body :global(.equation),.writing-body :global(.concept-note){margin:2rem 0;padding:1.4rem 1.5rem;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(255,255,255,.035)}
+    .writing-body :global(.principle){font-size:1.18rem}
+    .writing-body :global(.equation){text-align:center;font-size:1.2rem;line-height:1.7}
+    .writing-body :global(.concept-note){margin-top:4rem}
+    .writing-body :global(.concept-note h2){margin:.4rem 0 1rem}
+    .writing-body :global(.references){margin-top:3.5rem}
+    .writing-body :global(.references ul){padding-left:1.25rem}
+    .writing-body :global(.references li){margin:.7rem 0}
+    .writing-body :global(.actions){margin-top:3.5rem;display:flex;gap:.8rem;flex-wrap:wrap}
+    .article-after{max-width:760px;margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--line)}
+    @media(max-width:620px){.writing-article{padding-top:3rem}.writing-header h1{font-size:clamp(2.45rem,13vw,4rem)}}
+  </style>
+</BaseLayout>
