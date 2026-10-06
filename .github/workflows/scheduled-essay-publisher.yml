@@ -11,6 +11,7 @@ on:
 permissions:
   contents: write
   issues: write
+  actions: write
 
 concurrency:
   group: devina-id-scheduled-essay
@@ -129,6 +130,16 @@ jobs:
           echo "published=true" >> "$GITHUB_OUTPUT"
           echo "title=$TITLE" >> "$GITHUB_OUTPUT"
           echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
+
+      - name: Trigger production deployment
+        if: steps.publish.outputs.published == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          # Pushes made with GITHUB_TOKEN do not normally trigger another workflow.
+          # workflow_dispatch is an explicit exception, so dispatch production here.
+          gh workflow run production-deploy.yml --repo "$GITHUB_REPOSITORY" --ref main
 
       - name: Wait for production route
         if: steps.publish.outputs.published == 'true'
