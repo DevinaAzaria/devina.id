@@ -6,13 +6,21 @@ const {
   description = 'Personal portfolio of Devina Azaria: science, engineering, music, culture, and leadership.',
   ogType = 'website',
   schema = null,
+  ogImage = null,
+  ogImageAlt = null,
+  publishedTime = null,
+  modifiedTime = null,
+  articleSection = null,
+  lang = 'id',
+  locale = 'id_ID',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, 'https://devina.id');
+const ogImageUrl = ogImage ? new URL(ogImage, 'https://devina.id').href : null;
 const schemaJson = schema ? JSON.stringify(schema) : null;
 ---
 <!doctype html>
-<html lang="id">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -27,10 +35,17 @@ const schemaJson = schema ? JSON.stringify(schema) : null;
   <meta property="og:title" content={title}/>
   <meta property="og:description" content={description}/>
   <meta property="og:url" content={canonical}/>
-  <meta property="og:locale" content="id_ID"/>
-  <meta name="twitter:card" content="summary"/>
+  <meta property="og:locale" content={locale}/>
+  {ogImageUrl && <meta property="og:image" content={ogImageUrl}/>}
+  {ogImageUrl && ogImageAlt && <meta property="og:image:alt" content={ogImageAlt}/>}
+  {ogType === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime}/>}
+  {ogType === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime}/>}
+  {ogType === 'article' && articleSection && <meta property="article:section" content={articleSection}/>}
+  <meta name="twitter:card" content={ogImageUrl ? 'summary_large_image' : 'summary'}/>
   <meta name="twitter:title" content={title}/>
   <meta name="twitter:description" content={description}/>
+  {ogImageUrl && <meta name="twitter:image" content={ogImageUrl}/>}
+  {ogImageUrl && ogImageAlt && <meta name="twitter:image:alt" content={ogImageAlt}/>} 
   <title>{title}</title>
   {schemaJson && <script type="application/ld+json" set:html={schemaJson}></script>}
 </head>
