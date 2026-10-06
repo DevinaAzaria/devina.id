@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import series from '../../../content/schedules/ai-thought-series.json';
+import writing from '../../../content/publications/writing.json';
 
-const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jakarta' }).format(new Date());
-const currentEssays = series.filter((essay) => essay.date <= today).reverse();
+const currentEssays = writing
+  .filter((item) => item.type === 'essay')
+  .sort((a, b) => b.date.localeCompare(a.date));
 
 const legacyNotes = [
   {
@@ -49,7 +50,7 @@ const legacyNotes = [
           <div>
             <h2>{essay.title}</h2>
             <p class="muted">{essay.description}</p>
-            <a class="text-link" href={`/journal/${essay.slug}/`}>Read current essay →</a>
+            <a class="text-link" href={essay.href}>Read current essay →</a>
           </div>
         </article>
       ))}
