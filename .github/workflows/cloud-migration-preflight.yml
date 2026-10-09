@@ -1,0 +1,117 @@
+name: Cloud Migration Preflight
+
+on:
+  push:
+    branches:
+      - cloud/vercel-migration-prep
+    paths:
+      - 'vercel.json'
+      - 'docs/cloud-migration-vercel.md'
+      - '.github/workflows/cloud-migration-preflight.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install audit tools
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq dnsutils lftp
+
+      - name: Snapshot public DNS
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p cloud-preflight
+          {
+            echo '# DNS snapshot'
+            date -u
+            for host in               devina.id               www.devina.id               archive.devina.id               music.devina.id               hq.devina.id               ols.devina.id               kersaa.devina.id               ploos.devina.id               ciyus.devina.id               pulse.devina.id
+            do
+              echo
+              echo "## $host"
+              for type in A AAAA CNAME; do
+                echo "-- $type"
+                dig +short "$host" "$type" || true
+              done
+            done
+            echo
+            echo '## apex NS'
+            dig +short devina.id NS || true
+            echo
+            echo '## apex MX'
+            dig +short devina.id MX || true
+            echo
+            echo '## apex TXT'
+            dig +short devina.id TXT || true
+          } | tee cloud-preflight/dns-snapshot.txt
+
+      - name: Snapshot live HTTP status
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            for url in               https://devina.id/               https://devina.id/about/               https://devina.id/achievements/               https://devina.id/research-writing/               https://devina.id/journal/               https://archive.devina.id/               https://music.devina.id/               https://hq.devina.id/
+            do
+              echo
+              echo "## $url"
+              curl --silent --show-error --location --max-time 30                 --output /dev/null                 --write-out 'final_url=%{url_effective}\nstatus=%{http_code}\nremote_ip=%{remote_ip}\n'                 "$url" || true
+            done
+          } | tee cloud-preflight/http-snapshot.txt
+
+      - name: Inventory apex-only hosting files
+        env:
+          FTP_SERVER: ${{ secrets.DEVINA_FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.DEVINA_FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.DEVINA_FTP_PASSWORD }}
+          FTP_PORT: ${{ vars.DEVINA_FTP_PORT || '21' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          server="${FTP_SERVER#ftp://}"
+          server="${server#ftps://}"
+          server="${server%/}"
+
+          {
+            echo '# Selected files preserved outside the Git build'
+            lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$server" <<'LFTP' || true
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          set ssl:verify-certificate true
+          set ftp:passive-mode true
+          set net:max-retries 2
+          set net:timeout 30
+          cls -1 /devina.id/public_html/
+          bye
+LFTP
+          } | grep -E '(^|/)(google[^/]*\.html|BingSiteAuth\.xml|ads\.txt)$'             | tee cloud-preflight/apex-preserved-files.txt || true
+
+          {
+            echo '# .well-known listing'
+            lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$server" <<'LFTP' || true
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          set ssl:verify-certificate true
+          set ftp:passive-mode true
+          set net:max-retries 2
+          set net:timeout 30
+          cls -1 /devina.id/public_html/.well-known/
+          bye
+LFTP
+          } | tee cloud-preflight/well-known-listing.txt
+
+      - name: Upload migration snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: cloud-migration-preflight
+          path: cloud-preflight/
+          retention-days: 30
