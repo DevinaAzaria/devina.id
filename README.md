@@ -1,73 +1,32 @@
-# devina.id
+# devina.id — tempat Devina belajar dan berbagi
 
-Personal academic, engineering, and creative portfolio of **Devina Azaria**.
+Hai! Ini repository untuk [devina.id](https://devina.id/), portfolio publik **Devina Azaria**.
 
-## Purpose
+Saya tertarik pada banyak hal: astronomi, fisika, bagaimana pesawat bisa terbang, musik, dan budaya Jawa. Website ini bukan daftar hal yang sudah saya kuasai. Ini tempat untuk menyimpan pertanyaan, percobaan, karya, kegagalan kecil, dan perkembangan dari waktu ke waktu.
 
-`devina.id` is the canonical public portfolio for Devina Azaria.
+## Yang bisa kamu temukan
 
-The main narrative is:
+- **Astronomy & Flight Dynamics Labs:** model dan percobaan sederhana untuk memahami konsep ilmiah. Lihat juga asumsi, keterbatasan, dan catatan yang masih perlu dikembangkan.
+- **Music & Culture:** pengalaman latihan, tampil, dan belajar dari orang lain.
+- **Achievements:** beberapa momen yang berarti, beserta sumber publik ketika tersedia.
+- **Journal & Writing:** catatan belajar, ide, dan tulisan lama yang diberi konteks; rencana lama bukan bukti kemampuan yang sudah dikuasai.
 
-**Science → Engineering → Aerospace**
+## Bagaimana portfolio ini dibuat
 
-Academic work, engineering projects, research, achievements, leadership, music, and culture are presented as evidence of learning and growth.
+Untuk setiap project, saya ingin menjawab: Apa pertanyaannya? Bagian mana yang saya kerjakan? Bagaimana prosesnya? Apa hasilnya? Bantuan siapa yang terlibat? Apa yang akan saya coba berikutnya?
 
-## Current Focus
+Repository ini dapat menerima bantuan teknis, editorial, dan mentoring. **Bantuan tersebut tidak otomatis menjadi karya mandiri Devina**; kontribusi pribadi dan kolaborasi perlu dijelaskan dengan jujur.
 
-- science and engineering foundations
-- astronomy and Olympiad learning
-- aerospace-oriented exploration
-- documenting projects with evidence and reflection
-- developing a consistent public portfolio through `devina.id`
+Project institusional atau operasional KERSAA/DevinaHQ bukan otomatis project pribadi Devina. Data pelanggan dan informasi internal tidak termasuk bahan portfolio publik.
 
-## Selected Work
+## Teknologi website
 
-### devina.id
+Website ini menggunakan **Astro** dan build statis, dengan source terbuka agar struktur dan perubahannya dapat dipelajari. Detail akses produksi, kredensial, dan data pribadi tidak disimpan di sini.
 
-The personal portfolio itself is an active project: content migration, responsive UI, structured journal entries, project documentation, and preservation of earlier learning evidence.
-
-### Devina Olympiad Learning System
-
-A DevinaHQ learning-system project used to structure long-term Olympiad preparation, beginning with Astronomy and supporting mathematics and physics foundations.
-
-### DevinaHQ Contributions
-
-Devina may contribute to projects inside the `DevinaHQ` organization when the contribution reflects work she can understand, explain, and defend as part of her learning process.
-
-## Portfolio Principles
-
-Project documentation follows:
-
-**Problem → Process → Tools → Result → Evidence → Reflection**
-
-The website is not a DevinaHQ product. DevinaHQ may appear as an ecosystem or project context, while `devina.id` remains a personal portfolio.
-
-Contributions are curated for authenticity. The goal is not to maximize commit counts, but to preserve a traceable record of work, learning, decisions, and results that Devina can personally explain.
-
-## Contribution Model
-
-- `DevinaAzaria/*` — personal work and portfolio projects
-- `DevinaHQ/*` — organization projects and collaborative work
-- Pull requests are preferred for meaningful organization contributions when practical
-- Project evidence should link back to `devina.id` when it strengthens the academic or engineering narrative
-
-See [`PORTFOLIO-GOVERNANCE.md`](./PORTFOLIO-GOVERNANCE.md) for the contribution and curation baseline.
-
-## Technology
-
-- Astro
-- Static build
-- GitHub Actions
-- Deployment endpoint: `https://devina.id`
-
-## Build Artifact
-
-GitHub Actions publishes:
-
-`devina.id-build`
-
-for deployment to the production web root.
+Lihat [panduan keamanan](./SECURITY.md) dan [tata kelola portfolio](./PORTFOLIO-GOVERNANCE.md).
 
 ## Status
 
-**Portfolio v1 — Foundation**
+**Portfolio yang terus berkembang.** Lebih baik beberapa project yang benar-benar dipahami dan dikembangkan daripada banyak project yang hanya terlihat selesai.
+
+Terima kasih sudah mampir. Semoga ada satu ide kecil yang membuat kamu ingin mencoba sesuatu juga!
