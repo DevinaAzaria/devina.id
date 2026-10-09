@@ -1,9 +1,9 @@
 name: Cloud Migration Preflight
 
 on:
-  push:
+  pull_request:
     branches:
-      - cloud/vercel-migration-prep
+      - main
     paths:
       - 'vercel.json'
       - 'docs/cloud-migration-vercel.md'
@@ -17,15 +17,14 @@ jobs:
   audit:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    environment: production
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           persist-credentials: false
 
-      - name: Install audit tools
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq dnsutils lftp
+      - name: Install DNS tools
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq dnsutils
 
       - name: Snapshot public DNS
         shell: bash
@@ -66,22 +65,20 @@ jobs:
             done
           } | tee cloud-preflight/http-snapshot.txt
 
-      - name: Inventory apex-only hosting files
-        env:
-          FTP_SERVER: ${{ secrets.DEVINA_FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.DEVINA_FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.DEVINA_FTP_PASSWORD }}
-          FTP_PORT: ${{ vars.DEVINA_FTP_PORT || '21' }}
+      - name: Check known apex verification surfaces
         shell: bash
         run: |
           set -euo pipefail
-          server="${FTP_SERVER#ftp://}"
-          server="${server#ftps://}"
-          server="${server%/}"
+          {
+            for path in /BingSiteAuth.xml /ads.txt /.well-known/; do
+              echo
+              echo "## $path"
+              curl --silent --show-error --location --max-time 20 --output /dev/null --write-out 'status=%{http_code}\nfinal_url=%{url_effective}\n' "https://devina.id$path" || true
+            done
+          } | tee cloud-preflight/verification-snapshot.txt
 
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$server" -e "set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate true; set ftp:passive-mode true; set net:max-retries 2; set net:timeout 30; cls -1 /devina.id/public_html/; bye"             | grep -E '(^|/)(google[^/]*\.html|BingSiteAuth\.xml|ads\.txt)$'             | tee cloud-preflight/apex-preserved-files.txt || true
-
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$server" -e "set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate true; set ftp:passive-mode true; set net:max-retries 2; set net:timeout 30; cls -1 /devina.id/public_html/.well-known/; bye"             | tee cloud-preflight/well-known-listing.txt || true
+      - name: Validate Vercel config is parseable
+        run: node -e "JSON.parse(require('fs').readFileSync('vercel.json','utf8')); console.log('vercel.json parses successfully')"
 
       - name: Upload migration snapshot
         uses: actions/upload-artifact@v4
