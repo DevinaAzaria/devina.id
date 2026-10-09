@@ -37,6 +37,7 @@ jobs:
       - name: Verify build output
         run: |
           test -f dist/index.html
+          test -f dist/404.html
           test -f dist/about/index.html
           test -f dist/achievements/index.html
           test -f dist/research-writing/index.html
