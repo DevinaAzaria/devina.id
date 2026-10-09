@@ -8,5 +8,15 @@
     "slug": "ai-governance-debt",
     "description": "Tentang AI capability, governance capacity, human control, auditability, security, dan gagasan Governance Debt.",
     "href": "/journal/ai-governance-debt/"
+  },
+  {
+    "date": "2026-10-09",
+    "displayDate": "9 Oct 2026",
+    "type": "article",
+    "category": "Articles & Explainers",
+    "title": "Akun Penting untuk Programmer: Mana yang Wajib dan Mana yang Opsional?",
+    "slug": "akun-penting-programmer",
+    "description": "Panduan pemula untuk memilih akun programmer: GitHub, deployment, cloud, Docker, package registry, komunitas profesional, dan AI coding assistant berdasarkan kebutuhan.",
+    "href": "/research-writing/articles-explainers/akun-penting-programmer/"
   }
 ]

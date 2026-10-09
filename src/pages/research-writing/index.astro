@@ -13,6 +13,17 @@ const publishedEssays = writing
     cta: 'Read essay',
   }));
 
+const publishedArticles = writing
+  .filter((item) => item.type === 'article')
+  .sort((a, b) => b.date.localeCompare(a.date))
+  .map((article) => ({
+    title: article.title,
+    description: article.description,
+    meta: `Article · ${article.displayDate}`,
+    href: article.href,
+    cta: 'Read article',
+  }));
+
 const categories = [
   {
     id: 'research-papers',
@@ -44,6 +55,7 @@ const categories = [
     title: 'Articles & Explainers',
     description: 'Tulisan yang menjelaskan konsep, teknologi, atau materi kepada pembaca umum dengan struktur yang jelas dan bahasa yang dapat dipahami.',
     entries: [
+      ...publishedArticles,
       {
         title: 'Manfaat Belajar Coding Sejak Dini',
         description: 'Tulisan arsip tentang manfaat belajar coding dan teknologi sejak usia sekolah.',
@@ -58,7 +70,7 @@ const categories = [
         href: '/journal/2022/belajar-coding-belajarnya-di-mana-ya/',
         cta: 'Read article',
       },
-    ],
+    ].slice(0, 3),
     emptyNote: 'Belum ada article atau explainer yang dipublikasikan.',
   },
   {
