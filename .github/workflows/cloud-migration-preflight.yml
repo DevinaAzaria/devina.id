@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'vercel.json'
-      - 'docs/cloud-migration-vercel.md'
+      - 'public/_worker.js'
+      - 'docs/cloud-migration-cloudflare-pages.md'
       - '.github/workflows/cloud-migration-preflight.yml'
   workflow_dispatch:
 
@@ -77,8 +77,15 @@ jobs:
             done
           } | tee cloud-preflight/verification-snapshot.txt
 
-      - name: Validate Vercel config is parseable
-        run: node -e "JSON.parse(require('fs').readFileSync('vercel.json','utf8')); console.log('vercel.json parses successfully')"
+      - name: Preserve currently public verification files
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location --max-time 20 https://devina.id/BingSiteAuth.xml -o cloud-preflight/BingSiteAuth.xml
+          curl --fail --silent --show-error --location --max-time 20 https://devina.id/ads.txt -o cloud-preflight/ads.txt
+
+      - name: Validate Cloudflare Pages worker syntax
+        run: node --check public/_worker.js
 
       - name: Upload migration snapshot
         uses: actions/upload-artifact@v4
