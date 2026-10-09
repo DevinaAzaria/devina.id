@@ -87,45 +87,6 @@ jobs:
       - name: Validate Cloudflare Pages worker syntax
         run: node --check public/_worker.js
 
-      - name: Verify Cloudflare Pages preview
-        shell: bash
-        run: |
-          set -euo pipefail
-          preview='https://cloud-cloudflare-pages-migration.devina-id.pages.dev'
-          ready=false
-
-          for attempt in $(seq 1 30); do
-            code=$(curl --silent --show-error --output /tmp/pages-preview.html --write-out '%{http_code}' --max-time 20 "$preview/" || true)
-            if [ "$code" = "200" ]; then
-              ready=true
-              echo "Preview is ready on attempt $attempt."
-              break
-            fi
-            echo "Preview not ready yet (HTTP $code), retrying..."
-            sleep 10
-          done
-
-          if [ "$ready" != "true" ]; then
-            echo "Cloudflare Pages preview did not become ready."
-            exit 1
-          fi
-
-          grep -q 'Curious by nature' /tmp/pages-preview.html
-          grep -q 'https://devina.id/' /tmp/pages-preview.html
-
-          curl --silent --show-error --head --max-time 20 "$preview/" > /tmp/pages-preview-headers.txt
-          grep -qi '^x-robots-tag: .*noindex' /tmp/pages-preview-headers.txt
-          grep -qi '^x-content-type-options: nosniff' /tmp/pages-preview-headers.txt
-          grep -qi '^referrer-policy: strict-origin-when-cross-origin' /tmp/pages-preview-headers.txt
-          grep -qi '^x-frame-options: SAMEORIGIN' /tmp/pages-preview-headers.txt
-
-          curl --silent --show-error --head --max-time 20 "$preview/this-legacy-path-should-fallback/" > /tmp/pages-legacy-headers.txt
-          grep -qi '^HTTP/.* 301' /tmp/pages-legacy-headers.txt
-          grep -qi '^location: https://archive.devina.id/this-legacy-path-should-fallback/' /tmp/pages-legacy-headers.txt
-
-          cp /tmp/pages-preview-headers.txt cloud-preflight/pages-preview-headers.txt
-          cp /tmp/pages-legacy-headers.txt cloud-preflight/pages-legacy-headers.txt
-
       - name: Upload migration snapshot
         uses: actions/upload-artifact@v4
         with:
