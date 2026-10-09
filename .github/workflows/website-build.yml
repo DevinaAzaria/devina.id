@@ -44,6 +44,8 @@ jobs:
           test -f dist/sitemap.xml
           test -f dist/favicon.svg
           test -f dist/favicon.png
+          test -f dist/_worker.js
+          node --check dist/_worker.js
           test -d dist/journal
           grep -q 'https://devina.id/research-writing/' dist/sitemap.xml
           grep -q 'https://devina.id/journal/ai-governance-debt/' dist/sitemap.xml
