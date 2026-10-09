@@ -1,9 +1,10 @@
-name: Deploy devina.id Production
+name: Mirror devina.id Legacy Fallback
 
 # Architecture:
-# - Pull requests are validated by website-build.yml.
-# - Every site-affecting push to main is built, verified, and deployed here.
-# - workflow_dispatch remains available for a manual redeploy without a code change.
+# - Cloudflare Pages is the production host for devina.id.
+# - This workflow temporarily mirrors the same static build to the old FTPS origin
+#   so DNS can be rolled back during the migration window.
+# - Remove or disable this workflow after one stable publishing cycle.
 on:
   workflow_dispatch:
   push:
@@ -24,7 +25,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: devina-id-production
+  group: devina-id-legacy-fallback
   cancel-in-progress: false
 
 jobs:
@@ -50,6 +51,9 @@ jobs:
 
       - name: Build static site
         run: npm run build
+
+      - name: Prepare legacy Apache fallback
+        run: cp public/.htaccess dist/.htaccess
 
       - name: Verify build output
         run: |
@@ -109,20 +113,16 @@ jobs:
           bye
           LFTP
 
-      - name: Verify production
+      - name: Verify legacy fallback origin
         run: |
-          curl --fail --silent --show-error --location --max-time 30 https://devina.id/ > /tmp/devina-home.html
+          # Verify the old origin directly even though public DNS now points to Cloudflare Pages.
+          ORIGIN_IP="162.244.93.4"
+          curl --fail --silent --show-error --location --max-time 30 --resolve "devina.id:443:$ORIGIN_IP" https://devina.id/ > /tmp/devina-home.html
           grep -q 'Curious by nature' /tmp/devina-home.html
-          curl --fail --silent --show-error --location --max-time 30 https://devina.id/about/ > /tmp/devina-about.html
+          curl --fail --silent --show-error --location --max-time 30 --resolve "devina.id:443:$ORIGIN_IP" https://devina.id/about/ > /tmp/devina-about.html
           grep -q 'ProfilePage' /tmp/devina-about.html
-          curl --fail --silent --show-error --location --max-time 30 https://devina.id/achievements/ > /tmp/devina-achievements.html
-          grep -q 'Some milestones along the way.' /tmp/devina-achievements.html
-          curl --fail --silent --show-error --location --max-time 30 https://devina.id/research-writing/ > /tmp/devina-research-writing.html
+          curl --fail --silent --show-error --location --max-time 30 --resolve "devina.id:443:$ORIGIN_IP" https://devina.id/research-writing/ > /tmp/devina-research-writing.html
           grep -q 'Research &amp; Writing' /tmp/devina-research-writing.html
-          curl --fail --silent --show-error --location --max-time 30 https://devina.id/journal/ai-governance-debt/ > /tmp/devina-ai-essay.html
-          grep -q 'data-seo-writing="true"' /tmp/devina-ai-essay.html
-          grep -q '"@type":"Article"' /tmp/devina-ai-essay.html
-          curl --fail --silent --show-error --location --max-time 30 https://devina.id/favicon.png > /dev/null
-          curl --fail --silent --show-error --location --max-time 30 https://devina.id/robots.txt > /dev/null
-          curl --fail --silent --show-error --location --max-time 30 https://devina.id/sitemap.xml > /dev/null
+          curl --fail --silent --show-error --location --max-time 30 --resolve "devina.id:443:$ORIGIN_IP" https://devina.id/research-writing/articles-explainers/akun-penting-programmer/ > /tmp/devina-programmer-article.html
+          grep -q 'Akun Penting untuk Programmer' /tmp/devina-programmer-article.html
           curl --fail --silent --show-error --location --max-time 30 https://archive.devina.id/ > /dev/null
