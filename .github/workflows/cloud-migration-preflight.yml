@@ -35,8 +35,7 @@ jobs:
           {
             echo '# DNS snapshot'
             date -u
-            for host in               devina.id               www.devina.id               archive.devina.id               music.devina.id               hq.devina.id               ols.devina.id               kersaa.devina.id               ploos.devina.id               ciyus.devina.id               pulse.devina.id
-            do
+            for host in devina.id www.devina.id archive.devina.id music.devina.id hq.devina.id ols.devina.id kersaa.devina.id ploos.devina.id ciyus.devina.id pulse.devina.id; do
               echo
               echo "## $host"
               for type in A AAAA CNAME; do
@@ -60,11 +59,10 @@ jobs:
         run: |
           set -euo pipefail
           {
-            for url in               https://devina.id/               https://devina.id/about/               https://devina.id/achievements/               https://devina.id/research-writing/               https://devina.id/journal/               https://archive.devina.id/               https://music.devina.id/               https://hq.devina.id/
-            do
+            for url in https://devina.id/ https://devina.id/about/ https://devina.id/achievements/ https://devina.id/research-writing/ https://devina.id/journal/ https://archive.devina.id/ https://music.devina.id/ https://hq.devina.id/; do
               echo
               echo "## $url"
-              curl --silent --show-error --location --max-time 30                 --output /dev/null                 --write-out 'final_url=%{url_effective}\nstatus=%{http_code}\nremote_ip=%{remote_ip}\n'                 "$url" || true
+              curl --silent --show-error --location --max-time 30 --output /dev/null --write-out 'final_url=%{url_effective}\nstatus=%{http_code}\nremote_ip=%{remote_ip}\n' "$url" || true
             done
           } | tee cloud-preflight/http-snapshot.txt
 
@@ -81,33 +79,9 @@ jobs:
           server="${server#ftps://}"
           server="${server%/}"
 
-          {
-            echo '# Selected files preserved outside the Git build'
-            lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$server" <<'LFTP' || true
-          set ftp:ssl-force true
-          set ftp:ssl-protect-data true
-          set ssl:verify-certificate true
-          set ftp:passive-mode true
-          set net:max-retries 2
-          set net:timeout 30
-          cls -1 /devina.id/public_html/
-          bye
-LFTP
-          } | grep -E '(^|/)(google[^/]*\.html|BingSiteAuth\.xml|ads\.txt)$'             | tee cloud-preflight/apex-preserved-files.txt || true
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$server" -e "set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate true; set ftp:passive-mode true; set net:max-retries 2; set net:timeout 30; cls -1 /devina.id/public_html/; bye"             | grep -E '(^|/)(google[^/]*\.html|BingSiteAuth\.xml|ads\.txt)$'             | tee cloud-preflight/apex-preserved-files.txt || true
 
-          {
-            echo '# .well-known listing'
-            lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$server" <<'LFTP' || true
-          set ftp:ssl-force true
-          set ftp:ssl-protect-data true
-          set ssl:verify-certificate true
-          set ftp:passive-mode true
-          set net:max-retries 2
-          set net:timeout 30
-          cls -1 /devina.id/public_html/.well-known/
-          bye
-LFTP
-          } | tee cloud-preflight/well-known-listing.txt
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$server" -e "set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate true; set ftp:passive-mode true; set net:max-retries 2; set net:timeout 30; cls -1 /devina.id/public_html/.well-known/; bye"             | tee cloud-preflight/well-known-listing.txt || true
 
       - name: Upload migration snapshot
         uses: actions/upload-artifact@v4
