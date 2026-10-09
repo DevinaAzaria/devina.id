@@ -73,7 +73,7 @@ jobs:
           grep -q 'data-seo-writing="true"' dist/journal/ai-governance-debt/index.html
           grep -q '"@type":"Article"' dist/journal/ai-governance-debt/index.html
           grep -q '"@type":"BreadcrumbList"' dist/journal/ai-governance-debt/index.html
-          grep -q 'Curious by nature' dist/index.html
+          grep -q 'id="hero-title"' dist/index.html
           grep -q 'application/ld+json' dist/index.html
           grep -q 'ProfilePage' dist/about/index.html
           grep -q 'Some milestones along the way.' dist/achievements/index.html
@@ -118,7 +118,7 @@ jobs:
           # Verify the old origin directly even though public DNS now points to Cloudflare Pages.
           ORIGIN_IP="162.244.93.4"
           curl --fail --silent --show-error --location --max-time 30 --resolve "devina.id:443:$ORIGIN_IP" https://devina.id/ > /tmp/devina-home.html
-          grep -q 'Curious by nature' /tmp/devina-home.html
+          grep -q 'id="hero-title"' /tmp/devina-home.html
           curl --fail --silent --show-error --location --max-time 30 --resolve "devina.id:443:$ORIGIN_IP" https://devina.id/about/ > /tmp/devina-about.html
           grep -q 'ProfilePage' /tmp/devina-about.html
           curl --fail --silent --show-error --location --max-time 30 --resolve "devina.id:443:$ORIGIN_IP" https://devina.id/research-writing/ > /tmp/devina-research-writing.html
