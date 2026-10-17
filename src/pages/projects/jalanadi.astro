@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const team = [
+  'Devina Azaria',
+  'Ghaitsaa Aishwarya Salim Alhaee',
+  'Quinnsha Luvina Sheeva Yannendro',
+];
+const modules = [
+  ['Care', 'Pencatatan pasien dan kunjungan fiktif pada perangkat lokal.'],
+  ['Stock', 'Inventaris obat, mutasi, dan peringatan stok rendah dalam simulasi.'],
+  ['Sync', 'Review sebelum ekspor, paket JSON manual, pratinjau impor, validasi, serta penanganan konflik terbatas.'],
+  ['Puskesmas Hub', 'Ringkasan agregat berdasarkan data simulasi yang tersedia.'],
+];
+const gaps = [
+  ['SQLite terenkripsi dan cadangan data', 'Browser localStorage, belum ada penyimpanan terenkripsi untuk produksi'],
+  ['Sinkronisasi aman secara otomatis saat tersambung', 'Ekspor/impor JSON secara manual, tanpa enkripsi produksi atau auto-sync'],
+  ['Bukti penerimaan terautentikasi dua arah', 'Log penerimaan lokal; bukan bukti kembali ke pengirim'],
+  ['Pilot enam bulan dengan fasilitas kesehatan', 'Belum ada bukti pilot atau penggunaan pasien nyata'],
+];
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  '@id': 'https://devina.id/projects/jalanadi/#project',
+  name: 'JALANADI — Collaborative Offline-First Digital Health Project',
+  url: 'https://devina.id/projects/jalanadi/',
+  description: 'A three-student Ideathon concept and synthetic-data offline-first prototype, not a clinical deployment.',
+  creator: team.map(name => ({ '@type': 'Person', name })),
+  about: ['offline-first software', 'digital health', 'social innovation'],
+};
+---
+
+<BaseLayout title="JALANADI — Collaborative Project | Devina Azaria" description="JALANADI adalah proyek kolaboratif tiga siswa untuk JOINTS Ideathon 2026: konsep layanan kesehatan offline-first dan MVP berbasis data simulasi." schema={schema}>
+  <section class="shell section project-hero">
+    <div class="eyebrow">Projects / Technology &amp; Social Impact</div>
+    <h1>JALANADI</h1>
+    <p class="project-subtitle">Menjaga Layanan, Menghubungkan Kehidupan</p>
+    <p class="lead">JALANADI adalah konsep sistem pencatatan layanan kesehatan dan logistik obat untuk wilayah 3T. Dirancang sebagai proyek kolaboratif tiga siswa SMA Negeri 3 Yogyakarta untuk konteks JOINTS Ideathon 2026, disertai MVP berbasis browser dan data sintetis.</p>
+    <div class="chips"><span>Team project</span><span>Software engineering</span><span>Digital health</span><span>Social innovation</span><span>Simulation MVP</span></div>
+  </section>
+  <section class="shell section project-block">
+    <div class="eyebrow">01 / Team &amp; role</div>
+    <h2>Tim Harapan Ortu</h2>
+    <div class="panel">
+      <ul>{team.map(name => <li>{name}</li>)}</ul>
+      <p><strong>Devina's role:</strong> anggota tim. Pembagian tanggung jawab individual di bidang riset, desain, kode, proposal, dan presentasi masih menunggu konfirmasi ketiga anggota. Kepemilikan repo di akun Devina tidak berarti seluruh pekerjaan dilakukan sendiri oleh Devina.</p>
+    </div>
+  </section>
+  <section class="shell section project-block">
+    <div class="eyebrow">02 / Objective &amp; process</div>
+    <h2>Mencatat lebih dulu, bertukar data kemudian.</h2>
+    <div class="two-col">
+      <div class="panel"><h3>Objective</h3><p>Mengeksplorasi kesinambungan informasi saat koneksi internet terbatas. Dalam rancangan tim, catatan layanan, ringkasan rujukan, dan stok obat dapat disimpan pada perangkat Pustu lalu dipertukarkan saat koneksi atau perjalanan rutin memungkinkan.</p></div>
+      <div class="panel"><h3>Process</h3><p>Tim menyusun proposal dan pitch deck. Repository mendokumentasikan pengembangan MVP v0.1–v0.5 pada 15–16 Oktober 2026 beserta panduan, changelog, dan automated smoke tests. Wawancara pengguna dan pilot lapangan merupakan rencana, belum hasil.</p></div>
+    </div>
+  </section>
+  <section class="shell section project-block">
+    <div class="eyebrow">03 / Output</div>
+    <h2>Prototipe yang tersedia</h2>
+    <div class="two-col">{modules.map(([name,description]) => <article class="panel"><h3>JALANADI {name}</h3><p>{description}</p></article>)}</div>
+    <p class="footnote">Pengujian otomatis di repository menguji sebagian alur review-first, dependensi, duplikasi, konflik, dan kegagalan penyimpanan. Ini bukan validasi klinis atau sertifikasi keamanan.</p>
+  </section>
+  <section class="shell section project-block">
+    <div class="eyebrow">04 / Evidence &amp; limitation</div>
+    <h2>Proposal tidak sama dengan MVP</h2>
+    <div class="table-wrap"><table><thead><tr><th>Target dalam proposal</th><th>Status implementasi yang terdokumentasi</th></tr></thead><tbody>{gaps.map(([proposed,present]) => <tr><td>{proposed}</td><td>{present}</td></tr>)}</tbody></table></div>
+    <p class="footnote">Rujukan internal tim: proposal revisi JOINTS 2026; repository privat DevinaAzaria/JALANADI (README, changelog, tests). Bahan privat tidak dipublikasikan di sini tanpa persetujuan bersama. Data pasien nyata tidak digunakan dan tidak boleh dimasukkan ke MVP.</p>
+  </section>
+  <section class="shell section project-block">
+    <div class="eyebrow">05 / Measurable impact</div>
+    <h2>Target evaluasi, bukan pencapaian</h2>
+    <div class="stats">
+      <div><strong>95%</strong><span>target kelengkapan data</span></div><div><strong>≥30%</strong><span>target pengurangan waktu pelaporan</span></div><div><strong>1.000</strong><span>target transaksi sintetis</span></div><div><strong>≥80%</strong><span>target penyelesaian tugas pelatihan</span></div>
+    </div>
+    <p class="footnote">Belum ada evidence manfaat lapangan yang terukur. Semua angka di atas adalah target dalam proposal, bukan hasil pengujian atau dampak yang telah dicapai.</p>
+  </section>
+  <section class="shell section project-block">
+    <div class="eyebrow">06 / Reflection, assistance &amp; next step</div>
+    <h2>Teruskan dengan bukti yang bisa diperiksa.</h2>
+    <div class="two-col">
+      <div class="panel"><h3>Reflection</h3><p>Refleksi pribadi Devina akan ditambahkan setelah ditulis dan dikonfirmasi oleh Devina sendiri, dengan satu keputusan teknis yang bisa dijelaskan, satu keterbatasan, dan satu pelajaran yang diperoleh.</p></div>
+      <div class="panel"><h3>Next step</h3><p>Tim perlu menyetujui matriks kontribusi, memperbaiki pitch deck, memperluas pengujian sintetis terukur, dan meninjau keamanan serta persetujuan mitra sebelum mempertimbangkan pilot.</p></div>
+    </div>
+    <div class="panel disclosure"><h3>Credits &amp; AI assistance</h3><p>Ini adalah karya kolaboratif tiga siswa, bukan proyek mandiri Devina. Proposal tim mengungkap penggunaan Gemini, ChatGPT, dan Claude untuk bantuan ide, tata letak antarmuka, bahasa, dan penelaahan. Penyusunan halaman ini juga dibantu AI secara editorial/teknis dan memerlukan pemeriksaan tim sebelum dipublikasikan. Bantuan AI, orang tua, atau mentor tidak disajikan sebagai karya pribadi siswa.</p></div>
+    <div class="actions"><a class="button secondary" href="/#projects">← Back to selected work</a></div>
+  </section>
+  <style>
+    .project-hero{padding-bottom:58px}.project-hero h1{font-size:clamp(4rem,10vw,8rem);line-height:1;letter-spacing:-.075em;margin:18px 0 6px}.project-subtitle{font-size:clamp(1.4rem,3vw,2.5rem);font-weight:700;margin-bottom:24px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}.chips span{border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--muted);font-size:.78rem}.project-block{border-top:1px solid var(--line);padding-block:45px}.project-block h2{font-size:clamp(2.1rem,4vw,3.5rem);margin:10px 0 27px;letter-spacing:-.05em;line-height:1.06}.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.panel{border:1px solid var(--line);background:var(--surface);border-radius:20px;padding:24px;line-height:1.75}.panel h3{margin:0 0 10px;font-size:1.23rem}.panel p+p{margin-top:15px}.panel ul{margin:0 0 20px;padding-left:22px}.panel li{margin-bottom:8px}.footnote{margin-top:20px;color:var(--muted)}.table-wrap{overflow-x:auto;border-radius:16px;border:1px solid var(--line)}table{width:100%;min-width:600px;border-collapse:collapse}td,th{text-align:left;padding:16px;vertical-align:top;width:50%;border-bottom:1px solid var(--line)}th{background:var(--surface2);color:var(--cyan)}td+td{color:var(--muted)}tr:last-child td{border-bottom:0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stats div{border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:20px}.stats strong{font-size:clamp(1.7rem,3vw,2.5rem);display:block;color:var(--cyan)}.stats span{color:var(--muted);font-size:.84rem}.disclosure{margin-top:16px}@media(max-width:700px){.two-col,.stats{grid-template-columns:1fr 1fr}.project-block{padding-block:35px}.panel{padding:19px}}@media(max-width:470px){.two-col,.stats{grid-template-columns:1fr}}
+  </style>
+</BaseLayout>
