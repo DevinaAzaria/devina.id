@@ -1,15 +1,5 @@
 [
   {
-    "date": "2026-10-11",
-    "displayDate": "11 Oct 2026",
-    "type": "essay",
-    "category": "Essays",
-    "title": "Di Era AI, Belajar Apa Sebenarnya yang Paling Penting?",
-    "slug": "belajar-di-era-ai",
-    "description": "Refleksi tentang cara berpikir generalis, pentingnya kedalaman ilmu, leadership, dan belajar dengan bantuan AI.",
-    "href": "/journal/belajar-di-era-ai/"
-  },
-  {
     "date": "2026-09-26",
     "displayDate": "26 Sep 2026",
     "type": "essay",
@@ -28,5 +18,25 @@
     "slug": "akun-penting-programmer",
     "description": "Panduan pemula untuk memilih akun programmer: GitHub, deployment, cloud, Docker, package registry, komunitas profesional, dan AI coding assistant berdasarkan kebutuhan.",
     "href": "/research-writing/articles-explainers/akun-penting-programmer/"
+  },
+  {
+    "date": "2026-10-11",
+    "displayDate": "11 Oct 2026",
+    "type": "essay",
+    "category": "Essays",
+    "title": "Di Era AI, Belajar Apa Sebenarnya yang Paling Penting?",
+    "slug": "belajar-di-era-ai",
+    "description": "Refleksi tentang cara berpikir generalis, pentingnya kedalaman ilmu, leadership, dan belajar dengan bantuan AI.",
+    "href": "/journal/belajar-di-era-ai/"
+  },
+  {
+    "date": "2026-10-26",
+    "displayDate": "26 Oct 2026",
+    "type": "essay",
+    "category": "Essays",
+    "title": "AI and the Acceleration of Human Thought",
+    "slug": "ai-acceleration-human-thought",
+    "description": "Bagaimana AI memperpendek jarak antara informasi, hubungan, pola, model mental, dan pertanyaan baru—serta mengapa judgment menjadi semakin penting.",
+    "href": "/journal/ai-acceleration-human-thought/"
   }
 ]
