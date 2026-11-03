@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const featuredArtTrack = 'https://music.youtube.com/watch?v=3vsmKzg2ivE';
+
+const releases = [
+  {
+    number: '01',
+    title: 'Sampai Ketemu Lagi',
+    year: '2026',
+    date: '24 Mei 2026',
+    genre: 'Pop',
+    duration: '2:24',
+    description: 'Salah satu langkah terbaru dalam perjalanan Devina mengeksplorasi cerita dan ekspresi melalui musik.',
+    theme: 'sky',
+    links: [
+      { service: 'Spotify', label: 'Cari di Spotify', url: 'https://open.spotify.com/search/Sampai%20Ketemu%20Lagi%20Devina%20Azaria', search: true },
+      { service: 'Apple Music', label: 'Cari di Apple Music', url: 'https://music.apple.com/us/search?term=Sampai%20Ketemu%20Lagi%20Devina%20Azaria', search: true },
+    ],
+  },
+  {
+    number: '02',
+    title: 'Bukan Dongeng Semata',
+    year: '2020',
+    date: '19 Januari 2020',
+    genre: 'Easy Listening',
+    duration: null,
+    description: 'Sebuah lagu tentang menerima diri sendiri dan belajar melihat kelebihan yang sudah kita miliki.',
+    credit: 'Lagu ciptaan Yunan Helmi.',
+    theme: 'dawn',
+    links: [
+      { service: 'Apple Music', label: 'Apple Music', url: 'https://music.apple.com/us/album/bukan-dongeng-semata-single/1570147449', search: false },
+      { service: 'Bandcamp', label: 'Bandcamp', url: 'https://akudevina.bandcamp.com/track/bukan-dongeng-semata', search: false },
+      { service: 'Spotify', label: 'Cari di Spotify', url: 'https://open.spotify.com/search/Bukan%20Dongeng%20Semata%20Devina%20Azaria', search: true },
+    ],
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Music — Devina Azaria',
+  url: 'https://devina.id/music/',
+  description: 'Katalog rilisan musik Devina Azaria dan tautan ke layanan streaming resmi.',
+  about: { '@type': 'Person', name: 'Devina Azaria', url: 'https://devina.id/' },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: releases.map((release, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'MusicRecording',
+        name: release.title,
+        byArtist: { '@type': 'MusicGroup', name: 'Devina Azaria' },
+        datePublished: release.year,
+      },
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title="Music & Releases — Devina Azaria"
+  description="Dengarkan rilisan musik Devina Azaria: Sampai Ketemu Lagi dan Bukan Dongeng Semata, melalui YouTube Music, Spotify, Apple Music, dan Bandcamp."
+  schema={schema}
+>
+  <div class="music-page">
+    <section class="shell music-hero" aria-labelledby="music-title">
+      <div class="music-hero-copy">
+        <p class="music-eyebrow"><span class="signal-dot" aria-hidden="true"></span> MUSIC / SELECTED RELEASES</p>
+        <h1 id="music-title">A story in <em>sound.</em></h1>
+        <p class="music-lead">Lagu adalah bagian dari perjalanan belajar, mencoba, dan menemukan cara bercerita. Inilah beberapa rilisan musik Devina Azaria—dari karya terdahulu hingga eksplorasi yang lebih baru.</p>
+        <div class="music-actions">
+          <a class="music-primary" href="#releases">Explore the releases <span aria-hidden="true">↘</span></a>
+          <a class="music-outline" href={featuredArtTrack}>Listen on YouTube Music <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="music-hero-meta" aria-label="Ringkasan katalog">
+          <span><b>02</b> RELEASES</span>
+          <span><b>2020—2026</b> JOURNEY</span>
+          <span><b>YOGYAKARTA</b> INDONESIA</span>
+        </div>
+      </div>
+      <div class="record-art" aria-hidden="true">
+        <div class="record-light"></div>
+        <div class="vinyl-disc"><div class="vinyl-label"><span>DA</span><small>SOUND / STORIES</small></div></div>
+        <div class="record-orbit orbit-one"></div><div class="record-orbit orbit-two"></div>
+        <span class="record-caption">DEVINA AZARIA · SELECTED MUSIC</span>
+      </div>
+    </section>
+
+    <section class="music-divider" aria-label="Streaming platforms">
+      <div class="shell music-services">
+        <span>LISTEN YOUR WAY</span>
+        <div aria-label="Layanan musik yang ditautkan di halaman ini">
+          <span>Spotify</span><span aria-hidden="true">✦</span>
+          <span>YouTube Music</span><span aria-hidden="true">✦</span>
+          <span>Apple Music</span><span aria-hidden="true">✦</span>
+          <span>Bandcamp</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="releases" class="shell release-section" aria-labelledby="release-title">
+      <div class="music-section-head">
+        <div>
+          <p class="music-eyebrow">DISCOGRAPHY / 001</p>
+          <h2 id="release-title">Released music<span class="head-period">.</span></h2>
+        </div>
+        <p>Dua lagu, dua momen perjalanan. Pilih layanan musik yang biasa Anda gunakan.</p>
+      </div>
+
+      <div class="release-list">
+        {releases.map((release) => (
+          <article class="release-card" id={release.number === '01' ? 'sampai-ketemu-lagi' : 'bukan-dongeng-semata'}>
+            <div class:list={['release-art', release.theme]} aria-label={'Sampul ilustratif ' + release.title}>
+              <span class="art-sheen" aria-hidden="true"></span>
+              <span class="art-wordmark">DEVINA<br/>AZARIA</span>
+              <span class="art-title">{release.title}</span>
+              <span class="art-corner" aria-hidden="true">{release.number} / DA</span>
+            </div>
+            <div class="release-info">
+              <div class="release-tagline"><span>{release.year} · DIGITAL SINGLE</span><span>{release.genre}</span></div>
+              <h3>{release.title}</h3>
+              <p class="release-description">{release.description}</p>
+              {release.credit && <p class="release-credit">{release.credit}</p>}
+              <div class="release-facts"><span>Devina Azaria</span><span aria-hidden="true">/</span><span>{release.date}</span>{release.duration && <><span aria-hidden="true">/</span><span>{release.duration}</span></>}</div>
+              <div class="platform-links" aria-label={'Tautan platform untuk ' + release.title}>
+                {release.links.map((link) => (
+                  <a href={link.url} class:list={['platform-link', { 'search-link': link.search }]} aria-label={link.label + ' — ' + release.title}>
+                    <span>{link.label}</span><span aria-hidden="true">↗</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="platform-note"><span aria-hidden="true">ⓘ</span> Tautan bertanda “Cari” membuka hasil pencarian pada platform tersebut; bukan tautan lagu yang sudah diverifikasi. Ketersediaan dapat berbeda menurut wilayah dan layanan.</p>
+    </section>
+
+    <section class="listen-section" aria-labelledby="listen-title">
+      <div class="shell listen-layout">
+        <div class="listen-copy">
+          <p class="music-eyebrow">FEATURED / YOUTUBE MUSIC</p>
+          <h2 id="listen-title">Press play.<br/><em>Stay a while.</em></h2>
+          <p>Putar Art Track resmi yang tersedia di YouTube Music, atau buka langsung di aplikasinya.</p>
+          <a class="music-primary" href={featuredArtTrack}>Open YouTube Music <span aria-hidden="true">↗</span></a>
+          <p class="listen-caption">Pemutar disediakan oleh YouTube; ketersediaan embed dapat berbeda menurut pengaturan video dan wilayah.</p>
+        </div>
+        <div class="player-shell">
+          <div class="player-top"><span class="player-live-dot" aria-hidden="true"></span><span>OFFICIAL ART TRACK</span><span>YOUTUBE</span></div>
+          <div class="video-ratio">
+            <iframe
+              title="Devina Azaria — Official Art Track on YouTube"
+              src="https://www.youtube-nocookie.com/embed/3vsmKzg2ivE"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="player-bottom"><span>Devina Azaria</span><a href={featuredArtTrack}>Watch on YouTube Music ↗</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell music-outro">
+      <p class="music-eyebrow">MORE THAN ONE CREATIVE PATH</p>
+      <h2>Music is part of the journey,<br/><em>not the whole story.</em></h2>
+      <div class="music-outro-links"><a href="/about/">About Devina <span aria-hidden="true">↗</span></a><a href="https://www.reiea.com">Explore REIEA <span aria-hidden="true">↗</span></a></div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .music-page{overflow:hidden;color:#e8f3ff}
+  .music-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,6vw,92px);align-items:center;padding-top:clamp(70px,9vw,125px);padding-bottom:clamp(82px,9vw,125px)}
+  .music-eyebrow{display:flex;align-items:center;gap:10px;font-size:.73rem;letter-spacing:.19em;color:#8acff0;font-weight:850}
+  .signal-dot,.player-live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#70d7b6;box-shadow:0 0 18px #70d7b6}
+  .music-hero h1{margin:24px 0 26px;max-width:740px;font-size:clamp(4rem,8vw,8rem);letter-spacing:-.075em;line-height:.89;font-weight:850}
+  .music-hero h1 em,.listen-copy h2 em,.music-outro h2 em{font-style:normal;color:#87cfe9}
+  .music-lead{max-width:590px;color:#a9bed0;font-size:1.08rem;line-height:1.83}
+  .music-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .music-primary,.music-outline{display:inline-flex;align-items:center;justify-content:space-between;gap:23px;padding:13px 18px;border:1px solid #c7e7ed;border-radius:999px;font-size:.91rem;font-weight:800;min-height:49px;transition:transform .18s ease,border-color .18s ease}
+  .music-primary{color:#061522;background:#d0eef2}.music-outline{color:#d5e9f4;border-color:#416079;background:transparent}
+  .music-primary:hover,.music-outline:hover{transform:translateY(-2px);border-color:#8adbf4}
+  .music-hero-meta{display:flex;flex-wrap:wrap;gap:14px 30px;margin-top:58px;padding-top:25px;border-top:1px solid #2a455b;color:#8eabc0;font-size:.67rem;font-weight:800;letter-spacing:.14em}
+  .music-hero-meta span{display:flex;flex-direction:column;gap:5px}.music-hero-meta b{color:#e6f7fc;font-size:.96rem;letter-spacing:.02em}
+  .record-art{position:relative;min-height:470px;display:grid;place-items:center;isolation:isolate}
+  .record-light{position:absolute;inset:10% 4%;background:radial-gradient(ellipse at 62% 37%,#38789b88,transparent 52%),radial-gradient(ellipse at 25% 70%,#4e476b8f,transparent 54%);filter:blur(32px);z-index:-1}
+  .vinyl-disc{width:min(76%,400px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;border:2px solid #426882;box-shadow:0 28px 65px #020811bb,0 0 65px #3e7ea544;background:repeating-radial-gradient(circle at center,#0c1e30 0 3px,#12273b 4px 5px,#071826 6px 8px);transform:rotate(-16deg)}
+  .vinyl-label{width:37%;aspect-ratio:1;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;background:radial-gradient(circle at 35% 30%,#7ed1e3,#376b88 60%,#1b3e59);border:6px solid #0d2637;text-align:center;box-shadow:inset 0 0 20px #c4ecf544}
+  .vinyl-label span{font-weight:850;letter-spacing:-.07em;font-size:clamp(2rem,6vw,3.5rem)}.vinyl-label small{font-size:.42rem;letter-spacing:.16em;font-weight:850;color:#dcf6ff}
+  .record-orbit{position:absolute;inset:0;border:1px solid #34587555;border-radius:50%}.orbit-two{inset:11%;border-style:dashed}
+  .record-caption{position:absolute;bottom:0;right:0;color:#7292a8;font-size:.63rem;letter-spacing:.18em;font-weight:800;writing-mode:vertical-rl}
+  .music-divider{border-block:1px solid #22394e;background:#0d2032}.music-services{display:flex;gap:36px;align-items:center;justify-content:space-between;padding-block:21px}
+  .music-services>span{font-size:.65rem;color:#8bd3e2;letter-spacing:.19em;font-weight:850}.music-services>div{display:flex;gap:19px;align-items:center;flex-wrap:wrap;color:#d8e8f1;font-size:.91rem;font-weight:760}.music-services>div span:nth-child(even){color:#618aa8}
+  .release-section{padding-top:clamp(95px,11vw,145px);padding-bottom:clamp(95px,11vw,145px)}
+  .music-section-head{display:flex;gap:40px;align-items:end;justify-content:space-between;margin-bottom:45px}
+  .music-section-head h2{font-size:clamp(3rem,6vw,5.6rem);letter-spacing:-.064em;line-height:1;margin:12px 0 0}.head-period{color:#82d1e9}
+  .music-section-head>p{max-width:340px;color:#9bb1c5;font-size:1rem}
+  .release-list{display:grid;gap:22px}.release-card{display:grid;grid-template-columns:minmax(210px,340px) 1fr;gap:clamp(25px,5vw,66px);align-items:center;padding:clamp(19px,3.2vw,34px);border:1px solid #2c4960;border-radius:25px;background:linear-gradient(125deg,#122940,#0b1b2d 76%);transition:border-color .2s ease}.release-card:hover{border-color:#608cab}
+  .release-art{position:relative;aspect-ratio:1;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;padding:24px;border:1px solid #ffffff33;border-radius:15px;color:#f9f6ec;box-shadow:0 18px 55px #02091266}
+  .release-art.sky{background:radial-gradient(circle at 85% 22%,#b6d9d5aa,transparent 28%),linear-gradient(145deg,#254b68 5%,#5c7285 52%,#14253d)}
+  .release-art.dawn{background:radial-gradient(circle at 70% 58%,#e0b17b99,transparent 32%),linear-gradient(135deg,#574b5d,#a07973 48%,#27385b)}
+  .art-sheen{position:absolute;inset:0;background:linear-gradient(125deg,transparent 25%,#ffffff20 52%,transparent 70%)}.art-wordmark,.art-title,.art-corner{position:relative;z-index:1}
+  .art-wordmark{font-size:.67rem;line-height:1.1;letter-spacing:.2em;font-weight:850}.art-title{font-size:clamp(1.8rem,3.3vw,3.1rem);max-width:210px;line-height:.97;font-weight:800;letter-spacing:-.075em}.art-corner{align-self:end;font-size:.59rem;letter-spacing:.18em;font-weight:850}
+  .release-tagline{display:flex;flex-wrap:wrap;gap:13px;justify-content:space-between;color:#84cde4;font-size:.68rem;letter-spacing:.13em;font-weight:850}
+  .release-info h3{font-size:clamp(2.35rem,4.6vw,4.6rem);letter-spacing:-.066em;line-height:1.03;margin:18px 0 20px}
+  .release-description{max-width:530px;color:#b5c6d5;font-size:1.02rem;line-height:1.7}.release-credit{margin-top:10px;color:#93adc0;font-size:.87rem}
+  .release-facts{display:flex;flex-wrap:wrap;gap:10px;margin:23px 0 27px;font-size:.78rem;color:#8bacbe}
+  .platform-links{display:flex;flex-wrap:wrap;gap:10px}.platform-link{display:inline-flex;justify-content:space-between;align-items:center;gap:18px;padding:10px 13px;border:1px solid #47748a;border-radius:11px;font-size:.82rem;font-weight:790;color:#e2f4ff;background:#17344a;transition:background .2s ease,border-color .2s ease}.platform-link:hover{background:#224c68;border-color:#93d2f0}.platform-link.search-link{background:transparent;color:#a4c9db;border-color:#385569}
+  .platform-note{max-width:760px;margin:25px 0 0;color:#8fa6b9;font-size:.8rem;line-height:1.6}
+  .listen-section{border-block:1px solid #274158;background:radial-gradient(ellipse at 65% 50%,#17415b,transparent 62%),#0c1c2d;padding-block:clamp(85px,10vw,120px)}
+  .listen-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,100px);align-items:center}.listen-copy h2{font-size:clamp(3rem,5.7vw,5.1rem);line-height:1;letter-spacing:-.06em;margin:17px 0 24px}.listen-copy>p:not(.music-eyebrow){max-width:380px;color:#a3bacc;line-height:1.7}.listen-copy .music-primary{margin-top:29px}.listen-copy .listen-caption{margin-top:20px;font-size:.75rem;color:#819db0}
+  .player-shell{overflow:hidden;border-radius:18px;border:1px solid #42647b;background:#081522;box-shadow:0 30px 90px #020b1680}.player-top,.player-bottom{display:flex;align-items:center;gap:9px;justify-content:space-between;padding:15px 19px;color:#99b8ce;font-size:.66rem;letter-spacing:.14em;font-weight:840}.player-top span:nth-child(2){margin-right:auto}.player-top span:last-child{color:#7ba3bf}.video-ratio{aspect-ratio:16/9;background:#050e18}.video-ratio iframe{width:100%;height:100%;border:0}.player-bottom{font-size:.8rem;letter-spacing:0}.player-bottom a{color:#a1dcef}
+  .music-outro{text-align:center;padding-block:clamp(105px,13vw,180px)}.music-outro .music-eyebrow{justify-content:center}.music-outro h2{font-size:clamp(2.6rem,5.6vw,5.3rem);line-height:1.02;letter-spacing:-.06em;margin:20px 0 0}.music-outro-links{margin-top:33px;display:flex;flex-wrap:wrap;gap:20px;justify-content:center;font-weight:800;color:#bce6fa}.music-outro-links a:hover{color:white}
+  @media(max-width:900px){.music-hero{grid-template-columns:1fr;padding-top:74px}.record-art{min-height:330px;max-width:430px;width:100%;margin:auto}.listen-layout{grid-template-columns:1fr}.listen-copy>p:not(.music-eyebrow){max-width:670px}}
+  @media(max-width:670px){.music-hero h1{font-size:clamp(3.8rem,16vw,6rem)}.music-hero-meta{margin-top:36px}.record-art{min-height:270px}.music-services,.music-section-head{align-items:start;flex-direction:column;gap:16px}.music-services>div{gap:10px 13px;font-size:.77rem}.release-card{grid-template-columns:1fr;padding:19px;gap:26px}.release-art{width:min(100%,340px);margin:auto}.release-info h3{font-size:clamp(2.55rem,9vw,4rem)}.music-section-head h2{font-size:clamp(3.2rem,11vw,4.8rem)}.music-actions{flex-direction:column;align-items:stretch}.music-primary,.music-outline{justify-content:center}.player-top{font-size:.56rem}.listen-copy h2{font-size:3.2rem}}
+  @media(prefers-reduced-motion:reduce){.music-primary,.music-outline,.release-card,.platform-link{transition:none}}
+</style>
